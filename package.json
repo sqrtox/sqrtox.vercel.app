@@ -9,8 +9,8 @@
     "prebuild": "rimraf ./.next/ ./out/",
     "build": "run-s build:*",
     "build:build": "next build",
-    "build:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
     "build:export": "next export",
+    "build:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
     "start": "npm run build && next start",
     "vercel-build": "npm run build"
   },
