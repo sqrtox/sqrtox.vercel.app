@@ -13,6 +13,10 @@ const nextConfig = {
       source: '/:path*',
       headers: [
         {
+          key: 'Access-Control-Allow-Origin',
+          value: process.env.NEXT_PUBLIC_BASE_URL
+        },
+        {
           key: 'Cross-Origin-Embedder-Policy',
           value: 'require-corp'
         },
