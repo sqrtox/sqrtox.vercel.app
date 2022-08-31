@@ -6,14 +6,12 @@
     "predev": "rimraf ./.next/",
     "dev": "run-s dev:*",
     "dev:start": "next dev",
-    "preprod": "rimraf ./.next/ ./out/",
-    "prod": "run-s prod:*",
-    "prod:build": "next build",
-    "prod:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
-    "prod:export": "next export",
-    "prod:start": "next start",
-    "start": "npm run prod",
-    "vercel-build": "npm run start"
+    "prebuild": "rimraf ./.next/ ./out/",
+    "build": "run-s build:*",
+    "build:build": "next build",
+    "build:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
+    "build:export": "next export",
+    "vercel-build": "npm run build"
   },
   "repository": {
     "type": "git",
