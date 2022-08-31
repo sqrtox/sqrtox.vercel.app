@@ -12,7 +12,8 @@
     "prod:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
     "prod:export": "next export",
     "prod:start": "next start",
-    "start": "npm run prod"
+    "start": "npm run prod",
+    "vercel-build": "npm run start"
   },
   "repository": {
     "type": "git",
