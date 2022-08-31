@@ -1,0 +1,8 @@
+# Next.js
+.next/
+out/
+next-end.d.ts
+
+# Node.js
+node_modules/
+package-lock.json

@@ -1,0 +1,9 @@
+.BlogEntryContent {
+  h2:not(:first-child) {
+    margin-top: 4rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}

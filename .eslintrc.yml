@@ -1,0 +1,119 @@
+env:
+  browser: true
+  es2021: true
+  node: true
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:@next/next/recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:import/recommended
+  - plugin:import/typescript
+settings:
+  import/resolver:
+    typescript:
+      alwaysTryTypes: true
+  react:
+    version: detect
+overrides: []
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - react
+  - "@typescript-eslint"
+  - sort-exports
+  - prefer-arrow
+  - jsx-a11y
+rules:
+  indent:
+    - error
+    - 2
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - error
+    - single
+  semi: off
+  "@typescript-eslint/semi":
+    - error
+    - always
+  "@typescript-eslint/member-delimiter-style":
+    - error
+    - multiline:
+        delimiter: comma
+        requireLast: false
+      overrides:
+        interface:
+          multiline:
+            delimiter: semi
+            requireLast: true
+  import/order:
+    - error
+    - groups:
+        - builtin
+        - external
+        - parent
+        - sibling
+        - index
+        - object
+        - type
+      alphabetize:
+        order: asc
+      newlines-between: never
+  sort-imports:
+    - error
+    - ignoreDeclarationSort: true
+  sort-exports/sort-exports:
+    - error
+    - sortDir: asc
+  comma-dangle:
+    - error
+    - never
+  react/react-in-jsx-scope: off
+  jsx-quotes:
+    - error
+    - prefer-single
+  arrow-body-style:
+    - error
+    - as-needed
+  prefer-arrow/prefer-arrow-functions:
+    - error
+    - singleReturnOnly: true
+  prefer-arrow-callback:
+    - error
+    - allowNamedFunctions: true
+  func-style:
+    - error
+    - expression
+  brace-style:
+    - error
+    - 1tbs
+  curly: error
+  react/no-multi-comp:
+    - error
+    - ignoreStateless: true
+  react/prefer-stateless-function: error
+  react/jsx-filename-extension:
+    - error
+    - extensions:
+        - .tsx
+  react/jsx-pascal-case: error
+  react/jsx-closing-bracket-location: error
+  no-multi-spaces: error
+  react/jsx-curly-spacing: error
+  react/jsx-boolean-value: error
+  react/jsx-wrap-multilines: error
+  react/self-closing-comp: error
+  react/jsx-closing-tag-location: error
+  react/no-array-index-key: error
+  react/jsx-tag-spacing:
+    - error
+    - beforeClosing: never
+  jsx-a11y/alt-text: error
+  jsx-a11y/aria-role: error
+  jsx-a11y/no-access-key: error
+  react/jsx-curly-brace-presence: error
+  prefer-template: error

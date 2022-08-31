@@ -1,0 +1,41 @@
+.code {
+  &-highlight {
+    float: left;
+  }
+
+  &-line {
+    display: block;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    border-left-width: 4px;
+    border-left-color: rgba(31, 41, 55, 0);
+
+    &.inserted {
+      background-color: rgba(16, 185, 129, 0.2);
+    }
+
+    &.deleted {
+      background-color: rgba(239, 68, 68, 0.2);
+    }
+  }
+}
+
+.code-line .highlight-line {
+  margin-left: -16px;
+  margin-right: -16px;
+  background-color: rgba(55, 65, 81, 0.5);
+  border-left-width: 4px;
+  border-left-color: rgb(59, 130, 246);
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 1rem;
+  text-align: right;
+  margin-right: 16px;
+  margin-left: -8px;
+  color: rgb(156, 163, 175);
+  content: attr(line);
+}

@@ -1,0 +1,26 @@
+{
+  "cSpell.words": [
+    "browserconfig",
+    "gtag",
+    "katex",
+    "keyval",
+    "linebreak",
+    "localforage",
+    "msapplication",
+    "mstile",
+    "multilines",
+    "nextjs",
+    "predev",
+    "preprod",
+    "qiita",
+    "reactjs",
+    "reduxjs",
+    "rehype",
+    "sqrtox",
+    "toolbelt",
+    "typeof"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}

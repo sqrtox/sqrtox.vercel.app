@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://sqrtox.vercel.app/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/blog/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/legal/privacy-policy/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/blog/firefox-private-browsing-idb-keyval/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/blog/gtag-js-arrow-function/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/blog/next-js-document-function-component/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/blog/typescript-extracting-type-generics/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/programming/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/javascript/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/mozilla-firefox/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/private-browsing/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/idb-keyval/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/localforage/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/google-analytics/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/next-js/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/typescript/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/generics/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sqrtox.vercel.app/tag/static-typing/</loc><lastmod>2022-08-31T10:48:56.345Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+</urlset>
