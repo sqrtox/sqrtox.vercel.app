@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import { type FC } from 'react';
 import { minify } from 'uglify-js';
 import { GOOGLE_ANALYTICS_MEASUREMENT_ID, existsMeasurementId } from '~/util/gtag';
@@ -23,12 +22,11 @@ const GoogleAnalytics: FC = () => (
     {
       existsMeasurementId && (
         <>
-          <Script
+          <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
           />
-          <Script
-            id='minified-google-analytics-script'
+          <script
             dangerouslySetInnerHTML={{
               __html: code
             }}
