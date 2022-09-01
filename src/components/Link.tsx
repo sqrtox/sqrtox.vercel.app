@@ -6,6 +6,8 @@ type LinkProps = Readonly<{
   href: string,
   children: ReactNode,
   fontSize?: string,
+  color?: string,
+  underline?: 'none' | 'hover' | 'always',
   noReferrer?: boolean,
   noOpener?: boolean,
   external?: boolean,
@@ -16,6 +18,8 @@ const Link: FC<LinkProps> = ({
   href,
   children,
   fontSize,
+  color,
+  underline,
   noOpener = false,
   noReferrer = false,
   external = false,
@@ -42,6 +46,8 @@ const Link: FC<LinkProps> = ({
       passHref
     >
       <MuiLink
+        color={color}
+        underline={underline}
         fontSize={fontSize}
         target={target}
         rel={rel.join(' ')}

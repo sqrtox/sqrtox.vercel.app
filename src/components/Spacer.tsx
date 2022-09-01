@@ -18,8 +18,8 @@ const Spacer: FC<SpacerProps> = ({ children }) => (
       [breakpoints.down('lg')]: {
         maxWidth: '75%'
       },
-      [breakpoints.down('sm')]: {
-        maxWidth: '95%'
+      [breakpoints.down('md')]: {
+        maxWidth: '90%'
       }
     })}
   >
