@@ -90,8 +90,8 @@ const nextConfig = {
               'default-src \'self\'; ' +
               'connect-src \'self\' https://www.google-analytics.com; ' +
               'font-src https://cdn.jsdelivr.net https://fonts.gstatic.com; ' +
-              `style-src https://cdn.jsdelivr.net 'nonce-${NONCE}'; ` +
-              `style-src-elem https://cdn.jsdelivr.net 'nonce-${NONCE}'; ` +
+              `style-src 'self' https://cdn.jsdelivr.net 'nonce-${NONCE}'; ` +
+              `style-src-elem 'self' https://cdn.jsdelivr.net 'nonce-${NONCE}'; ` +
               `script-src 'self' https://www.googletagmanager.com 'nonce-${NONCE}'; ` +
               `script-src-elem 'self' https://www.googletagmanager.com 'nonce-${NONCE}'`
             )
