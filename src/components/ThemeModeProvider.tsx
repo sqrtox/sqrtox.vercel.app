@@ -32,7 +32,7 @@ const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
     palette: {
       mode: isDark ? 'dark' : 'light',
       primary: {
-        main: '#29b9f6'
+        main: process.env.NEXT_PUBLIC_PRIMARY_MAIN_COLOR
       }
     }
   });

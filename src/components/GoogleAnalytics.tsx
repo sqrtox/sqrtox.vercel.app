@@ -17,7 +17,11 @@ const { code } = minify(`
 }
 `);
 
-const GoogleAnalytics: FC = () => (
+type GoogleAnalyticsProps = Readonly<{
+  nonce?: string
+}>;
+
+const GoogleAnalytics: FC<GoogleAnalyticsProps> = ({ nonce }) => (
   <>
     {
       existsMeasurementId && (
@@ -27,6 +31,7 @@ const GoogleAnalytics: FC = () => (
             src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
           />
           <script
+            nonce={nonce}
             dangerouslySetInnerHTML={{
               __html: code
             }}
@@ -38,3 +43,4 @@ const GoogleAnalytics: FC = () => (
 );
 
 export default GoogleAnalytics;
+export { type GoogleAnalyticsProps };

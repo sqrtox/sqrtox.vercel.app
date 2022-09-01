@@ -1,5 +1,7 @@
 //@ts-check
 
+const NONCE = process.env.NEXT_PUBLIC_NONCE;
+
 const isDev = process.env.NODE_ENV === 'development';
 
 /**
@@ -88,10 +90,10 @@ const nextConfig = {
               'default-src \'self\'; ' +
               'connect-src \'self\' https://www.google-analytics.com; ' +
               'font-src https://cdn.jsdelivr.net https://fonts.gstatic.com; ' +
-              'style-src \'unsafe-inline\' \'self\' https://cdn.jsdelivr.net; ' +
-              'style-src-elem \'unsafe-inline\' \'self\' https://cdn.jsdelivr.net; ' +
-              'script-src \'unsafe-inline\' \'self\' https://www.googletagmanager.com; ' +
-              'script-src-elem \'unsafe-inline\' \'self\' https://www.googletagmanager.com'
+              `style-src https://cdn.jsdelivr.net 'nonce-${NONCE}'; ` +
+              `style-src-elem https://cdn.jsdelivr.net 'nonce-${NONCE}'; ` +
+              `script-src 'self' https://www.googletagmanager.com 'nonce-${NONCE}'; ` +
+              `script-src-elem 'self' https://www.googletagmanager.com 'nonce-${NONCE}'`
             )
           )
         }
