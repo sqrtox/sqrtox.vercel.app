@@ -24,7 +24,10 @@ const HeaderNavMenu: FC = () => {
         anchorEl={anchorEl}
         onClose={handleClose}
       >
-        <MenuItem sx={{ padding: '0' }}>
+        <MenuItem
+          onClick={handleClose}
+          sx={{ padding: '0' }}
+        >
           <NextLink passHref href='/blog/'>
             <MuiLink
               width='100%'
@@ -37,7 +40,10 @@ const HeaderNavMenu: FC = () => {
             </MuiLink>
           </NextLink>
         </MenuItem>
-        <MenuItem sx={{ padding: '0' }}>
+        <MenuItem
+          onClick={handleClose}
+          sx={{ padding: '0' }}
+        >
           <NextLink passHref href='/legal/privacy-policy/'>
             <MuiLink
               width='100%'
