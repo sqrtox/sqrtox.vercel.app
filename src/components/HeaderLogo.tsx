@@ -3,12 +3,14 @@ import MuiLink from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import NextLink from 'next/link';
 import { type FC } from 'react';
 import SvgSqrtoxLogo from '~/components/SvgSqrtoxLogo';
 
 const HeaderLogo: FC = () => {
-  const { palette } = useTheme();
+  const { palette, breakpoints } = useTheme();
+  const isSmallScreen = useMediaQuery(breakpoints.down('sm'));
 
   return (
     <Box sx={{ marginRight: 'auto' }}>
@@ -24,13 +26,15 @@ const HeaderLogo: FC = () => {
               width={40}
               height={40}
             />
-            <Typography
-              variant='h4'
-              color={palette.text.primary}
-              fontWeight='bold'
-            >
-              Sqrtox
-            </Typography>
+            {!isSmallScreen && (
+              <Typography
+                variant='h4'
+                color={palette.text.primary}
+                fontWeight='bold'
+              >
+                Sqrtox
+              </Typography>
+            )}
           </Stack>
         </MuiLink>
       </NextLink>

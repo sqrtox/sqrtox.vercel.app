@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import MuiLink from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -10,12 +11,16 @@ const Footer: FC = () => (
     <Stack paddingY='2rem'>
       <Spacer>
         <Stack marginX='auto' spacing={2}>
-          <Typography fontSize='small' color='text.secondary' textAlign='center'>
-            このサイトはGoogleアナリティクスを使用しています。
-            <NextLink href='/legal/privacy-policy/' passHref>
-              <MuiLink fontSize='small'>詳しく見る</MuiLink>
-            </NextLink>
-          </Typography>
+          <Stack>
+            <Typography fontSize='small' color='text.secondary' textAlign='center'>
+              このサイトはGoogleアナリティクスを使用しています。
+            </Typography>
+            <Box textAlign='center'>
+              <NextLink href='/legal/privacy-policy/' passHref>
+                <MuiLink fontSize='small'>プライバシーポリシー</MuiLink>
+              </NextLink>
+            </Box>
+          </Stack>
           <Typography fontSize='small' color='text.secondary' textAlign='center'>© 2022 sqrtox</Typography>
         </Stack>
       </Spacer>
