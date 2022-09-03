@@ -7,6 +7,7 @@ const NONCE = process.env.NEXT_PUBLIC_NONCE;
 const isDev = process.env.NODE_ENV === 'development';
 
 const withPwa = nextPwa({
+  disable: isDev,
   dest: 'public'
 });
 

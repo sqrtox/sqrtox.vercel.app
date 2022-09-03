@@ -2,6 +2,7 @@ declare module 'next-pwa' {
   import { type NextConfig } from 'next';
 
   interface NextPwaConfig {
+    disable?: boolean;
     dest: string;
   }
 
