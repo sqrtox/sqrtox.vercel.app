@@ -7,6 +7,7 @@ const NONCE = process.env.NEXT_PUBLIC_NONCE;
 const Document: FC = () => (
   <Html lang='ja'>
     <Head nonce={NONCE}>
+      <link rel='preconnect' href='//www.google-analytics.com' />
       <link rel='apple-touch-icon' sizes='180x180' href='/favicons/apple-touch-icon.png' />
       <link rel='icon' type='image/png' sizes='32x32' href='/favicons/favicon-32x32.png' />
       <link rel='icon' type='image/png' sizes='194x194' href='/favicons/favicon-194x194.png' />

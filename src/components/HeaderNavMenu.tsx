@@ -3,6 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import MuiLink from '@mui/material/Link';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Tooltip from '@mui/material/Tooltip';
 import NextLink from 'next/link';
 import { type FC, type MouseEvent, useState } from 'react';
 
@@ -16,9 +17,11 @@ const HeaderNavMenu: FC = () => {
 
   return (
     <>
-      <IconButton onClick={handleOpen}>
-        <MenuIcon />
-      </IconButton>
+      <Tooltip title='メニュー'>
+        <IconButton onClick={handleOpen}>
+          <MenuIcon />
+        </IconButton>
+      </Tooltip>
       <Menu
         open={open}
         anchorEl={anchorEl}

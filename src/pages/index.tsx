@@ -28,7 +28,7 @@ const getStaticProps: GetStaticProps<HomeProps> = async () => ({
 const Home: FC<HomeProps> = ({ blogEntries }) => (
   <>
     <Seo />
-    <Typography component='h1' variant='h4' marginY='1rem'>{SITE_SHORT_DESCRIPTION}</Typography>
+    <Typography component='h1' fontSize='2rem' marginY='1rem'>{SITE_SHORT_DESCRIPTION}</Typography>
     <Typography>{SITE_DESCRIPTION}</Typography>
     <Stack marginTop='2rem' spacing={1}>
       <Stack component='section' spacing={1}>

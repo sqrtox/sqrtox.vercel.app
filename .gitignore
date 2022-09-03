@@ -4,3 +4,9 @@ out/
 
 # Node.js
 node_modules/
+
+# PWA
+sw.js
+sw.js.map
+workbox-*.js
+workbox-*.js.map

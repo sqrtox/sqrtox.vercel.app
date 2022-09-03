@@ -6,3 +6,9 @@ next-end.d.ts
 # Node.js
 node_modules/
 package-lock.json
+
+# PWA
+sw.js
+sw.js.map
+workbox-*.js
+workbox-*.js.map

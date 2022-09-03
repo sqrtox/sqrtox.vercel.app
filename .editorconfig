@@ -14,7 +14,7 @@ insert_final_newline = true
 
 trim_trailing_whitespace = false
 
-[{/.next/**,/out/**,/node_modules/**,next-end.d.ts,package-lock.json}]
+[{/.next/**,/out/**,/node_modules/**,next-env.d.ts,package-lock.json}]
 
 indent_style = unset
 indent_size = unset

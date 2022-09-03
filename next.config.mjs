@@ -1,13 +1,16 @@
 //@ts-check
 
+import nextPwa from 'next-pwa';
+
 const NONCE = process.env.NEXT_PUBLIC_NONCE;
 
 const isDev = process.env.NODE_ENV === 'development';
 
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = {
+const withPwa = nextPwa({
+  dest: 'public'
+});
+
+const nextConfig = withPwa({
   poweredByHeader: false,
   trailingSlash: true,
   headers: async () => ([
@@ -100,6 +103,6 @@ const nextConfig = {
       ]
     }
   ])
-};
+});
 
 export default nextConfig;
