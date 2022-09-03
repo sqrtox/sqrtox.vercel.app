@@ -1,5 +1,6 @@
 //@ts-check
 
+import bundleAnalyzer from '@next/bundle-analyzer';
 import nextPwa from 'next-pwa';
 
 const NONCE = process.env.NEXT_PUBLIC_NONCE;
@@ -11,7 +12,14 @@ const withPwa = nextPwa({
   dest: 'public'
 });
 
-const nextConfig = withPwa({
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true'
+});
+
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = withBundleAnalyzer(withPwa({
   poweredByHeader: false,
   trailingSlash: true,
   headers: async () => ([
@@ -104,6 +112,6 @@ const nextConfig = withPwa({
       ]
     }
   ])
-});
+}));
 
 export default nextConfig;
