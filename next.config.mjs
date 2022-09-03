@@ -100,7 +100,7 @@ const nextConfig = withBundleAnalyzer(withPwa({
               'style-src-elem \'unsafe-inline\' https://fonts.googleapis.com https://cdn.jsdelivr.net'
             ) : (
               'default-src \'self\'; ' +
-              'connect-src \'self\' https://www.google-analytics.com; ' +
+              'connect-src \'self\' https://www.google-analytics.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://fonts.gstatic.com; ' +
               'font-src https://cdn.jsdelivr.net https://fonts.gstatic.com; ' +
               `style-src 'self' https://cdn.jsdelivr.net 'nonce-${NONCE}'; ` +
               `style-src-elem 'self' https://cdn.jsdelivr.net 'nonce-${NONCE}'; ` +
