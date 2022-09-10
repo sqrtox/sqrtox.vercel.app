@@ -1,7 +1,7 @@
 # Next.js
 .next/
-out/
-next-end.d.ts
+sitemap*.xml
+next-env.d.ts
 
 # Node.js
 node_modules/

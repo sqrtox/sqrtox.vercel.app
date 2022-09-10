@@ -1,6 +1,6 @@
 # Next.js
 .next/
-out/
+sitemap*.xml
 
 # Node.js
 node_modules/

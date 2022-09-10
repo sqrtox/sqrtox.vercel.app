@@ -5,7 +5,7 @@
  */
 const nextSitemapConfig = {
   siteUrl: process.env.NEXT_PUBLIC_BASE_URL,
-  outDir: './out/'
+  outDir: './public/'
 };
 
 export default nextSitemapConfig;
