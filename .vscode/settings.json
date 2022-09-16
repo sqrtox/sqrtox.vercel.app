@@ -30,8 +30,10 @@
   "files.exclude": {
     "**/.next": true,
     "**/dist": true,
+    "**/LICENSE": true,
     "**/node_modules": true,
     "**/package-lock.json": true,
-    "**/public": true
+    "**/public": true,
+    "**/README.md": true
   }
 }
