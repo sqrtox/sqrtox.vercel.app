@@ -1,10 +1,12 @@
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { GetStaticProps } from 'next';
+import { type GetStaticProps } from 'next';
 import { type FC } from 'react';
-import BlogEntries from '~/components/BlogEntries';
-import Link from '~/components/Link';
-import Seo from '~/components/Seo';
+import BlogEntries from '~/components/blog/BlogEntries';
+import Link from '~/components/common/Link';
+import Seo from '~/components/common/Seo';
+import SpacingLayout from '~/components/spacing/SpacingLayout';
 import { type BlogEntry, fetchBlogEntries } from '~/util/blog/entry';
 
 const SITE_SHORT_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_SHORT_DESCRIPTION;
@@ -28,15 +30,20 @@ const getStaticProps: GetStaticProps<HomeProps> = async () => ({
 const Home: FC<HomeProps> = ({ blogEntries }) => (
   <>
     <Seo />
-    <Typography component='h1' fontSize='2rem' marginY='1rem'>{SITE_SHORT_DESCRIPTION}</Typography>
-    <Typography>{SITE_DESCRIPTION}</Typography>
-    <Stack marginTop='2rem' spacing={1}>
-      <Stack component='section' spacing={1}>
-        <Typography component='h1' variant='h5'>新着記事</Typography>
-        <BlogEntries blogEntries={blogEntries} />
-        <Link href='/blog/'>すべての記事をみる→</Link>
+    <SpacingLayout>
+      <Typography component='h1' fontSize='2rem' marginY='1rem'>{SITE_SHORT_DESCRIPTION}</Typography>
+      <Typography>{SITE_DESCRIPTION}</Typography>
+      <Stack marginTop='2rem' spacing={1}>
+        <Stack component='section' spacing={1}>
+          <Typography component='h1' variant='h5'>新着記事</Typography>
+          <BlogEntries blogEntries={blogEntries} />
+          <Link href='/blog/'>
+            すべての記事をみる
+            <KeyboardArrowRightIcon sx={{ verticalAlign: 'bottom' }} />
+          </Link>
+        </Stack>
       </Stack>
-    </Stack>
+    </SpacingLayout>
   </>
 );
 

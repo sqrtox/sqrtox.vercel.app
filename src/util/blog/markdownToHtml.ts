@@ -9,7 +9,7 @@ import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
-import MarkdownLink from '~/components/MarkdownLink';
+import MarkdownLink from '~/components/blog/MarkdownLink';
 
 const markdownToHtml = async (markdown: string): Promise<string> => {
   const html = await unified()

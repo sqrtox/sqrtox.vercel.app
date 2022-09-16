@@ -1,3 +1,6 @@
+# destination
+dist/
+
 # Next.js
 .next/
 sitemap*.xml

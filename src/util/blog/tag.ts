@@ -1,5 +1,5 @@
 import { fetchBlogEntries } from '~/util/blog/entry';
-import { type KebabCase } from '~/util/util';
+import { type KebabCase } from '~/util/types';
 
 type BlogEntryTagId = KebabCase<'blogEntryTagId'>;
 type BlogEntryTag = Readonly<{

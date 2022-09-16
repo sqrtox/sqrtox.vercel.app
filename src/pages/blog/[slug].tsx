@@ -5,9 +5,10 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { type GetStaticPaths, type GetStaticProps } from 'next';
 import { type FC } from 'react';
-import BlogEntryTagChips from '~/components/BlogEntryTagChips';
-import BlogEntryTime from '~/components/BlogEntryTime';
-import Seo from '~/components/Seo';
+import BlogEntryTagChips from '~/components/blog/BlogEntryTagChips';
+import BlogEntryTime from '~/components/blog/BlogEntryTime';
+import Seo from '~/components/common/Seo';
+import SpacingLayout from '~/components/spacing/SpacingLayout';
 import { type BlogEntry, assertIsBlogEntrySlug, fetchBlogEntryBySlug, getBlogEntrySlugs } from '~/util/blog/entry';
 
 type BlogEntryPageParams = ParsedUrlQuery & Readonly<{
@@ -56,17 +57,19 @@ const BlogEntryPage: FC<BlogEntryPageProps> = ({
       title={title}
       description={description}
     />
-    <Stack spacing={3} marginY='2rem'>
-      <Typography component='h1' variant='h5'>{title}</Typography>
-      <BlogEntryTime publishedTimestamp={publishedTimestamp} modifiedTimestamp={modifiedTimestamp} />
-      <BlogEntryTagChips tags={tags} />
-      <Divider />
-      <Box
-        className='BlogEntryContent'
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-    </Stack>
+    <SpacingLayout>
+      <Stack spacing={3} marginY='2rem'>
+        <Typography component='h1' variant='h5'>{title}</Typography>
+        <BlogEntryTime publishedTimestamp={publishedTimestamp} modifiedTimestamp={modifiedTimestamp} />
+        <BlogEntryTagChips tags={tags} />
+        <Divider />
+        <Box
+          className='BlogEntryContent'
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </Stack>
+    </SpacingLayout>
   </>
 );
 

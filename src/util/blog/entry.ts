@@ -3,7 +3,8 @@ import { join as joinPath, parse as parsePath } from 'node:path';
 import { markdownToHtml } from '~/util/blog/markdownToHtml';
 import { type BlogEntryTag, assertIsBlogEntryTagId, getBlogEntryTagById } from '~/util/blog/tag';
 import { isYamlArray, matter } from '~/util/matter';
-import { type KebabCase, type Writable, isKebabCase } from '~/util/util';
+import { type Writable } from '~/util/types/Writable';
+import { type KebabCase, isKebabCase } from '~/util/types/kebab-case';
 
 type BlogEntrySlug = KebabCase<'blogEntrySlug'>;
 type BlogEntry = Readonly<{

@@ -1,27 +1,53 @@
-import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import localforage from 'localforage';
 
-type ThemeMode = 'light' | 'system' | 'dark';
+type ThemeMode = 'dark' | 'light' | 'system';
 type ThemeModeState = Readonly<{
-  themeMode: ThemeMode
+  themeMode: ThemeMode,
+  fulfilled: boolean
 }>;
 
 const initialThemeModeState: ThemeModeState = {
-  themeMode: 'dark'
+  themeMode: 'dark',
+  fulfilled: false
 };
+
+const updateThemeMode = createAsyncThunk<ThemeMode, ThemeMode>('themeMode/updateThemeMode', async themeMode => {
+  await localforage.setItem<ThemeMode>('themeMode/themeMode', themeMode);
+
+  return themeMode;
+});
+
+const initThemeMode = createAsyncThunk('themeMode/initThemeMode', async () => {
+  const themeMode = (
+    await localforage.getItem<ThemeMode>('themeMode/themeMode') ??
+    await localforage.setItem<ThemeMode>('themeMode/themeMode', initialThemeModeState.themeMode)
+  );
+
+  return themeMode;
+});
 
 const themeModeSlice = createSlice({
   name: 'themeMode',
   initialState: initialThemeModeState,
-  reducers: {
-    updateThemeMode: (state, { payload }: PayloadAction<ThemeMode>) => {
-      state.themeMode = payload;
-    }
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(updateThemeMode.fulfilled, (state, { payload }) => ({
+      ...state,
+      themeMode: payload
+    }));
+    builder.addCase(initThemeMode.fulfilled, (state, { payload }) => ({
+      ...state,
+      themeMode: payload,
+      fulfilled: true
+    }));
   }
 });
 
 export {
   type ThemeMode,
-  type ThemeModeState,
+  initThemeMode,
   initialThemeModeState,
-  themeModeSlice
+  themeModeSlice,
+  updateThemeMode
 };

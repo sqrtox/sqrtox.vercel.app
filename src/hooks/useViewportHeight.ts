@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 
 const useViewportHeight = (): number | undefined => {
-  const [viewportHeight, setViewportHeight] = useState<number | undefined>();
-  const handleResize = () => {
-    setViewportHeight(window.innerHeight * 0.01);
-  };
+  const [vh, setVh] = useState<number | undefined>();
+  const handleResize = () => setVh(window.innerHeight * 0.01);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -13,7 +11,7 @@ const useViewportHeight = (): number | undefined => {
     return () => window.removeEventListener('resize', handleResize);
   });
 
-  return viewportHeight;
+  return vh;
 };
 
 export { useViewportHeight };

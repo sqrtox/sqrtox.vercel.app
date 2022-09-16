@@ -1,11 +1,11 @@
 import grayMatter from 'gray-matter';
 
-type YamlPrimitive = string | number | null | Date;
+type YamlPrimitive = Date | number | string | null;
 type YamlArray = readonly YamlType[];
 type YamlObject = Readonly<{
   [k: string]: YamlType
 }>;
-type YamlType = YamlPrimitive | YamlArray | YamlObject;
+type YamlType = YamlArray | YamlObject | YamlPrimitive;
 
 type MatterResult = Readonly<{
   content: string,
