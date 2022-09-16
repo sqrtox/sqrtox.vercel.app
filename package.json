@@ -14,7 +14,7 @@
     "dev:compile": "npm run compile",
     "dev:start": "cross-env NODE_ENV=development node .",
     "prebuild": "npm run clean",
-    "build": "run-s prod:*",
+    "build": "run-s build:*",
     "build:build": "cross-env NODE_ENV=production next build",
     "build:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
     "build:compile": "npm run compile",
