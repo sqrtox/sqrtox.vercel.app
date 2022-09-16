@@ -18,7 +18,7 @@
     "build:build": "cross-env NODE_ENV=production next build",
     "build:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
     "build:compile": "npm run compile",
-    "vercel-build": "npm run build",
+    "build:start": "cross-env NODE_ENV=production node .",
     "bundle-analyze": "cross-env BUNDLE_ANALYZE=true npm start",
     "start": "npm run build && cross-env NODE_ENV=production node ."
   },
