@@ -2,18 +2,18 @@ import { readFile, readdir } from 'node:fs/promises';
 import { join as joinPath, parse as parsePath } from 'node:path';
 import { markdownToHtml } from '~/util/blog/markdownToHtml';
 import { type BlogEntryTag, assertIsBlogEntryTagId, getBlogEntryTagById } from '~/util/blog/tag';
-import { isYamlArray, matter } from '~/util/matter';
+import { isYamlArray, matter } from '~/util/common/matter';
 import { type Writable } from '~/util/types/Writable';
 import { type KebabCase, isKebabCase } from '~/util/types/kebab-case';
 
 type BlogEntrySlug = KebabCase<'blogEntrySlug'>;
 type BlogEntry = Readonly<{
-  slug: BlogEntrySlug,
-  title: string,
   description: string,
-  tags: readonly BlogEntryTag[],
   html: string,
   publishedTimestamp: number,
+  slug: BlogEntrySlug,
+  tags: readonly BlogEntryTag[],
+  title: string,
   modifiedTimestamp?: number
 }>;
 
@@ -96,16 +96,16 @@ const fetchBlogEntryBySlug = async (slug: BlogEntrySlug): Promise<BlogEntry> => 
   }
 
   const blogEntry: Writable<BlogEntry, 'modifiedTimestamp'> = {
-    slug,
-    title,
     description,
     html: await markdownToHtml(content),
     publishedTimestamp: publishedAt.getTime(),
+    slug,
     tags: tagIds.map(id => {
       assertIsBlogEntryTagId(id);
 
       return getBlogEntryTagById(id);
-    })
+    }),
+    title
   };
 
   if (modifiedAt) {

@@ -2,7 +2,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import MuiLink from '@mui/material/Link';
 import NextLink from 'next/link';
 import { type AnchorHTMLAttributes, type FC } from 'react';
-import { isExternalLink } from '~/util/isExternalLink';
+import { isExternalLink } from '~/util/common/isExternalLink';
 
 const MarkdownLink: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href = '/', children }) => {
   const externalLink = isExternalLink(href);
@@ -15,7 +15,7 @@ const MarkdownLink: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href = '/',
         color='primary'
       >
         {children}
-        {externalLink && <OpenInNewIcon sx={{ marginLeft: '0.1rem', verticalAlign: 'middle', fontSize: '1rem' }} />}
+        {externalLink && <OpenInNewIcon sx={{ fontSize: '1rem', marginLeft: '0.1rem', verticalAlign: 'middle' }} />}
       </MuiLink>
     </NextLink>
   );

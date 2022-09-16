@@ -26,6 +26,8 @@ plugins:
   - sort-exports
   - prefer-arrow
   - jsx-a11y
+  - typescript-sort-keys
+  - sort-keys-fix
 rules:
   indent:
     - error
@@ -118,3 +120,14 @@ rules:
     - error
     - beforeClosing: never
   react/jsx-curly-brace-presence: error
+  typescript-sort-keys/interface:
+    - error
+    - asc
+    - caseSensitive: true
+      natural: true
+      requiredFirst: true
+  sort-keys-fix/sort-keys-fix:
+    - error
+    - asc
+    - caseSensitive: true
+      natural: true

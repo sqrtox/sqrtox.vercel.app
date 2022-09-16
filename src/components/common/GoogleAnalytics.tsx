@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { minify } from 'uglify-js';
-import { GOOGLE_ANALYTICS_MEASUREMENT_ID, existsMeasurementId } from '~/util/gtag';
+import { GOOGLE_ANALYTICS_MEASUREMENT_ID, existsMeasurementId } from '~/util/common/gtag';
 
 const { code } = minify(`
 'use strict';

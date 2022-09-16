@@ -28,10 +28,10 @@ const NotFoundPage: FC = () => (
               suppressHydrationWarning
               component='span'
               sx={{
-                padding: '0 0.25rem',
-                margin: '0 0.25rem',
+                backgroundColor: ({ palette }) => alpha(palette.getContrastText(palette.background.paper), 0.25),
                 borderRadius: '5px',
-                backgroundColor: ({ palette }) => alpha(palette.getContrastText(palette.background.paper), 0.25)
+                margin: '0 0.25rem',
+                padding: '0 0.25rem'
               }}
             >
               {useRouter().asPath}

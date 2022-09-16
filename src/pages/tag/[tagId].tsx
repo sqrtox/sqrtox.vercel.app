@@ -22,8 +22,8 @@ const getStaticPaths: GetStaticPaths<BlogEntryTagHomePageParams> = async () => (
 });
 
 type BlogEntryTagHomePageProps = Readonly<{
-  tag: BlogEntryTag,
-  blogEntries: readonly BlogEntry[]
+  blogEntries: readonly BlogEntry[],
+  tag: BlogEntryTag
 }>;
 
 const getStaticProps: GetStaticProps<BlogEntryTagHomePageProps, BlogEntryTagHomePageParams> = async ({ params: { tagId } = {} }) => {
@@ -35,10 +35,10 @@ const getStaticProps: GetStaticProps<BlogEntryTagHomePageProps, BlogEntryTagHome
 
   return {
     props: {
-      tag,
       blogEntries: await fetchBlogEntries().then(blogEntires => blogEntires.filter(({ tags }) => (
         tags.some(({ id }) => id === tag.id)
-      )))
+      ))),
+      tag
     }
   };
 };

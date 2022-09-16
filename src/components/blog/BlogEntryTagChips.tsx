@@ -11,7 +11,14 @@ type BlogEntryTagChipsProps = Readonly<{
 }>;
 
 const BlogEntryTagChips: FC<BlogEntryTagChipsProps> = ({ tags }) => (
-  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center' }}>
+  <Box
+    sx={{
+      alignItems: 'center',
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '0.5rem'
+    }}
+  >
     {tags.map(({ displayName, id }) => (
       <NextLink href={`/tag/${id}/`} key={id}>
         <Tooltip title={`${displayName}の記事一覧へ`} enterDelay={300}>

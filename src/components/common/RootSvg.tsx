@@ -3,8 +3,8 @@ import { type SxProps } from '@mui/system';
 import { type Ref, type SVGProps } from 'react';
 
 type RootSvgProps<P = unknown> = Omit<SVGProps<SVGSVGElement>, 'ref'> & P & Readonly<Partial<{
-  sx: SxProps<Theme>,
-  ref: Ref<SVGSVGElement>
+  ref: Ref<SVGSVGElement>,
+  sx: SxProps<Theme>
 }>>;
 
 const RootSvg = styled('svg')({ verticalAlign: 'bottom' });

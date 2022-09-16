@@ -3,15 +3,15 @@ import NextLink from 'next/link';
 import { type FC, type ReactNode } from 'react';
 
 type LinkProps = Readonly<{
-  href: string,
   children: ReactNode,
-  fontSize?: string,
+  href: string,
   color?: string,
-  underline?: 'always' | 'hover' | 'none',
-  noReferrer?: boolean,
-  noOpener?: boolean,
   external?: boolean,
-  target?: '_blank'
+  fontSize?: string,
+  noOpener?: boolean,
+  noReferrer?: boolean,
+  target?: '_blank',
+  underline?: 'always' | 'hover' | 'none'
 }>;
 
 const Link: FC<LinkProps> = ({

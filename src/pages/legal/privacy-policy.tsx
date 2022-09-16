@@ -9,8 +9,8 @@ import Seo from '~/components/common/Seo';
 import SpacingLayout from '~/components/spacing/SpacingLayout';
 
 const SmallOpenInNewIcon = styled(OpenInNewIcon)({
-  width: '1.25rem',
-  verticalAlign: 'middle'
+  verticalAlign: 'middle',
+  width: '1.25rem'
 });
 
 const PrivacyPolicyPage: FC = () => (

@@ -8,10 +8,10 @@ type SpacerProps = Readonly<Partial<{
 const Spacer: FC<SpacerProps> = ({ children }) => (
   <Box
     sx={({ breakpoints }) => ({
-      width: '100%',
       marginInlineEnd: 'auto',
       marginInlineStart: 'auto',
       maxWidth: '50%',
+      width: '100%',
       [breakpoints.down(1800)]: {
         maxWidth: '60%'
       },

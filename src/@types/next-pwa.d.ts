@@ -2,8 +2,8 @@ declare module 'next-pwa' {
   import { type NextConfig } from 'next';
 
   type NextPwaConfig = Readonly<{
-    disable?: boolean,
-    dest: string
+    dest: string,
+    disable?: boolean
   }>;
 
   function configFactory(config: NextConfig): NextConfig;

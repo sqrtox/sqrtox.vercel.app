@@ -6,8 +6,8 @@ import nextPwa from 'next-pwa';
 const isDev = process.env.NODE_ENV === 'development';
 
 const withNextPwa = nextPwa({
-  disable: isDev,
-  dest: './public/'
+  dest: './public/',
+  disable: isDev
 });
 
 const withNextBundleAnalyzer = nextBundleAnalyzer({
@@ -18,11 +18,8 @@ const withNextBundleAnalyzer = nextBundleAnalyzer({
  * @type {import('next').NextConfig}
  */
 const config = {
-  poweredByHeader: false,
-  trailingSlash: true,
   headers: async () => ([
     {
-      source: '/:path*',
       headers: [
         {
           key: 'Access-Control-Allow-Origin',
@@ -88,9 +85,12 @@ const config = {
             'window-placement=()'
           )
         }
-      ]
+      ],
+      source: '/:path*'
     }
-  ])
+  ]),
+  poweredByHeader: false,
+  trailingSlash: true
 };
 
 export default withNextBundleAnalyzer(withNextPwa(config));

@@ -1,6 +1,7 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { type FC, type ReactNode, useEffect } from 'react';
+import Loading from '~/components/common/Loading';
 import { useAppDispatch } from '~/hooks/useAppDispatch';
 import { useAppSelector } from '~/hooks/useAppSelector';
 import { initThemeMode } from '~/store/slices/theme-mode';
@@ -31,6 +32,7 @@ const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
 
   return (
     <>
+      {!fulfilled && <Loading />}
       {fulfilled && (
         <ThemeProvider theme={theme}>
           {children}

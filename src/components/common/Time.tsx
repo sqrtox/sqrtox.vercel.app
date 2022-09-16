@@ -10,8 +10,8 @@ extend(dayjsPluginUtc);
 extend(dayjsPluginTimezone);
 
 type TimeProps = Readonly<{
-  timestamp: number,
-  Icon: SvgIconComponent
+  Icon: SvgIconComponent,
+  timestamp: number
 }>;
 
 const Time: FC<TimeProps> = ({ Icon, timestamp }) => {

@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
 });
 
 const store = configureStore({
-  reducer: rootReducer,
   middleware: getDefaultMiddleware => {
     const middleware = getDefaultMiddleware();
 
@@ -22,7 +21,8 @@ const store = configureStore({
     }
 
     return middleware;
-  }
+  },
+  reducer: rootReducer
 });
 
 type AppDispatch = typeof store.dispatch;

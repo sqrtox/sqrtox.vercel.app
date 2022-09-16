@@ -26,7 +26,6 @@ const markdownToHtml = async (markdown: string): Promise<string> => {
     unified()
       .use(rehypeParse, { fragment: true })
       .use(rehypeReact, {
-        createElement,
         Fragment,
         components: {
           a: MarkdownLink,
@@ -36,7 +35,8 @@ const markdownToHtml = async (markdown: string): Promise<string> => {
           'h4': 'h5',
           'h5': 'h6',
           'h6': 'p'
-        }
+        },
+        createElement
       })
       .process(html)
       .then(({ result }) => renderToString(result))

@@ -14,8 +14,8 @@ type SpacingLayoutProps = Readonly<Partial<{
 const SpacingLayout: FC<SpacingLayoutProps> = ({ children }) => {
   const headerRef = useRef<HTMLDivElement>(null);
   const [, headerHeight] = useSize(headerRef, {
-    initialWidth: 0,
-    initialHeight: 64
+    initialHeight: 64,
+    initialWidth: 0
   });
   const minHeight = useMinHeight();
 

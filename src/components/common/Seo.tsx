@@ -6,15 +6,13 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 
 type SeoProps = Readonly<Partial<{
-  title: string,
   description: string,
-  noIndex: boolean
+  title: string
 }>>;
 
 const Seo: FC<SeoProps> = ({
   title,
-  description,
-  noIndex
+  description
 }) => {
   const { asPath } = useRouter();
 
@@ -23,23 +21,22 @@ const Seo: FC<SeoProps> = ({
       <NextSeo
         title={title}
         description={description}
-        noindex={noIndex}
         twitter={{ cardType: 'summary_large_image' }}
         openGraph={{
-          url: `${BASE_URL}${asPath}`,
-          title: typeof title === 'undefined' ? undefined : `${title} | ${SITE_NAME}`,
           description,
-          site_name: SITE_NAME,
-          type: asPath === '/' ? 'website' : 'article',
           images: [
             {
-              url: `${BASE_URL}/images/ogp-image-1200x630.png`,
-              type: 'image/png',
               alt: '',
-              width: 1200,
-              height: 630
+              height: 630,
+              type: 'image/png',
+              url: `${BASE_URL}/images/ogp-image-1200x630.png`,
+              width: 1200
             }
-          ]
+          ],
+          site_name: SITE_NAME,
+          title: typeof title === 'undefined' ? undefined : `${title} | ${SITE_NAME}`,
+          type: asPath === '/' ? 'website' : 'article',
+          url: `${BASE_URL}${asPath}`
         }}
       />
     </>

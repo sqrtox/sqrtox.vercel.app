@@ -3,13 +3,13 @@ import localforage from 'localforage';
 
 type ThemeMode = 'dark' | 'light' | 'system';
 type ThemeModeState = Readonly<{
-  themeMode: ThemeMode,
-  fulfilled: boolean
+  fulfilled: boolean,
+  themeMode: ThemeMode
 }>;
 
 const initialThemeModeState: ThemeModeState = {
-  themeMode: 'dark',
-  fulfilled: false
+  fulfilled: false,
+  themeMode: 'dark'
 };
 
 const updateThemeMode = createAsyncThunk<ThemeMode, ThemeMode>('themeMode/updateThemeMode', async themeMode => {
@@ -28,9 +28,6 @@ const initThemeMode = createAsyncThunk('themeMode/initThemeMode', async () => {
 });
 
 const themeModeSlice = createSlice({
-  name: 'themeMode',
-  initialState: initialThemeModeState,
-  reducers: {},
   extraReducers: builder => {
     builder.addCase(updateThemeMode.fulfilled, (state, { payload }) => ({
       ...state,
@@ -38,10 +35,13 @@ const themeModeSlice = createSlice({
     }));
     builder.addCase(initThemeMode.fulfilled, (state, { payload }) => ({
       ...state,
-      themeMode: payload,
-      fulfilled: true
+      fulfilled: true,
+      themeMode: payload
     }));
-  }
+  },
+  initialState: initialThemeModeState,
+  name: 'themeMode',
+  reducers: {}
 });
 
 export {

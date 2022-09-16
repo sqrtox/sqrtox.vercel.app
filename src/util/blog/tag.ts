@@ -3,8 +3,8 @@ import { type KebabCase } from '~/util/types/kebab-case';
 
 type BlogEntryTagId = KebabCase<'blogEntryTagId'>;
 type BlogEntryTag = Readonly<{
-  id: BlogEntryTagId,
-  displayName: string
+  displayName: string,
+  id: BlogEntryTagId
 }>;
 
 const isBlogEntryTagId = (value: unknown): value is BlogEntryTagId => (
@@ -21,17 +21,17 @@ const assertIsBlogEntryTagId: AssertIsBlogEntryTagId = value => {
 };
 
 const TAG_DISPLAY_NAMES: ReadonlyMap<string, string> = new Map(Object.entries({
-  'programming': 'プログラミング',
-  'javascript': 'JavaScript',
-  'mozilla-firefox': 'Mozilla Firefox',
-  'private-browsing': 'プライベートブラウジング',
-  'idb-keyval': 'IDB-Keyval',
-  'localforage': 'localForage',
   'generics': 'ジェネリクス',
-  'static-typing': '静的型付け',
-  'typescript': 'TypeScript',
   'google-analytics': 'Google Analytics',
-  'next-js': 'Next.js'
+  'idb-keyval': 'IDB-Keyval',
+  'javascript': 'JavaScript',
+  'localforage': 'localForage',
+  'mozilla-firefox': 'Mozilla Firefox',
+  'next-js': 'Next.js',
+  'private-browsing': 'プライベートブラウジング',
+  'programming': 'プログラミング',
+  'static-typing': '静的型付け',
+  'typescript': 'TypeScript'
 }));
 
 const getBlogEntryTagById = (id: BlogEntryTagId): BlogEntryTag => {
@@ -42,8 +42,8 @@ const getBlogEntryTagById = (id: BlogEntryTagId): BlogEntryTag => {
   }
 
   return {
-    id,
-    displayName
+    displayName,
+    id
   };
 };
 
