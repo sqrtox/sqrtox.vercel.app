@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "This is the site where I put my blog and other information.",
   "scripts": {
-    "predev": "rimraf ./.next/ ./public/feed/",
+    "predev": "rimraf ./.next/",
     "dev": "run-s dev:*",
     "dev:start": "next dev",
-    "prebuild": "rimraf ./.next/ ./public/sitemap*.xml ./public/sw.js ./public/workbox-*.js ./public/feed/",
+    "prebuild": "rimraf ./.next/ ./public/sitemap*.xml ./public/sw.js ./public/workbox-*.js",
     "build": "run-s build:*",
     "build:build": "next build",
     "build:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
