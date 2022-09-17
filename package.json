@@ -64,7 +64,6 @@
     "@react-hook/size": "^2.1.2",
     "@reduxjs/toolkit": "^1.8.5",
     "dayjs": "^1.11.5",
-    "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "localforage": "^1.10.0",
     "next": "^12.3.0",
