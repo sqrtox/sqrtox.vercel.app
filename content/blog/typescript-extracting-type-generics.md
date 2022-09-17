@@ -6,8 +6,8 @@ tagIds:
   - typescript
   - generics
   - static-typing
-publishedAt: 2022-05-27 17:21:38
-modifiedAt: 2022-05-27 19:43:04
+publishedAt: 2022-05-27 17:21:38+09:00
+modifiedAt: 2022-05-27 19:43:04+09:00
 ---
 
 # はじめに

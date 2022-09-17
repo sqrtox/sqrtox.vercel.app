@@ -5,7 +5,7 @@ tagIds:
   - programming
   - javascript
   - next-js
-publishedAt: 2022-06-13 23:45:52
+publishedAt: 2022-06-13 23:45:52+09:00
 ---
 
 Next.jsではページの共通の文書を設定できる[_document](https://nextjs.org/docs/advanced-features/custom-document)というものがある。

@@ -8,6 +8,7 @@ import Link from '~/components/common/Link';
 import Seo from '~/components/common/Seo';
 import SpacingLayout from '~/components/spacing/SpacingLayout';
 import { type BlogEntry, fetchBlogEntries } from '~/util/blog/entry';
+import { generateRss } from '~/util/blog/generateRss';
 
 const SITE_SHORT_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_SHORT_DESCRIPTION;
 const SITE_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
@@ -16,16 +17,22 @@ type HomeProps = Readonly<{
   blogEntries: readonly BlogEntry[]
 }>;
 
-const getStaticProps: GetStaticProps<HomeProps> = async () => ({
-  props: {
-    blogEntries: await fetchBlogEntries().then(blogEntries => (
-      blogEntries
-        .slice()
-        .sort((a, b) => b.publishedTimestamp - a.publishedTimestamp)
-        .slice(0, 2)
-    ))
-  }
-});
+const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const blogEntries = await fetchBlogEntries();
+
+  await generateRss(blogEntries);
+
+  return ({
+    props: {
+      blogEntries: (
+        blogEntries
+          .slice()
+          .sort((a, b) => b.publishedTimestamp - a.publishedTimestamp)
+          .slice(0, 2)
+      )
+    }
+  });
+};
 
 const Home: FC<HomeProps> = ({ blogEntries }) => (
   <>

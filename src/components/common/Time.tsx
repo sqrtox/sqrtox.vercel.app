@@ -15,7 +15,7 @@ type TimeProps = Readonly<{
 }>;
 
 const Time: FC<TimeProps> = ({ Icon, timestamp }) => {
-  const time = dayjs.tz(timestamp, 'Asia/Tokyo').subtract(9, 'hour');
+  const time = dayjs.tz(timestamp, 'Asia/Tokyo');
 
   return (
     <Typography component='div' color='text.secondary' variant='body2'>

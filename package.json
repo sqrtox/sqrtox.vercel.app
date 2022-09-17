@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "This is the site where I put my blog and other information.",
   "scripts": {
-    "predev": "rimraf ./.next/",
+    "predev": "rimraf ./.next/ ./public/rss/",
     "dev": "run-s dev:*",
     "dev:start": "next dev",
-    "prebuild": "rimraf ./.next/ ./public/sitemap*.xml ./public/sw.js ./public/workbox-*.js",
+    "prebuild": "rimraf ./.next/ ./public/sitemap*.xml ./public/sw.js ./public/workbox-*.js ./public/rss/",
     "build": "run-s build:*",
     "build:build": "next build",
     "build:sitemap": "next-sitemap --config ./next-sitemap.config.mjs",
@@ -52,6 +52,7 @@
     "redux-logger": "^3.0.6",
     "rimraf": "^3.0.2",
     "ts-toolbelt": "^9.6.0",
+    "tsc-alias": "^1.7.0",
     "typescript": "^4.8.3"
   },
   "dependencies": {
@@ -59,9 +60,11 @@
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.5",
+    "@next/env": "^12.3.0",
     "@react-hook/size": "^2.1.2",
     "@reduxjs/toolkit": "^1.8.5",
     "dayjs": "^1.11.5",
+    "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "localforage": "^1.10.0",
     "next": "^12.3.0",

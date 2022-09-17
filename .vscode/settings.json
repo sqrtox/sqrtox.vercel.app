@@ -2,6 +2,7 @@
   "cSpell.words": [
     "browserconfig",
     "edpp",
+    "favicons",
     "fqspy",
     "fxjri",
     "gtag",
@@ -26,7 +27,6 @@
     "**/LICENSE": true,
     "**/README.md": true,
     "**/node_modules": true,
-    "**/package-lock.json": true,
-    "**/public": true
+    "**/package-lock.json": true
   }
 }
