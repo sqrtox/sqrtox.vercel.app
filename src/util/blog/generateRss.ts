@@ -28,9 +28,9 @@ const generateRss = async (blogEntries: readonly BlogEntry[]): Promise<void> => 
     title: SITE_NAME
   });
 
-  for (const { title, slug, publishedTimestamp, description } of blogEntries) {
+  for (const { title, slug, modifiedTimestamp, description } of blogEntries) {
     const { href } = new URL(`/blog/${slug}`, BASE_URL);
-    const time = dayjs.tz(publishedTimestamp, 'Asia/Tokyo');
+    const time = dayjs.tz(modifiedTimestamp, 'Asia/Tokyo');
 
     feed.addItem({
       date: time.toDate(),
@@ -41,10 +41,10 @@ const generateRss = async (blogEntries: readonly BlogEntry[]): Promise<void> => 
     });
   }
 
-  await mkdir('./public/rss/', { recursive: true });
-  await writeFile('./public/rss/feed.xml', feed.rss2());
-  await writeFile('./public/rss/atom.xml', feed.atom1());
-  await writeFile('./public/rss/feed.json', feed.json1());
+  await mkdir('./public/feed/', { recursive: true });
+  await writeFile('./public/feed/feed.xml', feed.rss2());
+  await writeFile('./public/feed/atom.xml', feed.atom1());
+  await writeFile('./public/feed/feed.json', feed.json1());
 };
 
 export { generateRss };

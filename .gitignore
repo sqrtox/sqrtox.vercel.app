@@ -12,4 +12,4 @@ workbox-*.js
 workbox-*.js.map
 
 # RSS
-rss/
+feed/
