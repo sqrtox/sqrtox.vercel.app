@@ -8,12 +8,14 @@ import { type BlogEntry } from '~/util/blog/entry';
 extend(dayjsPluginUtc);
 extend(dayjsPluginTimezone);
 
+const SITE_DESCRIPTION = process.env.NEXT_PUBLIC_SITE_DESCRIPTION;
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME;
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const generateRss = async (blogEntries: readonly BlogEntry[]): Promise<void> => {
   const feed = new Feed({
     copyright: `© ${new Date().getFullYear()} sqrtox`,
+    description: SITE_DESCRIPTION,
     feedLinks: {
       atom: `${BASE_URL}/rss/atom.xml`,
       json: `${BASE_URL}/rss/feed.json`,
