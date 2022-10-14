@@ -6,6 +6,7 @@ import { usePageView } from '~/hooks/usePageView';
 import defaultSeoProps from '~next-seo.config';
 
 import '~/sass/nprogress.scss';
+import '~/sass/global.scss';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
