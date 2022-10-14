@@ -1,12 +1,13 @@
 import Box from '@mui/material/Box';
+import MuiLink from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { alpha } from '@mui/material/styles';
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { type FC } from 'react';
-import Link from '~/components/common/Link';
-import Seo from '~/components/common/Seo';
-import SpacingLayout from '~/components/spacing/SpacingLayout';
+import Seo from '~/components/Seo';
+import SpacingLayout from '~/layouts/spacing';
 
 const NotFoundPage: FC = () => {
   const { asPath } = useRouter();
@@ -41,7 +42,11 @@ const NotFoundPage: FC = () => {
               </Typography>
               が見つかりませんでした。
             </Typography>
-            <Link href='/'>ホームページに戻る</Link>
+            <NextLink passHref href='/'>
+              <MuiLink>
+                ホームページに戻る
+              </MuiLink>
+            </NextLink>
           </Stack>
         </Box>
       </SpacingLayout>

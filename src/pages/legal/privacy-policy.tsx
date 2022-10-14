@@ -1,12 +1,13 @@
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Box from '@mui/material/Box';
+import MuiLink from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import NextLink from 'next/link';
 import { type FC } from 'react';
-import Link from '~/components/common/Link';
-import Seo from '~/components/common/Seo';
-import SpacingLayout from '~/components/spacing/SpacingLayout';
+import Seo from '~/components/Seo';
+import SpacingLayout from '~/layouts/spacing';
 
 const SmallOpenInNewIcon = styled(OpenInNewIcon)({
   verticalAlign: 'middle',
@@ -32,9 +33,31 @@ const PrivacyPolicyPage: FC = () => (
           <Typography>
             この機能はCookieを無効にすることで拒否することができますので、お使いのブラウザの設定をご確認ください。<br />
             この規約に関しての詳細は
-            <Link href='https://marketingplatform.google.com/about/analytics/terms/jp/' external>Google アナリティクス利用規約<SmallOpenInNewIcon /></Link>
+            <NextLink
+              passHref
+              href='https://marketingplatform.google.com/about/analytics/terms/jp/'
+            >
+              <MuiLink
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Google アナリティクス利用規約
+                <SmallOpenInNewIcon />
+              </MuiLink>
+            </NextLink>
             のページや
-            <Link href='https://policies.google.com/technologies/ads?hl=ja' external>Googleポリシーと規約<SmallOpenInNewIcon /></Link>
+            <NextLink
+              passHref
+              href='https://policies.google.com/technologies/ads?hl=ja'
+            >
+              <MuiLink
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Googleポリシーと規約
+                <SmallOpenInNewIcon />
+              </MuiLink>
+            </NextLink>
             のページをご覧ください。
           </Typography>
         </Stack>

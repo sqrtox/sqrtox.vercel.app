@@ -3,30 +3,30 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { type GetStaticPaths, type GetStaticProps } from 'next';
 import { type FC } from 'react';
+import Seo from '~/components/Seo';
 import BlogEntries from '~/components/blog/BlogEntries';
-import Seo from '~/components/common/Seo';
-import SpacingLayout from '~/components/spacing/SpacingLayout';
+import SpacingLayout from '~/layouts/spacing';
 import { type BlogEntry, fetchBlogEntries } from '~/util/blog/entry';
 import { type BlogEntryTag, type BlogEntryTagId, getBlogEntryTagById, getTags } from '~/util/blog/tag';
 import { type Params } from '~/util/types/Params';
 
-type BlogEntryTagHomePageParams = Params<{
+type BlogEntryTagHomeParams = Params<{
   tagId: BlogEntryTagId
 }>;
 
-const getStaticPaths: GetStaticPaths<BlogEntryTagHomePageParams> = async () => ({
+const getStaticPaths: GetStaticPaths<BlogEntryTagHomeParams> = async () => ({
   fallback: false,
   paths: await getTags().then(tags => tags.map(({ id }) => ({
     params: { tagId: id }
   })))
 });
 
-type BlogEntryTagHomePageProps = Readonly<{
+type BlogEntryTagHomeProps = Readonly<{
   blogEntries: readonly BlogEntry[],
   tag: BlogEntryTag
 }>;
 
-const getStaticProps: GetStaticProps<BlogEntryTagHomePageProps, BlogEntryTagHomePageParams> = async ({ params: { tagId } = {} }) => {
+const getStaticProps: GetStaticProps<BlogEntryTagHomeProps, BlogEntryTagHomeParams> = async ({ params: { tagId } = {} }) => {
   if (typeof tagId === 'undefined') {
     throw new TypeError('Tag id is empty');
   }
@@ -43,7 +43,7 @@ const getStaticProps: GetStaticProps<BlogEntryTagHomePageProps, BlogEntryTagHome
   };
 };
 
-const BlogEntryTagHomePage: FC<BlogEntryTagHomePageProps> = ({ tag, blogEntries }) => (
+const BlogEntryTagHome: FC<BlogEntryTagHomeProps> = ({ tag, blogEntries }) => (
   <>
     <Seo
       title={`${tag.displayName}の記事一覧`}
@@ -59,10 +59,10 @@ const BlogEntryTagHomePage: FC<BlogEntryTagHomePageProps> = ({ tag, blogEntries 
   </>
 );
 
-export default BlogEntryTagHomePage;
+export default BlogEntryTagHome;
 export {
-  type BlogEntryTagHomePageParams,
-  type BlogEntryTagHomePageProps,
+  type BlogEntryTagHomeParams,
+  type BlogEntryTagHomeProps,
   getStaticPaths,
   getStaticProps
 };

@@ -1,13 +1,13 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 import { type FC } from 'react';
-import GoogleAnalytics from '~/components/common/GoogleAnalytics';
+import GoogleSiteVerification from '~/components/GoogleSiteVerification';
 
 const PRIMARY_MAIN_COLOR = process.env.NEXT_PUBLIC_PRIMARY_MAIN_COLOR;
 
 const Document: FC = () => (
   <Html lang='ja'>
     <Head>
-      <link rel='preconnect' href='//www.google-analytics.com' />
+      <link rel='preconnect' href='https://www.google-analytics.com' />
       <link rel='apple-touch-icon' sizes='180x180' href='/favicons/apple-touch-icon.png' />
       <link rel='icon' type='image/png' sizes='32x32' href='/favicons/favicon-32x32.png' />
       <link rel='icon' type='image/png' sizes='194x194' href='/favicons/favicon-194x194.png' />
@@ -32,8 +32,7 @@ const Document: FC = () => (
         crossOrigin='anonymous'
         referrerPolicy='no-referrer'
       />
-      <GoogleAnalytics />
-      <meta name='google-site-verification' content='tEdppR29J099yFqspyJ1Dv9v9p2fxjri2ZTrblOjRT0' />
+      <GoogleSiteVerification />
     </Head>
     <body>
       <Main />

@@ -3,22 +3,22 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { type GetStaticProps } from 'next';
 import { type FC } from 'react';
+import Seo from '~/components/Seo';
 import BlogEntries from '~/components/blog/BlogEntries';
-import Seo from '~/components/common/Seo';
-import SpacingLayout from '~/components/spacing/SpacingLayout';
+import SpacingLayout from '~/layouts/spacing';
 import { type BlogEntry, fetchBlogEntries } from '~/util/blog/entry';
 
-type BlogEntryHomePageProps = Readonly<{
+type BlogEntryHomeProps = Readonly<{
   blogEntries: readonly BlogEntry[]
 }>;
 
-const getStaticProps: GetStaticProps<BlogEntryHomePageProps> = async () => ({
+const getStaticProps: GetStaticProps<BlogEntryHomeProps> = async () => ({
   props: {
     blogEntries: await fetchBlogEntries()
   }
 });
 
-const BlogEntryHomePage: FC<BlogEntryHomePageProps> = ({ blogEntries }) => (
+const BlogEntryHome: FC<BlogEntryHomeProps> = ({ blogEntries }) => (
   <>
     <Seo
       title='ブログ記事一覧'
@@ -34,8 +34,8 @@ const BlogEntryHomePage: FC<BlogEntryHomePageProps> = ({ blogEntries }) => (
   </>
 );
 
-export default BlogEntryHomePage;
+export default BlogEntryHome;
 export {
-  type BlogEntryHomePageProps,
+  type BlogEntryHomeProps,
   getStaticProps
 };

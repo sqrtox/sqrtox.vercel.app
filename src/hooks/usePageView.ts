@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { existsMeasurementId, pageView } from '~/util/common/gtag';
+import { existsMeasurementId, pageView } from '~/util/gtag';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 

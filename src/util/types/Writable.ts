@@ -1,4 +1,4 @@
-import { type Object } from 'ts-toolbelt';
+import { type ReadonlyKeys } from '~/util/types/ReadonlyKeys';
 
 type Writable<O extends object, K extends keyof O = keyof O, D extends boolean = false> = (
   {
@@ -8,9 +8,9 @@ type Writable<O extends object, K extends keyof O = keyof O, D extends boolean =
       : O[P]
     )
   } & {
-    [P in Exclude<keyof O, K | Object.ReadonlyKeys<O>>]: O[P]
+    [P in Exclude<keyof O, K | ReadonlyKeys<O>>]: O[P]
   } & {
-    readonly [P in Exclude<Object.ReadonlyKeys<O>, K>]: O[P]
+    readonly [P in Exclude<ReadonlyKeys<O>, K>]: O[P]
   }
 );
 

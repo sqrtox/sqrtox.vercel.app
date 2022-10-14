@@ -5,10 +5,11 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { type GetStaticPaths, type GetStaticProps } from 'next';
 import { type FC } from 'react';
+import Seo from '~/components/Seo';
 import BlogEntryTagChips from '~/components/blog/BlogEntryTagChips';
 import BlogEntryTime from '~/components/blog/BlogEntryTime';
-import Seo from '~/components/common/Seo';
-import SpacingLayout from '~/components/spacing/SpacingLayout';
+import SpacingLayout from '~/layouts/spacing';
+import style from '~/pages/blog/[slug].module.scss';
 import { type BlogEntry, assertIsBlogEntrySlug, fetchBlogEntryBySlug, getBlogEntrySlugs } from '~/util/blog/entry';
 
 type BlogEntryPageParams = ParsedUrlQuery & Readonly<{
@@ -64,7 +65,7 @@ const BlogEntryPage: FC<BlogEntryPageProps> = ({
         <BlogEntryTagChips tags={tags} />
         <Divider />
         <Box
-          className='BlogEntryContent'
+          className={style.blogEntryContent}
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: html }}
         />

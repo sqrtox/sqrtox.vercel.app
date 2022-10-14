@@ -2,7 +2,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import MuiLink from '@mui/material/Link';
 import NextLink from 'next/link';
 import { type AnchorHTMLAttributes, type FC } from 'react';
-import { isExternalLink } from '~/util/common/isExternalLink';
+import { isExternalLink } from '~/util/isExternalLink';
 
 const MarkdownLink: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href = '/', children }) => {
   const externalLink = isExternalLink(href);

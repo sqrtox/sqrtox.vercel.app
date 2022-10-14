@@ -2,7 +2,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ReplayIcon from '@mui/icons-material/Replay';
 import Stack from '@mui/material/Stack';
 import { type FC } from 'react';
-import Time from '~/components/common/Time';
+import Time from '~/components/Time';
 
 type BlogEntryTimeProps = Readonly<{
   publishedTimestamp: number,
