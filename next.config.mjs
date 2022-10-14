@@ -16,15 +16,11 @@ const withNextBundleAnalyzer = nextBundleAnalyzer({
 });
 
 /**
- * @typedef {import('next').NextConfig} NextConfig
- */
-
-/**
  * @typedef {import('webpack').Configuration} Configuration
  */
 
 /**
- * @type {NextConfig}
+ * @type {import('next').NextConfig}
  */
 const config = {
   poweredByHeader: false,

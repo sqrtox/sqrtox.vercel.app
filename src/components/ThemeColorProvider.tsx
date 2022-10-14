@@ -1,8 +1,10 @@
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { type FC, type ReactNode, useEffect } from 'react';
-import { useAppDispatch } from '~/hooks/useAppDispatch';
+import { type FC, type ReactNode, useEffect, useState } from 'react';
+import { type ThemeColor, defaultThemeColor, isThemeColor, setThemeColorContext, themeColorContext } from '~/context/theme-color';
 import { useComputedThemeColor } from '~/hooks/useComputedThemeColor';
-import { initialThemeColorState, isThemeColor, themeColorSlice } from '~/slices/theme-color';
+/// #if DEVELOPMENT
+import { useLogger } from '~/hooks/useLogger';
+/// #endif
 
 const PRIMARY_MAIN_COLOR = process.env.NEXT_PUBLIC_PRIMARY_MAIN_COLOR;
 
@@ -11,8 +13,8 @@ type ThemeColorProviderProps = Readonly<Partial<{
 }>>;
 
 const ThemeColorProvider: FC<ThemeColorProviderProps> = ({ children }) => {
-  const dispatch = useAppDispatch();
-  const computedThemeColor = useComputedThemeColor();
+  const [themeColor, setThemeColor] = useState<ThemeColor>(defaultThemeColor);
+  const computedThemeColor = useComputedThemeColor(themeColor);
   const theme = createTheme({
     palette: {
       mode: computedThemeColor,
@@ -23,26 +25,34 @@ const ThemeColorProvider: FC<ThemeColorProviderProps> = ({ children }) => {
   });
 
   useEffect(() => {
-    const loadedThemeColor = localStorage.getItem('themeColor/themeColor');
+    const loadedThemeColor = localStorage.getItem('themeColor');
 
     if (!loadedThemeColor || !isThemeColor(loadedThemeColor)) {
-      localStorage.setItem('themeColor/themeColor', initialThemeColorState.themeColor);
+      localStorage.setItem('themeColor', defaultThemeColor);
     }
 
     const themeColor = (
       isThemeColor(loadedThemeColor)
         ? loadedThemeColor
-        : initialThemeColorState.themeColor
+        : defaultThemeColor
     );
 
-    dispatch(themeColorSlice.actions.updateThemeColor(themeColor));
+    setThemeColor(themeColor);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /// #if DEVELOPMENT
+  useLogger('themeColor', themeColor);
+  /// #endif
+
   return (
     <ThemeProvider theme={theme}>
-      {children}
+      <themeColorContext.Provider value={themeColor}>
+        <setThemeColorContext.Provider value={setThemeColor}>
+          {children}
+        </setThemeColorContext.Provider>
+      </themeColorContext.Provider>
     </ThemeProvider>
   );
 };

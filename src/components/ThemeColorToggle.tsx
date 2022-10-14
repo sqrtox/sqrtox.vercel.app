@@ -3,15 +3,12 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { type FC, useCallback } from 'react';
-import { useAppDispatch } from '~/hooks/useAppDispatch';
-import { useAppSelector } from '~/hooks/useAppSelector';
-import { themeColorSlice } from '~/slices/theme-color';
+import { type FC, useCallback, useContext } from 'react';
+import { setThemeColorContext, themeColorContext } from '~/context/theme-color';
 
 const ThemeColorToggle: FC = () => {
-  const themeColorState = useAppSelector(({ themeColor }) => themeColor);
-  const { themeColor } = themeColorState;
-  const dispatch = useAppDispatch();
+  const themeColor = useContext(themeColorContext);
+  const setThemeColor = useContext(setThemeColorContext);
   const onClick = useCallback(() => {
     const nextThemeColor = (
       themeColor === 'light' ? 'system' :
@@ -19,8 +16,9 @@ const ThemeColorToggle: FC = () => {
           'light'
     );
 
-    dispatch(themeColorSlice.actions.updateThemeColor(nextThemeColor));
-  }, [themeColor, dispatch]);
+    setThemeColor(nextThemeColor);
+    localStorage.setItem('themeColor', nextThemeColor);
+  }, [themeColor, setThemeColor]);
   const nextThemeColorName = (
     themeColor === 'light' ? 'システム' :
       themeColor === 'system' ? 'ダーク' :
