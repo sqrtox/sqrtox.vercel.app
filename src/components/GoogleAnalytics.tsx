@@ -11,17 +11,18 @@ const GoogleAnalytics: FC = () => (
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_MEASUREMENT_ID}`}
           />
-          <Script id='gtag'>{`
-          'use strict';
-          {
-            const dataLayer = window.dataLayer ||= [];
-            const gtag = function () {
-              dataLayer.push(arguments);
-            };
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', '${GOOGLE_ANALYTICS_MEASUREMENT_ID}');
-          }
+          <Script async id='gtag'>
+            {`
+            'use strict';
+            {
+              const dataLayer = window.dataLayer ||= [];
+              const gtag = function () {
+                dataLayer.push(arguments);
+              };
+              window.gtag = gtag;
+              gtag('js', new Date());
+              gtag('config', '${GOOGLE_ANALYTICS_MEASUREMENT_ID}');
+            }
           `}
           </Script>
         </>

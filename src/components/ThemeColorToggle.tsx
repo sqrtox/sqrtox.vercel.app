@@ -6,7 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { type FC, useCallback } from 'react';
 import { useAppDispatch } from '~/hooks/useAppDispatch';
 import { useAppSelector } from '~/hooks/useAppSelector';
-import { themeColorThunks } from '~/slices/theme-color';
+import { themeColorSlice } from '~/slices/theme-color';
 
 const ThemeColorToggle: FC = () => {
   const themeColorState = useAppSelector(({ themeColor }) => themeColor);
@@ -19,7 +19,7 @@ const ThemeColorToggle: FC = () => {
           'light'
     );
 
-    dispatch(themeColorThunks.updateThemeColor(nextThemeColor));
+    dispatch(themeColorSlice.actions.updateThemeColor(nextThemeColor));
   }, [themeColor, dispatch]);
   const nextThemeColorName = (
     themeColor === 'light' ? 'システム' :

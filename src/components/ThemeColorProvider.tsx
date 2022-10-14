@@ -2,7 +2,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { type FC, type ReactNode, useEffect } from 'react';
 import { useAppDispatch } from '~/hooks/useAppDispatch';
 import { useComputedThemeColor } from '~/hooks/useComputedThemeColor';
-import { themeColorThunks } from '~/slices/theme-color';
+import { initialThemeColorState, isThemeColor, themeColorSlice } from '~/slices/theme-color';
 
 const PRIMARY_MAIN_COLOR = process.env.NEXT_PUBLIC_PRIMARY_MAIN_COLOR;
 
@@ -23,7 +23,19 @@ const ThemeColorProvider: FC<ThemeColorProviderProps> = ({ children }) => {
   });
 
   useEffect(() => {
-    dispatch(themeColorThunks.loadThemeColor());
+    const loadedThemeColor = localStorage.getItem('themeColor/themeColor');
+
+    if (!loadedThemeColor || !isThemeColor(loadedThemeColor)) {
+      localStorage.setItem('themeColor/themeColor', initialThemeColorState.themeColor);
+    }
+
+    const themeColor = (
+      isThemeColor(loadedThemeColor)
+        ? loadedThemeColor
+        : initialThemeColorState.themeColor
+    );
+
+    dispatch(themeColorSlice.actions.updateThemeColor(themeColor));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
