@@ -1,6 +1,5 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import { type FC, type ReactNode } from 'react';
-import GoogleAnalytics from '~/components/GoogleAnalytics';
 import RouteChangeProgress from '~/components/RouteChangeProgress';
 import ThemeColorProvider from '~/components/ThemeColorProvider';
 
@@ -12,7 +11,6 @@ type CommonProviderProps = Readonly<Partial<{
 
 const CommonProvider: FC<CommonProviderProps> = ({ children }) => (
   <ThemeColorProvider>
-    <GoogleAnalytics />
     <CssBaseline />
     <RouteChangeProgress color={PRIMARY_MAIN_COLOR} />
     {children}

@@ -16,7 +16,7 @@ const usePageView = () => {
       return;
     }
 
-    const handleRouteChange = (path: string): void => pageView(path);
+    const handleRouteChange = (path: string) => pageView(path);
 
     router.events.on('routeChangeComplete', handleRouteChange);
 
