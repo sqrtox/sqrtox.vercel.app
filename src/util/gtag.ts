@@ -49,5 +49,6 @@ const pageView = async (path: string): Promise<void> => {
 export {
   GOOGLE_ANALYTICS_MEASUREMENT_ID,
   existsMeasurementId,
+  loadGtagScript,
   pageView
 };
