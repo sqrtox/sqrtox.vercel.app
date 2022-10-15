@@ -5,7 +5,6 @@ import CommonProvider from '~/components/CommonProvider';
 import { usePageView } from '~/hooks/usePageView';
 import defaultSeoProps from '~next-seo.config';
 
-import '~/sass/scrollbar.scss';
 import '~/sass/nprogress.scss';
 import '~/sass/global.scss';
 import 'prism-themes/themes/prism-vsc-dark-plus.css';
