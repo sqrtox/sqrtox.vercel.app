@@ -43,7 +43,7 @@ const Home: FC<HomeProps> = ({ blogEntries }) => (
           <Typography component='h1' variant='h5'>新着記事</Typography>
           <BlogEntries blogEntries={blogEntries} />
           <NextLink href='/blog/' passHref>
-            <MuiLink>
+            <MuiLink underline='hover'>
               すべての記事をみる
               <KeyboardArrowRightIcon sx={{ verticalAlign: 'bottom' }} />
             </MuiLink>

@@ -17,7 +17,7 @@ const SpacingLayoutFooter: FC = () => (
             </Typography>
             <Box textAlign='center'>
               <NextLink href='/legal/privacy-policy/' passHref>
-                <MuiLink fontSize='small'>プライバシーポリシー</MuiLink>
+                <MuiLink underline='hover' fontSize='small'>プライバシーポリシー</MuiLink>
               </NextLink>
             </Box>
           </Stack>
