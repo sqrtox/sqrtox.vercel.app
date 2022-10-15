@@ -1,6 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 import { type FC } from 'react';
 import GoogleSiteVerification from '~/components/GoogleSiteVerification';
+import KatexStyleSheetLoader from '~/components/KatexStyleSheetLoader';
 
 const PRIMARY_MAIN_COLOR = process.env.NEXT_PUBLIC_PRIMARY_MAIN_COLOR;
 
@@ -25,13 +26,7 @@ const Document: FC = () => (
         crossOrigin='anonymous'
         referrerPolicy='no-referrer'
       />
-      <link
-        rel='stylesheet'
-        href='https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css'
-        integrity='sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw=='
-        crossOrigin='anonymous'
-        referrerPolicy='no-referrer'
-      />
+      <KatexStyleSheetLoader />
       <GoogleSiteVerification />
     </Head>
     <body>

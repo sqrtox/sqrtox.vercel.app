@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { type GetStaticPaths, type GetStaticProps } from 'next';
 import { type FC } from 'react';
+import KatexStyleSheetLoader from '~/components/KatexStyleSheetLoader';
 import Seo from '~/components/Seo';
 import BlogEntryTagChips from '~/components/blog/BlogEntryTagChips';
 import BlogEntryTime from '~/components/blog/BlogEntryTime';
@@ -58,6 +59,7 @@ const BlogEntryPage: FC<BlogEntryPageProps> = ({
       title={title}
       description={description}
     />
+    <KatexStyleSheetLoader />
     <SpacingLayout>
       <Stack spacing={3} marginY='2rem'>
         <Typography component='h1' variant='h5'>{title}</Typography>
