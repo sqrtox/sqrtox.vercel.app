@@ -2,9 +2,9 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { type FC, type ReactNode, useEffect, useState } from 'react';
 import { type ThemeColor, defaultThemeColor, isThemeColor, setThemeColorContext, themeColorContext } from '~/context/theme-color';
 import { useComputedThemeColor } from '~/hooks/useComputedThemeColor';
-/// #if DEVELOPMENT
+// #!if DEVELOPMENT
 import { useLogger } from '~/hooks/useLogger';
-/// #endif
+// #!endif
 
 const PRIMARY_MAIN_COLOR = process.env.NEXT_PUBLIC_PRIMARY_MAIN_COLOR;
 
@@ -42,9 +42,9 @@ const ThemeColorProvider: FC<ThemeColorProviderProps> = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /// #if DEVELOPMENT
+  // #!if DEVELOPMENT
   useLogger('themeColor', themeColor);
-  /// #endif
+  // #!endif
 
   return (
     <ThemeProvider theme={theme}>

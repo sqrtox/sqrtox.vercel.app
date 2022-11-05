@@ -50,10 +50,10 @@
     "eslint-plugin-sort-exports": "^0.7.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
-    "ifdef-loader": "^1.1.1",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "webpack-preprocessor-loader": "^1.2.0"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",

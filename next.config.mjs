@@ -111,9 +111,11 @@ const config = {
       test: /\.tsx?$/,
       use: [
         {
-          loader: 'ifdef-loader',
+          loader: 'webpack-preprocessor-loader',
           options: {
-            DEVELOPMENT: isDev
+            params: {
+              DEVELOPMENT: isDev
+            }
           }
         }
       ]
