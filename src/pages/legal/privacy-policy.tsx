@@ -18,7 +18,7 @@ const PrivacyPolicyPage: FC = () => (
   <>
     <Seo
       title='プライバシーポリシー'
-      description=''
+      description='プライバシーポリシー'
     />
     <SpacingLayout>
       <Box sx={{ marginBottom: '5rem' }}>
