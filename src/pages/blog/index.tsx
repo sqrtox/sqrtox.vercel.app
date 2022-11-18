@@ -14,7 +14,10 @@ type BlogEntryHomeProps = Readonly<{
 
 const getStaticProps: GetStaticProps<BlogEntryHomeProps> = async () => ({
   props: {
-    blogEntries: await fetchBlogEntries()
+    blogEntries: await fetchBlogEntries().then(entries => entries
+      .slice()
+      .sort((a, b) => b.publishedTimestamp - a.publishedTimestamp)
+    )
   }
 });
 

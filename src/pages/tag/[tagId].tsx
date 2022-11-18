@@ -35,9 +35,12 @@ const getStaticProps: GetStaticProps<BlogEntryTagHomeProps, BlogEntryTagHomePara
 
   return {
     props: {
-      blogEntries: await fetchBlogEntries().then(blogEntires => blogEntires.filter(({ tags }) => (
-        tags.some(({ id }) => id === tag.id)
-      ))),
+      blogEntries: await fetchBlogEntries().then(blogEntires => blogEntires
+        .filter(({ tags }) => (
+          tags.some(({ id }) => id === tag.id)
+        ))
+        .sort((a, b) => b.publishedTimestamp - a.publishedTimestamp)
+      ),
       tag
     }
   };
