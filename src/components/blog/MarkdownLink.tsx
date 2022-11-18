@@ -12,7 +12,7 @@ const MarkdownLink: FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href = '/',
       <MuiLink
         target={externalLink ? '_blank' : undefined}
         rel={externalLink ? 'noopener noreferrer' : undefined}
-        color='primary'
+        sx={{ color: '#29b9f6' }}
       >
         {children}
         {externalLink && <OpenInNewIcon sx={{ fontSize: '1rem', marginLeft: '0.1rem', verticalAlign: 'middle' }} />}
