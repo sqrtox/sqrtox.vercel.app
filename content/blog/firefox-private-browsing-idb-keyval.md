@@ -1,6 +1,5 @@
 ---
 title: Firefoxのプライベートブラウジングでidb-keyvalが動かない
-description: Firefoxのプライベートブラウジングでidb-keyvalは動かないので、idb-keyvalではなくlocalforageを使用する。
 tagIds:
   - programming
   - javascript

@@ -1,6 +1,5 @@
 ---
 title: TypeScriptでジェネリクスから型パラメータの型を取り出す
-description: inferを使用してTypeScriptでジェネリクスから型パラメータの型を取り出す。
 tagIds:
   - programming
   - typescript

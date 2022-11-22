@@ -1,13 +1,16 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { join as joinPath, parse as parsePath } from 'node:path';
+import { generateSummary } from './generateSummary';
 import { markdownToHtml } from '~/util/blog/markdownToHtml';
 import { type BlogEntryTag, assertIsBlogEntryTagId, getBlogEntryTagById } from '~/util/blog/tag';
 import { isYamlArray, matter } from '~/util/matter';
 import { type Writable } from '~/util/types/Writable';
 import { type KebabCase, isKebabCase } from '~/util/types/kebab-case';
 
-type BlogEntrySlug = KebabCase<'blogEntrySlug'>;
-type BlogEntry = Readonly<{
+export type AssertIsBlogEntrySlug = (value: unknown) => asserts value is BlogEntrySlug;
+export const BLOG_CONTENT_DIR_PATH = joinPath(process.cwd(), 'content/blog');
+
+export type BlogEntry = Readonly<{
   description: string,
   html: string,
   publishedTimestamp: number,
@@ -17,25 +20,26 @@ type BlogEntry = Readonly<{
   modifiedTimestamp?: number
 }>;
 
-const isBlogEntrySlug = (value: unknown): value is BlogEntrySlug => (
-  isKebabCase(value)
-);
+export type BlogEntrySlug = KebabCase<'blogEntrySlug'>;
 
-type AssertIsBlogEntrySlug = (value: unknown) => asserts value is BlogEntrySlug;
-
-const assertIsBlogEntrySlug: AssertIsBlogEntrySlug = value => {
+export const assertIsBlogEntrySlug: AssertIsBlogEntrySlug = value => {
   if (!isBlogEntrySlug(value)) {
     throw new TypeError();
   }
 };
 
-const BLOG_CONTENT_DIR_PATH = joinPath(process.cwd(), 'content/blog');
+export const fetchBlogEntries = async (): Promise<readonly BlogEntry[]> => {
+  const slugs = await getBlogEntrySlugs();
+  const entries: BlogEntry[] = [];
 
-const slugToFilePath = (slug: BlogEntrySlug): string => (
-  joinPath(BLOG_CONTENT_DIR_PATH, `${slug}.md`)
-);
+  for (const slug of slugs) {
+    entries.push(await fetchBlogEntryBySlug(slug));
+  }
 
-const fetchBlogEntryBySlug = async (slug: BlogEntrySlug): Promise<BlogEntry> => {
+  return entries;
+};
+
+export const fetchBlogEntryBySlug = async (slug: BlogEntrySlug): Promise<BlogEntry> => {
   const filePath = slugToFilePath(slug);
   const fileContent = await readFile(filePath, 'utf8');
   const { content, data } = matter(fileContent);
@@ -46,58 +50,38 @@ const fetchBlogEntryBySlug = async (slug: BlogEntrySlug): Promise<BlogEntry> => 
     isYamlArray(data) ||
     data instanceof Date
   ) {
-    /**
-     * @todo
-     */
-    throw new TypeError('');
+    throw new TypeError('Incorrect data type');
   }
 
   const {
     title,
-    description,
     tagIds,
     publishedAt,
     modifiedAt
   } = data;
 
   if (typeof title !== 'string') {
-    /**
-     * @todo
-     */
-    throw new TypeError('');
-  }
-
-  if (typeof description !== 'string') {
-    /**
-     * @todo
-     */
-    throw new TypeError('');
+    throw new TypeError('Title not specified');
   }
 
   if (!isYamlArray(tagIds)) {
-    /**
-     * @todo
-     */
-    throw new TypeError('');
+    throw new TypeError('Tag id list type is invalid');
   }
 
   if (!(publishedAt instanceof Date)) {
-    /**
-     * @todo
-     */
-    throw new TypeError('');
+    throw new TypeError('The publication date/time type is incorrect');
   }
 
   if (!(modifiedAt instanceof Date) && typeof modifiedAt !== 'undefined') {
-    /**
-     * @todo
-     */
-    throw new TypeError('');
+    throw new TypeError('Incorrect update date/time type');
   }
 
+  const html = await markdownToHtml(content);
+  const summary = generateSummary(html);
+
   const blogEntry: Writable<BlogEntry, 'modifiedTimestamp'> = {
-    description,
-    html: await markdownToHtml(content),
+    description: summary,
+    html,
     publishedTimestamp: publishedAt.getTime(),
     slug,
     tags: tagIds.map(id => {
@@ -115,18 +99,7 @@ const fetchBlogEntryBySlug = async (slug: BlogEntrySlug): Promise<BlogEntry> => 
   return blogEntry;
 };
 
-const fetchBlogEntries = async (): Promise<readonly BlogEntry[]> => {
-  const slugs = await getBlogEntrySlugs();
-  const entries: BlogEntry[] = [];
-
-  for (const slug of slugs) {
-    entries.push(await fetchBlogEntryBySlug(slug));
-  }
-
-  return entries;
-};
-
-const getBlogEntrySlugs = async (): Promise<readonly BlogEntrySlug[]> => {
+export const getBlogEntrySlugs = async (): Promise<readonly BlogEntrySlug[]> => {
   const files = await readdir(BLOG_CONTENT_DIR_PATH);
 
   return files.map(file => {
@@ -138,15 +111,10 @@ const getBlogEntrySlugs = async (): Promise<readonly BlogEntrySlug[]> => {
   });
 };
 
-export {
-  type AssertIsBlogEntrySlug,
-  BLOG_CONTENT_DIR_PATH,
-  type BlogEntry,
-  type BlogEntrySlug,
-  assertIsBlogEntrySlug,
-  fetchBlogEntries,
-  fetchBlogEntryBySlug,
-  getBlogEntrySlugs,
-  isBlogEntrySlug,
-  slugToFilePath
-};
+export const isBlogEntrySlug = (value: unknown): value is BlogEntrySlug => (
+  isKebabCase(value)
+);
+
+export const slugToFilePath = (slug: BlogEntrySlug): string => (
+  joinPath(BLOG_CONTENT_DIR_PATH, `${slug}.md`)
+);

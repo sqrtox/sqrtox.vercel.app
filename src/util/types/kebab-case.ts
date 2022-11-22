@@ -1,8 +1,8 @@
 import { type Brand } from '~/util/types/Brand';
 
-type KebabCase<T extends string = 'kebabCase'> = Brand<string, T>;
+export type KebabCase<T extends string = 'kebabCase'> = Brand<string, T>;
 
-const isKebabCase = (value: unknown): value is KebabCase => {
+export const isKebabCase = (value: unknown): value is KebabCase => {
   if (typeof value !== 'string') {
     return false;
   }
@@ -24,7 +24,3 @@ const isKebabCase = (value: unknown): value is KebabCase => {
   return true;
 };
 
-export {
-  type KebabCase,
-  isKebabCase
-};

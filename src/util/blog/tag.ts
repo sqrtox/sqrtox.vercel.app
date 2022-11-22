@@ -1,26 +1,15 @@
 import { fetchBlogEntries } from '~/util/blog/entry';
 import { type KebabCase } from '~/util/types/kebab-case';
 
-type BlogEntryTagId = KebabCase<'blogEntryTagId'>;
-type BlogEntryTag = Readonly<{
+export type AssertIsBlogEntryTagId = (value: unknown) => asserts value is BlogEntryTagId;
+export type BlogEntryTag = Readonly<{
   displayName: string,
   id: BlogEntryTagId
 }>;
 
-const isBlogEntryTagId = (value: unknown): value is BlogEntryTagId => (
-  typeof value === 'string' &&
-  TAG_DISPLAY_NAMES.has(value)
-);
+export type BlogEntryTagId = KebabCase<'blogEntryTagId'>;
 
-type AssertIsBlogEntryTagId = (value: unknown) => asserts value is BlogEntryTagId;
-
-const assertIsBlogEntryTagId: AssertIsBlogEntryTagId = value => {
-  if (!isBlogEntryTagId(value)) {
-    throw new TypeError('');
-  }
-};
-
-const TAG_DISPLAY_NAMES: ReadonlyMap<string, string> = new Map(Object.entries({
+export const TAG_DISPLAY_NAMES: ReadonlyMap<string, string> = new Map(Object.entries({
   'generics': 'ジェネリクス',
   'google-analytics': 'Google Analytics',
   'idb-keyval': 'IDB-Keyval',
@@ -31,10 +20,17 @@ const TAG_DISPLAY_NAMES: ReadonlyMap<string, string> = new Map(Object.entries({
   'private-browsing': 'プライベートブラウジング',
   'programming': 'プログラミング',
   'static-typing': '静的型付け',
-  'typescript': 'TypeScript'
+  'typescript': 'TypeScript',
+  'youtube': 'YouTube'
 }));
 
-const getBlogEntryTagById = (id: BlogEntryTagId): BlogEntryTag => {
+export const assertIsBlogEntryTagId: AssertIsBlogEntryTagId = value => {
+  if (!isBlogEntryTagId(value)) {
+    throw new TypeError('');
+  }
+};
+
+export const getBlogEntryTagById = (id: BlogEntryTagId): BlogEntryTag => {
   const displayName = TAG_DISPLAY_NAMES.get(id);
 
   if (typeof displayName === 'undefined') {
@@ -47,7 +43,7 @@ const getBlogEntryTagById = (id: BlogEntryTagId): BlogEntryTag => {
   };
 };
 
-const getTags = async (): Promise<readonly BlogEntryTag[]> => {
+export const getTags = async (): Promise<readonly BlogEntryTag[]> => {
   const tagIdSet = new Set<BlogEntryTagId>();
   const tags: BlogEntryTag[] = [];
   const blogEntries = await fetchBlogEntries();
@@ -65,13 +61,7 @@ const getTags = async (): Promise<readonly BlogEntryTag[]> => {
   return tags;
 };
 
-export {
-  type AssertIsBlogEntryTagId,
-  type BlogEntryTag,
-  type BlogEntryTagId,
-  TAG_DISPLAY_NAMES,
-  assertIsBlogEntryTagId,
-  getBlogEntryTagById,
-  getTags,
-  isBlogEntryTagId
-};
+export const isBlogEntryTagId = (value: unknown): value is BlogEntryTagId => (
+  typeof value === 'string' &&
+  TAG_DISPLAY_NAMES.has(value)
+);

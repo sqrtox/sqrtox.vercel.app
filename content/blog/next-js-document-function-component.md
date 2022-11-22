@@ -1,6 +1,5 @@
 ---
 title: Next.jsのカスタムDocumentは関数コンポーネントでも使える
-description: Next.jsのカスタムDocumentは関数コンポーネントでも使える。
 tagIds:
   - programming
   - javascript

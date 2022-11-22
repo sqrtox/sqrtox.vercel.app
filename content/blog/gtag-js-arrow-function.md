@@ -1,6 +1,5 @@
 ---
 title: gtag.jsはアロー関数では動かない
-description: gtag.jsでアロー関数を使用すると動かない話。
 tagIds:
   - programming
   - javascript

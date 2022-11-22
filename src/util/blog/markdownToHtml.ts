@@ -11,7 +11,7 @@ import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 import MarkdownLink from '~/components/blog/MarkdownLink';
 
-const markdownToHtml = async (markdown: string): Promise<string> => {
+export const markdownToHtml = async (markdown: string): Promise<string> => {
   const html = await unified()
     .use(remarkParse)
     .use(remarkMath)
@@ -42,5 +42,3 @@ const markdownToHtml = async (markdown: string): Promise<string> => {
       .then(({ result }) => renderToString(result))
   );
 };
-
-export { markdownToHtml };
