@@ -10,6 +10,7 @@ export type BlogEntryTag = Readonly<{
 export type BlogEntryTagId = KebabCase<'blogEntryTagId'>;
 
 export const TAG_DISPLAY_NAMES: ReadonlyMap<string, string> = new Map(Object.entries({
+  'discord': 'Discord',
   'generics': 'ジェネリクス',
   'google-analytics': 'Google Analytics',
   'idb-keyval': 'IDB-Keyval',

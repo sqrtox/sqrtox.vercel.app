@@ -5,6 +5,7 @@ import rehypeParse from 'rehype-parse';
 import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeReact from 'rehype-react';
 import rehypeStringify from 'rehype-stringify';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
@@ -14,6 +15,7 @@ import MarkdownLink from '~/components/blog/MarkdownLink';
 export const markdownToHtml = async (markdown: string): Promise<string> => {
   const html = await unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remarkMath)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeKatex)
