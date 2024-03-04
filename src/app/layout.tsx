@@ -24,14 +24,6 @@ export type LayoutProps = {
   children: ReactNode
 };
 
-type NamedColor = "blue" | "green" | "red";
-
-type Color = NamedColor | string;
-
-const color: Color = "a";
-
-color;
-
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="ja">
