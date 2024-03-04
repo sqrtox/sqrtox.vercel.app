@@ -10,7 +10,7 @@ export default function ArticleCardList({ articles }: ArticleCardListProps) {
   return (
     <Grid container spacing={2}>
       {articles.map(article => (
-        <Grid sm={6} key={article.slug}>
+        <Grid xs={12} sm={6} key={article.slug}>
           <ArticleCard article={article} />
         </Grid>
       ))}
