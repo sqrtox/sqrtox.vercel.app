@@ -12,8 +12,8 @@
     "start": "run-s start:*",
     "start:build": "pnpm run build",
     "start:next": "next start",
-    "preview": "cross-env NEXT_PUBLIC_BASE_URL=\"http://localhost:3000\" pnpm run start",
-    "prod": "cross-env NEXT_PUBLIC_BASE_URL=\"https://sqrtox.vercel.app\" pnpm run start",
+    "local": "cross-env NEXT_PUBLIC_BASE_URL=\"http://localhost:3000\" pnpm run",
+    "prod": "cross-env NEXT_PUBLIC_BASE_URL=\"https://sqrtox.vercel.app\" pnpm run",
     "analyze": "cross-env ANALYZE=1 pnpm run"
   },
   "repository": {
