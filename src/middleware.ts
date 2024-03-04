@@ -52,8 +52,7 @@ export const middleware = async (request: NextRequest): Promise<NextResponse> =>
       "idle-detection=(), " +
       "interest-cohort=(), " +
       "serial=(), " +
-      "trust-token-redemption=(), " +
-      "window-management=()"
+      "trust-token-redemption=()"
     )
   });
 
