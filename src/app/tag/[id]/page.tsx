@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { existsTag } from "@/utils/blog/tag";
-import { notFoundMetadata } from "@/utils/not-found";
+import { generateDefaultMetadata, generateNotFoundMetadata } from "@/utils/metadata";
 import { notFound } from "next/navigation";
 
 export type PageParams = {
@@ -20,17 +20,19 @@ export const generateMetadata = async ({ params: { id } }: PageProps): Promise<M
   const exists = await existsTag(id);
 
   if (!exists) {
-    return notFoundMetadata;
+    return generateNotFoundMetadata();
   }
 
   const tag = await getTag(id);
   const title = `${tag.displayName}のタグがついた記事一覧`;
   const description = `${tag.displayName}のタグがついた記事一覧です。`;
+  const defaultMetadata = generateDefaultMetadata();
 
   return {
     title,
     description,
     openGraph: {
+      ...defaultMetadata.openGraph,
       title,
       description
     }

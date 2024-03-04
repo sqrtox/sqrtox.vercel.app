@@ -4,7 +4,7 @@ import { existsSlug, type Slug } from "@/utils/blog/slug";
 import BlogPage from "@/components/blog-page";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { notFoundMetadata } from "@/utils/not-found";
+import { generateDefaultMetadata, generateNotFoundMetadata } from "@/utils/metadata";
 
 import "@/styles/syntax-highlighting.scss";
 import "@/styles/article.scss";
@@ -13,15 +13,17 @@ export const generateMetadata = async ({ params: { slug } }: PageProps): Promise
   const exists = await existsSlug(slug);
 
   if (!exists) {
-    return notFoundMetadata;
+    return generateNotFoundMetadata();
   }
 
   const { title, description } = await getArticle(slug);
+  const defaultMetadata = generateDefaultMetadata();
 
   return {
     title,
     description,
     openGraph: {
+      ...defaultMetadata.openGraph,
       title,
       description
     }
