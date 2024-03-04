@@ -1,0 +1,13 @@
+html {
+  scroll-padding-top: 4rem;
+
+  &[data-mui-color-scheme] {
+    body {
+      transition: background 0.25s;
+    }
+  }
+}
+
+body {
+  overflow-y: scroll;
+}
