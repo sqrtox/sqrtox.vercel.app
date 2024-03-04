@@ -1,3 +1,6 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
 root = true
 
 [*]
@@ -13,13 +16,3 @@ insert_final_newline = true
 [*.md]
 
 trim_trailing_whitespace = false
-
-[{/.next/**,/node_modules/**,/out/**,next-env.d.ts,package-lock.json}]
-
-indent_style = unset
-indent_size = unset
-
-end_of_line = unset
-charset = unset
-trim_trailing_whitespace = unset
-insert_final_newline = unset

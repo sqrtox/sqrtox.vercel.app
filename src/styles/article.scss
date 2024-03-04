@@ -1,0 +1,32 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  &:hover {
+    .icon-link::before {
+      content: '';
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      mask-image: url("/icons/link.svg");
+      mask-repeat: no-repeat;
+      mask-position: center center;
+      mask-size: contain;
+      background-color: var(--mui-palette-text-secondary);
+    }
+  }
+}
+
+.icon-open-in-new {
+  vertical-align: middle;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  mask-image: url("/icons/open-in-new.svg");
+  mask-repeat: no-repeat;
+  mask-position: center center;
+  mask-size: contain;
+  background-color: var(--mui-palette-primary-main);
+}

@@ -1,15 +1,5 @@
-# Next.js
-.next/
-out/
-sitemap*.xml
-next-env.d.ts
-
-# Node.js
-node_modules/
-package-lock.json
-
-# PWA
-sw.js
-sw.js.map
-workbox-*.js
-workbox-*.js.map
+/.history
+/.next
+/node_modules
+/next-env.d.ts
+/pnpm-lock.yaml

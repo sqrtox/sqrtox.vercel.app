@@ -1,26 +1,3 @@
 {
-  "cSpell.words": [
-    "atrule",
-    "browserconfig",
-    "gtag",
-    "ifdef",
-    "katex",
-    "linebreak",
-    "msapplication",
-    "mstile",
-    "multilines",
-    "nextjs",
-    "nosniff",
-    "nprogress",
-    "predev",
-    "prestart",
-    "qiita",
-    "reactjs",
-    "rehype",
-    "sqrtox",
-    "typeof"
-  ],
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true
-  }
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
