@@ -2,16 +2,24 @@ import type { Slug } from "@/utils/blog/slug";
 import { getAllSlugs, slugToFilePath } from "@/utils/blog/slug";
 import { readFile } from "node:fs/promises";
 import matter from "gray-matter";
-import { $object, $string, $array, $opt } from "lizod";
+import { $object, $string, $array, $opt, $union, $const } from "lizod";
 import type { Tag } from "@/utils/blog/tag";
 import { getTag } from "@/utils/blog/tag";
 import type { Html } from "@/utils/blog/html";
 import { markdownToHtml } from "@/utils/blog/html";
-import { summarize } from "../summarize";
+import { summarize } from "@/utils/summarize";
+
+export const ArticleVisibility = {
+  Public: "public",
+  Unlisted: "unlisted"
+} as const;
+
+export type ArticleVisibility = typeof ArticleVisibility[keyof typeof ArticleVisibility];
 
 export const ArticleFrontMatter = $object({
   title: $string,
-  tagIds: $array($string),
+  visibility: $opt($union([$const(ArticleVisibility.Public), $const(ArticleVisibility.Unlisted)])),
+  tagIds: $opt($array($string)),
   publishedAt: $object({}, false),
   modifiedAt: $opt($object({}, false))
 });
@@ -20,7 +28,8 @@ export type Article = {
   slug: Slug,
   title: string,
   html: Html,
-  tags: Tag[],
+  visibility: ArticleVisibility,
+  tags?: Tag[],
   description: string,
   publishedTimestamp: number,
   modifiedTimestamp?: number
@@ -44,14 +53,15 @@ export const getArticle = async (slug: string): Promise<Readonly<Article>> => {
     throw new TypeError(JSON.stringify(context));
   }
 
-  const { title, tagIds, publishedAt, modifiedAt } = file.data;
+  const { title, tagIds, visibility, publishedAt, modifiedAt } = file.data;
   const html = await markdownToHtml(file.content);
   const article: Article = {
     slug,
     html,
     title,
+    visibility: visibility ?? ArticleVisibility.Public,
     description: summarize(html, { maxLength: 100 }),
-    tags: tagIds.map(id => getTag(id)),
+    tags: tagIds?.map(id => getTag(id)),
     publishedTimestamp: (publishedAt as Date).getTime(),
     modifiedTimestamp: (modifiedAt as Date | undefined)?.getTime()
   };

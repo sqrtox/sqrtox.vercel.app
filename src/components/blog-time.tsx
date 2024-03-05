@@ -32,14 +32,14 @@ export default function BlogTime({
     <TimeContainer>
       <Time
         icon={<AccessTimeIcon fontSize="small" />}
-        label={label ? "最終更新" : undefined}
+        label={label ? "公開" : undefined}
         timestamp={publishedTimestamp}
         timezone={timezone}
       />
       {modifiedTimestamp !== undefined && (
         <Time
           icon={<ReplayIcon fontSize="small" />}
-          label={label ? "公開" : undefined}
+          label={label ? "最終更新" : undefined}
           timestamp={modifiedTimestamp}
           timezone={timezone}
         />

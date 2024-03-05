@@ -7,12 +7,15 @@ import CardActions from "@mui/material/CardActions";
 import TagChipList from "@/components/tag-chip-list";
 import Link from "next/link";
 import BlogTime from "@/components/blog-time";
+import { summarize } from "@/utils/summarize";
 
 export type ArticleCardProps = {
   article: Article
 };
 
 export default function ArticleCard({ article }: ArticleCardProps) {
+  const shortDescription = summarize(article.html, { maxLength: 50 });
+
   return (
     <Card
       sx={{
@@ -30,17 +33,22 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         <CardContent>
           <BlogTime {...article} />
           <Typography component="h1" variant="h6">{article.title}</Typography>
+          <Typography color="text.secondary">
+            {shortDescription}
+          </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center"
-        }}
-      >
-        <TagChipList tags={article.tags} />
-      </CardActions>
+      {article.tags && (
+        <CardActions
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center"
+          }}
+        >
+          <TagChipList tags={article.tags} />
+        </CardActions>
+      )}
     </Card>
   );
 }

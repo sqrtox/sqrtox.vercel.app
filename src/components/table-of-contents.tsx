@@ -60,7 +60,7 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   }, []);
 
   return (
-    <Stack top="5rem" spacing={2} position="sticky" >
+    <Stack spacing={2}>
       <Typography variant="h6" component="span">もくじ</Typography>
       <TableOfContentsInner>
         {headings.map((heading, index) => (

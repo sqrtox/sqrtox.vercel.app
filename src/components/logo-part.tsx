@@ -9,6 +9,7 @@ export type LogoPartProps = {
 export function LogoPart({ children, accent = false }: LogoPartProps) {
   return (
     <Typography
+      fontFamily="にゃしぃフレンズ"
       fontWeight="bold"
       color={accent ? "primary.main" : "text.secondary"}
       variant="h4"

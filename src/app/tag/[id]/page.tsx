@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { existsTag } from "@/utils/blog/tag";
 import { generateDefaultMetadata, generateNotFoundMetadata } from "@/utils/metadata";
 import { notFound } from "next/navigation";
+import { ArticleVisibility } from "@/utils/blog/article";
 
 export type PageParams = {
   id: TagId
@@ -49,7 +50,7 @@ export default async function Page({ params: { id } }: PageProps) {
   const tag = await getTag(id);
   const articles = await getAllArticles();
   const filteredArticles = articles
-    .filter(article => article.tags.some(tag => tag.id === id));
+    .filter(article => article.visibility === ArticleVisibility.Public && article.tags !== undefined && article.tags.some(tag => tag.id === id));
 
   return (
     <Stack spacing={2}>

@@ -4,10 +4,15 @@ import type { ReactNode } from "react";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import { Noto_Sans_JP } from "next/font/google";
+import localFont from "next/font/local";
 import type { Viewport } from "next";
 import Footer from "@/components/footer";
 
 import "@/styles/global.scss";
+
+const nyashiFriends = localFont({
+  src: "../fonts/nyashi_friends.woff2"
+});
 
 const notoSansJp = Noto_Sans_JP({
   subsets: ["latin"],
@@ -28,7 +33,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="ja">
       <head />
-      <body className={notoSansJp.className}>
+      <body className={`${nyashiFriends.className} ${notoSansJp.className}`}>
         <ThemeProvider>
           <Stack minHeight="100svh">
             <Header />

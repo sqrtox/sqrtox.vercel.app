@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { experimental_extendTheme as extendTheme, Experimental_CssVarsProvider as CssVariablesProvider } from "@mui/material/styles";
-import { orange, pink } from "@mui/material/colors";
+import { orange, pink, grey } from "@mui/material/colors";
 
 export type ThemeProviderProps = {
   children: ReactNode
@@ -27,6 +27,9 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       },
       dark: {
         palette: {
+          text: {
+            primary: grey[200]
+          },
           primary: {
             main: pink[200]
           },

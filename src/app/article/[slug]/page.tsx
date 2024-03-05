@@ -38,6 +38,8 @@ export type PageProps = {
   params: PageParams
 };
 
+const development = process.env.NODE_ENV === "development";
+
 export default async function Page({ params: { slug } }: PageProps) {
   const exists = await existsSlug(slug);
 
@@ -45,7 +47,10 @@ export default async function Page({ params: { slug } }: PageProps) {
     notFound();
   }
 
-  _cachedArticles.clear();
+  if (development) {
+    _cachedArticles.delete(slug);
+  }
+
   const article = await getArticle(slug);
   const headings = getHeadings(article.html);
 

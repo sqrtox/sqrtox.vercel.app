@@ -1,20 +1,25 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  &:hover {
-    .icon-link::before {
-      content: '';
-      display: inline-block;
-      width: 1rem;
-      height: 1rem;
-      mask-image: url("/icons/link.svg");
-      mask-repeat: no-repeat;
-      mask-position: center center;
-      mask-size: contain;
-      background-color: var(--mui-palette-text-secondary);
+.blog-content {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &:hover {
+      .icon-link::before {
+        transform: rotate(45deg);
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 1.25rem;
+        height: 1.25rem;
+        mask-image: url("/icons/link.svg");
+        mask-repeat: no-repeat;
+        mask-position: center center;
+        mask-size: contain;
+        background-color: var(--mui-palette-text-secondary);
+      }
     }
   }
 }
@@ -29,4 +34,11 @@ h6 {
   mask-position: center center;
   mask-size: contain;
   background-color: var(--mui-palette-primary-main);
+}
+
+blockquote {
+  color: var(--mui-palette-text-secondary);
+  margin: 0;
+  padding: 0.1rem 1rem;
+  border-left: solid 3px var(--mui-palette-primary-main);
 }

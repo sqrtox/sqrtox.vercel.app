@@ -8,6 +8,7 @@ export default function MarkdownLink({ href = "/", children, ...props }: AnchorH
     <a
       {...props}
       href={href}
+      className="markdown-link"
       target={externalLink ? "_blank" : undefined}
       rel={externalLink ? "noopener noreferrer" : undefined}
       style={{
