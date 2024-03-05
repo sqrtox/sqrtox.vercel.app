@@ -35,7 +35,7 @@ publishedAt: 2024-03-05 18:04:00+09:00
 ブログ記事のシンタックスハイライトをprismからshikiに変更した。
 多機能でスタイルも当てやすく気に入っている。
 
-```ts title="libs/math.js" {1,3-5}
+```ts title="libs/math.js" {1,3-5} showLineNumbers
 // TODO： 関数のスタイルを揃える
 
 export function add(a: number, b: number): number {
