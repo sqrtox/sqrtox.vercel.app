@@ -20,7 +20,8 @@ export const _definedTags: ReadonlyMap<TagId, TagDisplayName> = new Map(Object.e
   "programming": "プログラミング",
   "static-typing": "静的型付け",
   "typescript": "TypeScript",
-  "youtube": "YouTube"
+  "youtube": "YouTube",
+  "brave": "Brave"
 }));
 
 export const _cachedTags = new Map<TagId, Readonly<Tag>>();
