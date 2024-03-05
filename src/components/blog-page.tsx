@@ -13,6 +13,7 @@ import Divider from "@mui/material/Divider";
 import BlogTime from "@/components/blog-time";
 import TagChipList from "@/components/tag-chip-list";
 import { useEffect } from "react";
+import { isExternalLink } from "@/utils/link";
 
 export type BlogPageProps = {
   article: Article,
@@ -73,6 +74,10 @@ export default function BlogPage({ article, headings }: BlogPageProps) {
   useEffect(() => {
     const navigate = (event: Event): void => {
       if (!(event.target instanceof HTMLAnchorElement)) {
+        return;
+      }
+
+      if (isExternalLink(event.target.href)) {
         return;
       }
 
