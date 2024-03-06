@@ -4,10 +4,14 @@
   --border-radius: 4px;
 
   margin: 0;
-  overflow: auto;
+  overflow: hidden;
   background-color: var(--background-color);
   border: solid 1px var(--border-color);
   border-radius: var(--border-radius);
+
+  >pre {
+    overflow: auto;
+  }
 
   [data-line] {
     padding-left: 1rem;
