@@ -90,7 +90,7 @@ export const middleware = async (request: NextRequest): Promise<NextResponse> =>
     }
   ];
 
-  for (const { from, to } of redirects) {
+  outer: for (const { from, to } of redirects) {
     for (const path of from) {
       const nextUrlPaths = request.nextUrl.pathname.split("/");
 
@@ -104,7 +104,7 @@ export const middleware = async (request: NextRequest): Promise<NextResponse> =>
 
       response = NextResponse.redirect(url, 301);
 
-      break;
+      break outer;
     }
   }
 
