@@ -4,9 +4,9 @@ import CardContent from "@mui/material/CardContent";
 import CardActionArea from "@mui/material/CardActionArea";
 import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
-import TagChipList from "@/components/tag-chip-list";
+import TagChipList from "@/components/blog/tag-chip-list";
 import Link from "next/link";
-import BlogTime from "@/components/blog-time";
+import BlogTime from "@/components/blog/blog-time";
 import { summarize } from "@/utils/summarize";
 
 export type ArticleCardProps = {

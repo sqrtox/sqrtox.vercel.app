@@ -1,6 +1,6 @@
 "use client";
 
-import Time from "@/components/time";
+import Time from "@/components/elements/time";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { styled } from "@mui/material";

@@ -1,4 +1,4 @@
-import ArticleCardList from "@/components/article-card-list";
+import ArticleCardList from "@/components/blog/article-card-list";
 import { siteDescription, siteShortDescription } from "@/constants/site";
 import { getAllArticles } from "@/utils/blog";
 import { ArticleVisibility } from "@/utils/blog/article";

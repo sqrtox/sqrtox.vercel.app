@@ -4,8 +4,8 @@ import Container from "@mui/material/Container";
 import NextLink from "next/link";
 import Stack from "@mui/material/Stack";
 import MuiLink from "@mui/material/Link";
-import { LogoPart } from "@/components/logo-part";
-import ThemeSelect from "@/components/theme-select";
+import { LogoPart } from "@/components/layout/logo-part";
+import ThemeSelect from "@/components/theme/theme-select";
 
 export default function Header() {
   return (
