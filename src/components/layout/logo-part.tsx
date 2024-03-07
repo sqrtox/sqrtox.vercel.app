@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import localFont from "next/font/local";
 
 const nyashiFriends = localFont({
-  src: "../fonts/nyashi_friends.woff2"
+  src: "../../fonts/nyashi_friends.woff2"
 });
 
 export type LogoPartProps = {
