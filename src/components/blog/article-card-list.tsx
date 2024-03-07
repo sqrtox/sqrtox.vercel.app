@@ -1,6 +1,6 @@
 import type { Article } from "@/utils/blog";
 import Grid from "@mui/material/Unstable_Grid2";
-import ArticleCard from "@/components/article-card";
+import ArticleCard from "@/components/blog/article-card";
 
 export type ArticleCardListProps = {
   articles: Article[]

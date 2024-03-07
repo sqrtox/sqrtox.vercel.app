@@ -10,7 +10,7 @@ import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import rehypeReact from "rehype-react";
 import rehypePrettyCode from "rehype-pretty-code";
 import { load } from "cheerio";
-import MarkdownLink from "@/components/markdown-link";
+import MarkdownLink from "@/components/blog/markdown-link";
 
 export type Markdown = string;
 

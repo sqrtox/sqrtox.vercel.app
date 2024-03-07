@@ -2,7 +2,7 @@
 
 import type { Article } from "@/utils/blog";
 import type { Heading } from "@/utils/blog/html";
-import TableOfContents from "@/components/table-of-contents";
+import TableOfContents from "@/components/blog/table-of-contents";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -10,8 +10,8 @@ import { styled } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
 import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
-import BlogTime from "@/components/blog-time";
-import TagChipList from "@/components/tag-chip-list";
+import BlogTime from "@/components/blog/blog-time";
+import TagChipList from "@/components/blog/tag-chip-list";
 import { useEffect } from "react";
 import { isExternalLink } from "@/utils/link";
 

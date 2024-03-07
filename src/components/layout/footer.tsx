@@ -1,5 +1,5 @@
 import Stack from "@mui/material/Stack";
-import Copyright from "@/components/copyright";
+import Copyright from "@/components/layout/copyright";
 import MuiLink from "@mui/material/Link";
 import NextLink from "next/link";
 

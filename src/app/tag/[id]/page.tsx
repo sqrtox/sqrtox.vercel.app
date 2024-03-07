@@ -1,4 +1,4 @@
-import ArticleCardList from "@/components/article-card-list";
+import ArticleCardList from "@/components/blog/article-card-list";
 import type { TagId } from "@/utils/blog";
 import { getAllArticles, getTag } from "@/utils/blog";
 import type { Metadata } from "next";

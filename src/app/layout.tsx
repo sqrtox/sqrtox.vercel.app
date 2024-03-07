@@ -1,11 +1,11 @@
-import Header from "@/components/header";
-import ThemeProvider from "@/components/theme-provider";
+import Header from "@/components/layout/header";
+import ThemeProvider from "@/components/theme/theme-provider";
 import type { ReactNode } from "react";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
 import { Noto_Sans_JP } from "next/font/google";
 import type { Viewport } from "next";
-import Footer from "@/components/footer";
+import Footer from "@/components/layout/footer";
 
 import "@/styles/global.scss";
 

@@ -1,7 +1,7 @@
 import { _cachedArticles, getArticle } from "@/utils/blog/article";
 import { getHeadings } from "@/utils/blog/html";
 import { existsSlug, type Slug } from "@/utils/blog/slug";
-import BlogPage from "@/components/blog-page";
+import BlogPage from "@/components/blog/blog-page";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { generateDefaultMetadata, generateNotFoundMetadata } from "@/utils/metadata";

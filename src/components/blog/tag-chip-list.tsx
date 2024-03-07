@@ -1,6 +1,6 @@
 import type { Tag } from "@/utils/blog";
 import Stack from "@mui/material/Stack";
-import TagChip from "@/components/tag-chip";
+import TagChip from "@/components/blog/tag-chip";
 
 export type TagChipListProps = {
   tags: Tag[]
