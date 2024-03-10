@@ -1,6 +1,6 @@
 import { _cachedArticles, getArticle } from "@/utils/blog/article";
 import { getHeadings } from "@/utils/blog/html";
-import { existsSlug, type Slug } from "@/utils/blog/slug";
+import { existsSlug, getAllSlugs, type Slug } from "@/utils/blog/slug";
 import BlogPage from "@/components/blog/blog-page";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -36,6 +36,14 @@ export type PageParams = {
 
 export type PageProps = {
   params: PageParams
+};
+
+export const generateStaticParams = async (): Promise<PageParams[]> => {
+  const slugs = await getAllSlugs();
+
+  return slugs.map(slug => ({
+    slug
+  }));
 };
 
 const development = process.env.NODE_ENV === "development";
