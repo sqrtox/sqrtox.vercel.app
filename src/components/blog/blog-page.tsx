@@ -32,6 +32,9 @@ const BlogContentContainer = styled(Stack)(({ theme }) => ({
 
 const BlogContent = styled(Box)({
   flex: 1,
+  ".budoux-breaked": {
+    wordBreak: "keep-all"
+  },
   "h1, h2, h3, h4, h5, h6": {
     marginTop: "3rem",
     "::before": {
