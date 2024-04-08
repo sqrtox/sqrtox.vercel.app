@@ -1,7 +1,7 @@
 import { load } from "cheerio";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeBudouX from "rehype-budoux";
+import rehypeBudoux from "rehype-budoux";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeReact from "rehype-react";
 import rehypeSlug from "rehype-slug";
@@ -57,7 +57,7 @@ export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
         "a": MarkdownLink
       }
     } as RehypeReactOptions)
-    .use(rehypeBudouX, {
+    .use(rehypeBudoux, {
       className: "budoux-breaked"
     })
     .process(markdown)
