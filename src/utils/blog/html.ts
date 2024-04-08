@@ -11,6 +11,8 @@ import { unified } from "unified";
 
 import MarkdownLink from "@/components/blog/markdown-link";
 
+import type { Options as RehypeReactOptions } from "rehype-react";
+
 export type Markdown = string;
 
 export type Html = string;
@@ -53,7 +55,7 @@ export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
         "h6": "p",
         "a": MarkdownLink
       }
-    } as unknown as boolean)
+    } as RehypeReactOptions)
     .process(markdown)
     .then(({ result }) => renderToString(result));
 };
