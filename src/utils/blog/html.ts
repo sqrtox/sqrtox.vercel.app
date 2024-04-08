@@ -1,11 +1,9 @@
 import { load } from "cheerio";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeParse from "rehype-parse";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeReact from "rehype-react";
 import rehypeSlug from "rehype-slug";
-import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -20,7 +18,7 @@ export type Html = string;
 export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
   const { renderToString } = await import("react-dom/server");
 
-  const html = await unified()
+  return await unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkRehype, {
@@ -42,16 +40,6 @@ export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
       keepBackground: false,
       theme: "tokyo-night"
     })
-    .use(rehypeStringify, {
-      allowDangerousHtml: true
-    })
-    .process(markdown)
-    .then(result => result.toString());
-
-  return await unified()
-    .use(rehypeParse, {
-      fragment: true
-    })
     .use(rehypeReact, {
       Fragment,
       jsx,
@@ -66,7 +54,7 @@ export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
         "a": MarkdownLink
       }
     } as unknown as boolean)
-    .process(html)
+    .process(markdown)
     .then(({ result }) => renderToString(result));
 };
 
