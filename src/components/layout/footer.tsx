@@ -1,7 +1,8 @@
-import Stack from "@mui/material/Stack";
-import Copyright from "@/components/layout/copyright";
 import MuiLink from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
 import NextLink from "next/link";
+
+import Copyright from "@/components/layout/copyright";
 
 export default function Footer() {
   return (

@@ -1,7 +1,9 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
 import builder from "content-security-policy-builder";
+import { NextResponse } from "next/server";
+
 import { generateNonce } from "@/utils/nonce";
+
+import type { NextRequest } from "next/server";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 

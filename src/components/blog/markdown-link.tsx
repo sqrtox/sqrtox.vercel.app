@@ -1,5 +1,7 @@
-import { type AnchorHTMLAttributes } from "react";
 import { isExternalLink } from "@/utils/link";
+
+import type { AnchorHTMLAttributes } from "react";
+
 
 export default function MarkdownLink({ href = "/", children, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   const externalLink = isExternalLink(href);

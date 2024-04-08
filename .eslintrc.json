@@ -18,7 +18,8 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "react"
+    "react",
+    "import"
   ],
   "rules": {
     "indent": [
@@ -41,6 +42,7 @@
       "error",
       "always"
     ],
+    "@typescript-eslint/no-import-type-side-effects": "error",
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/sort-type-constituents": "error",
     "@typescript-eslint/member-delimiter-style": [
@@ -68,6 +70,30 @@
           "[Pp]rops",
           "[Pp]arams"
         ]
+      }
+    ],
+    "import/no-duplicates": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
     ]
   }

@@ -1,12 +1,13 @@
 "use client";
 
-import type { Heading } from "@/utils/blog/html";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
+
+import type { Heading } from "@/utils/blog/html";
 
 export type TableOfContentsProps = {
   headings: Heading[]

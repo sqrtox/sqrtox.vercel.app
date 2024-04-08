@@ -1,5 +1,5 @@
-import { join, parse } from "node:path";
 import { readdir } from "node:fs/promises";
+import { join, parse } from "node:path";
 
 export type Slug = string;
 

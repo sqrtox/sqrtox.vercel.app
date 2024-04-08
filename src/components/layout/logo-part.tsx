@@ -1,6 +1,7 @@
-import type { ReactNode } from "react";
 import Typography from "@mui/material/Typography";
 import localFont from "next/font/local";
+
+import type { ReactNode } from "react";
 
 const nyashiFriends = localFont({
   src: "../../fonts/nyashi_friends.woff2"

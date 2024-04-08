@@ -1,13 +1,15 @@
-import type { Article } from "@/utils/blog";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardActionArea from "@mui/material/CardActionArea";
-import Typography from "@mui/material/Typography";
 import CardActions from "@mui/material/CardActions";
-import TagChipList from "@/components/blog/tag-chip-list";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 import Link from "next/link";
+
 import BlogTime from "@/components/blog/blog-time";
+import TagChipList from "@/components/blog/tag-chip-list";
 import { summarize } from "@/utils/summarize";
+
+import type { Article } from "@/utils/blog";
 
 export type ArticleCardProps = {
   article: Article

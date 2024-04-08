@@ -1,21 +1,23 @@
 "use client";
 
-import { useMounted } from "@/hooks/mount";
-import Skeleton from "@mui/material/Skeleton";
-import IconButton from "@mui/material/IconButton";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import MonitorIcon from "@mui/icons-material/Monitor";
 import LightModeIcon from "@mui/icons-material/LightMode";
-import { useColorScheme } from "@mui/material/styles";
-import Popper from "@mui/material/Popper";
-import Paper from "@mui/material/Paper";
+import MonitorIcon from "@mui/icons-material/Monitor";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
-import MenuList from "@mui/material/MenuList";
+import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
-import type { MouseEvent } from "react";
+import MenuList from "@mui/material/MenuList";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import Skeleton from "@mui/material/Skeleton";
+import { useColorScheme } from "@mui/material/styles";
 import { useState } from "react";
+
+import { useMounted } from "@/hooks/mount";
+
+import type { MouseEvent } from "react";
 
 export default function ThemeSelect() {
   const { mode, setMode } = useColorScheme();

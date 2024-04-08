@@ -1,8 +1,9 @@
-import type { Tag } from "@/utils/blog";
-import Chip from "@mui/material/Chip";
-import Link from "next/link";
 import TagIcon from "@mui/icons-material/Tag";
+import Chip from "@mui/material/Chip";
 import Tooltip from "@mui/material/Tooltip";
+import Link from "next/link";
+
+import type { Tag } from "@/utils/blog";
 
 export type TagChipProps = {
   tag: Tag

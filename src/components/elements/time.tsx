@@ -1,6 +1,7 @@
-import Typography from "@mui/material/Typography";
-import dayjs from "@/utils/dayjs";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+
+import dayjs from "@/utils/dayjs";
 
 export type TimeProps = {
   icon: JSX.Element,

@@ -1,9 +1,10 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { orange, pink, grey } from "@mui/material/colors";
 import CssBaseline from "@mui/material/CssBaseline";
 import { experimental_extendTheme as extendTheme, Experimental_CssVarsProvider as CssVariablesProvider } from "@mui/material/styles";
-import { orange, pink, grey } from "@mui/material/colors";
+
+import type { ReactNode } from "react";
 
 export type ThemeProviderProps = {
   children: ReactNode

@@ -1,10 +1,10 @@
 "use client";
 
-import Typography from "@mui/material/Typography";
-import Stack from "@mui/material/Stack";
 import MuiLink from "@mui/material/Link";
-import NextLink from "next/link";
+import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import NextLink from "next/link";
 
 const Flow = styled(Stack)(({ theme }) => ({
   gap: "1rem",

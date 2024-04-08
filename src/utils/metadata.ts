@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
 import { headers } from "next/headers";
+
 import { siteDescription, siteName, siteShortDescription } from "@/constants/site";
+
+import type { Metadata } from "next";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 

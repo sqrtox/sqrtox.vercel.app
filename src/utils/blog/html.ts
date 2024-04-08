@@ -1,15 +1,16 @@
-import { unified } from "unified";
+import { load } from "cheerio";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeParse from "rehype-parse";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeReact from "rehype-react";
+import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import remarkRehype from "remark-rehype";
-import rehypeParse from "rehype-parse";
-import rehypeStringify from "rehype-stringify";
-import rehypeSlug from "rehype-slug";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-import rehypeReact from "rehype-react";
-import rehypePrettyCode from "rehype-pretty-code";
-import { load } from "cheerio";
+import { unified } from "unified";
+
 import MarkdownLink from "@/components/blog/markdown-link";
 
 export type Markdown = string;
