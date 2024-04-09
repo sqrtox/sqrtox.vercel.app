@@ -1,4 +1,6 @@
 import { load } from "cheerio";
+import { select as hastSelect, selectAll as hastSelectAll } from "hast-util-select";
+import { toText } from "hast-util-to-text";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeBudoux from "rehype-budoux";
@@ -9,14 +11,51 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
+import { select as unistSelect } from "unist-util-select";
 
 import MarkdownLink from "@/components/blog/markdown-link";
 
+import type { Root } from "hast";
 import type { Options as RehypeReactOptions } from "rehype-react";
+import type { Plugin } from "unified";
 
 export type Markdown = string;
 
 export type Html = string;
+
+// eslint-disable-next-line unicorn/consistent-function-scoping
+export const rehypeFixFootnote: Plugin<[], Root> = () => root => {
+  const heading = hastSelect("#footnote-label", root);
+
+  if (heading) {
+    // NOTE: Modify h1 to be h2 because the rehype-react lowers the level of the heading
+    heading.tagName = "h1";
+  }
+
+  const text = unistSelect("text", heading);
+
+  if (text && "value" in text) {
+    text.value = "脚注";
+  }
+};
+
+// eslint-disable-next-line unicorn/consistent-function-scoping
+export const rehypeFootnoteTitle: Plugin<[], Root> = () => root => {
+  for (const footnote of hastSelectAll("li:has([dataFootnoteBackref])", root)) {
+    const link = hastSelect("a", footnote);
+    const href = link?.properties.href;
+
+    if (!link || typeof href !== "string" || !href.startsWith("#")) {
+      continue;
+    }
+
+    const referenceLink = hastSelect(href, root);
+
+    if (referenceLink) {
+      referenceLink.properties.title = toText(footnote);
+    }
+  }
+};
 
 export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
   const { renderToString } = await import("react-dom/server");
@@ -27,6 +66,8 @@ export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
     .use(remarkRehype, {
       allowDangerousHtml: true
     })
+    .use(rehypeFootnoteTitle)
+    .use(rehypeFixFootnote)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, {
       behavior: "append",
