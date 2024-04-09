@@ -31,7 +31,7 @@ URL：https://yokutobanaitori.web.fc2.com/
 
 ### Material Icons
 
-マークダウン内の外部リンクに表示されるアイコンや見出しへリンクするボタンのアイコンに使用しています。
+Markdown内の外部リンクに表示されるアイコンや見出しへリンクするボタンのアイコンに使用しています。
 
 サイト：Google Fonts  
 URL：https://fonts.google.com/icons?icon.set=Material+Icons
