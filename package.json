@@ -63,7 +63,7 @@
     "hast-util-to-text": "^4.0.1",
     "html-to-text": "^9.0.5",
     "lizod": "^0.2.7",
-    "next": "^14.1.0",
+    "next": "^14.1.1",
     "react": "^18.2.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-budoux": "^1.0.0",
