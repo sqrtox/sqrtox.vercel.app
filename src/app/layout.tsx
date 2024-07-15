@@ -29,7 +29,9 @@ export type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="ja">
-      <head />
+      <head>
+        <meta name="google-site-verification" content="E2oyyB5do9EZ1zMN60Y7PxkFLzNeOx8d7iad872R4W0" />
+      </head>
       <body className={notoSansJp.className}>
         <ThemeProvider>
           <Stack minHeight="100svh">
