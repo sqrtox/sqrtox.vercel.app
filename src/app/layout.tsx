@@ -1,20 +1,15 @@
+import "@/styles/global.scss";
+
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
-import { Noto_Sans_JP } from "next/font/google";
 
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import ThemeProvider from "@/components/theme/theme-provider";
+import { primaryFont } from "@/utils/font";
 
 import type { Viewport } from "next";
 import type { ReactNode } from "react";
-
-import "@/styles/global.scss";
-
-const notoSansJp = Noto_Sans_JP({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"]
-});
 
 export const viewport: Viewport = {
   themeColor: "#f381a7"
@@ -32,7 +27,7 @@ export default function Layout({ children }: LayoutProps) {
       <head>
         <meta name="google-site-verification" content="E2oyyB5do9EZ1zMN60Y7PxkFLzNeOx8d7iad872R4W0" />
       </head>
-      <body className={notoSansJp.className}>
+      <body className={primaryFont.className}>
         <ThemeProvider>
           <Stack minHeight="100svh">
             <Header />

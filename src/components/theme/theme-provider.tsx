@@ -4,6 +4,8 @@ import { orange, pink, grey } from "@mui/material/colors";
 import CssBaseline from "@mui/material/CssBaseline";
 import { experimental_extendTheme as extendTheme, Experimental_CssVarsProvider as CssVariablesProvider } from "@mui/material/styles";
 
+import { primaryFont } from "@/utils/font";
+
 import type { ReactNode } from "react";
 
 export type ThemeProviderProps = {
@@ -12,9 +14,7 @@ export type ThemeProviderProps = {
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const theme = extendTheme({
-    typography: {
-      fontFamily: ["Noto Sans JP", "Helvetica", "Arial", "sans-serif"].join(",")
-    },
+    typography: primaryFont.style,
     colorSchemes: {
       light: {
         palette: {
