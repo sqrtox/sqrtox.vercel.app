@@ -23,7 +23,6 @@ export type Markdown = string;
 
 export type Html = string;
 
-// eslint-disable-next-line unicorn/consistent-function-scoping
 export const rehypeFixFootnote: Plugin<[], Root> = () => root => {
   const heading = hastSelect("#footnote-label", root);
 
@@ -39,7 +38,6 @@ export const rehypeFixFootnote: Plugin<[], Root> = () => root => {
   }
 };
 
-// eslint-disable-next-line unicorn/consistent-function-scoping
 export const rehypeFootnoteTitle: Plugin<[], Root> = () => root => {
   for (const footnote of hastSelectAll("li:has([dataFootnoteBackref])", root)) {
     const link = hastSelect("a", footnote);
