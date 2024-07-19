@@ -42,6 +42,7 @@ const BlogContent = styled(Box)({
       color: "var(--mui-palette-text-secondary)",
       marginRight: "0.25rem",
     },
+    borderBottom: "thin solid var(--mui-palette-divider)",
   },
   "h1::before": {
     content: "'^_^'",
