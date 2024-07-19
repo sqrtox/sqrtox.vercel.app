@@ -18,7 +18,7 @@ export function LogoPart({ children, accent = false }: LogoPartProps) {
       className={nyashiFriends.className}
       {...nyashiFriends.style}
       color={accent ? "primary.main" : "text.secondary"}
-      variant="h4"
+      variant="h5"
       component="span"
     >
       {children}
