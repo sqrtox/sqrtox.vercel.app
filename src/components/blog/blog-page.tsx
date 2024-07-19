@@ -16,6 +16,7 @@ import { isExternalLink } from "@/utils/link";
 
 import type { Article } from "@/utils/blog";
 import type { Heading } from "@/utils/blog/html";
+import { codeFont } from "@/utils/font";
 
 export type BlogPageProps = {
   article: Article;
@@ -59,6 +60,10 @@ const BlogContent = styled(Box)({
   },
   "h6::before": {
     content: "'#####'",
+  },
+  code: {
+    ...codeFont.style,
+    fontSize: "1rem",
   },
 });
 
