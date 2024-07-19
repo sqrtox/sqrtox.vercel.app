@@ -17,7 +17,7 @@ export default function MarkdownLink({
       target={externalLink ? "_blank" : undefined}
       rel={externalLink ? "noopener noreferrer" : undefined}
       style={{
-        color: "var(--mui-palette-primary-main)",
+        color: "var(--mui-palette-link)",
       }}
     >
       {children}

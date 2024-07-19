@@ -1,9 +1,10 @@
 "use client";
 
 import CssBaseline from "@mui/material/CssBaseline";
-import { grey, orange, pink } from "@mui/material/colors";
+import { blue, grey, indigo, orange, pink } from "@mui/material/colors";
 import {
   Experimental_CssVarsProvider as CssVariablesProvider,
+  alpha,
   experimental_extendTheme as extendTheme,
 } from "@mui/material/styles";
 
@@ -15,15 +16,36 @@ export type ThemeProviderProps = {
   children: ReactNode;
 };
 
+declare module "@mui/material/styles" {
+  interface PaletteOptions {
+    link: string;
+  }
+
+  interface Palette {
+    link: string;
+  }
+}
+
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const theme = extendTheme({
     typography: {
       ...primaryFont.style,
       fontSize: 16,
     },
+    components: {
+      MuiLink: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            textDecorationColor: alpha(theme.palette.link, 0.4),
+            color: theme.vars.palette.link,
+          }),
+        },
+      },
+    },
     colorSchemes: {
       light: {
         palette: {
+          link: indigo.A400,
           primary: {
             main: pink[300],
           },
@@ -34,6 +56,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       },
       dark: {
         palette: {
+          link: blue[300],
           text: {
             primary: grey[200],
           },

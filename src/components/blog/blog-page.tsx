@@ -38,7 +38,7 @@ const BlogContent = styled(Box)({
   "h1, h2, h3, h4, h5, h6": {
     marginTop: "3rem",
     "::before": {
-      color: "var(--mui-palette-primary-main)",
+      color: "var(--mui-palette-text-secondary)",
       marginRight: "0.25rem",
     },
   },
