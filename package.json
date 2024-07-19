@@ -43,6 +43,7 @@
     "@types/node": "20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@types/webpack": "^5.28.5",
     "babel-plugin-react-compiler": "^0.0.0-experimental-696af53-20240625",
     "cross-env": "^7.0.3",
     "npm-run-all": "^4.1.5",
