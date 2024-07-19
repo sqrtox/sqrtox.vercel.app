@@ -53,7 +53,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
             main: orange[800],
           },
           background: {
-            paper: grey[50],
+            paper: grey[100],
           },
         },
       },
