@@ -1,11 +1,6 @@
+import { logoFont } from "@/utils/font";
 import Typography from "@mui/material/Typography";
-import localFont from "next/font/local";
-
 import type { ReactNode } from "react";
-
-const nyashiFriends = localFont({
-  src: "../../fonts/nyashi_friends.woff2",
-});
 
 export type LogoPartProps = {
   children: ReactNode;
@@ -15,8 +10,8 @@ export type LogoPartProps = {
 export function LogoPart({ children, accent = false }: LogoPartProps) {
   return (
     <Typography
-      className={nyashiFriends.className}
-      {...nyashiFriends.style}
+      className={logoFont.className}
+      {...logoFont.style}
       color={accent ? "primary.main" : "text.secondary"}
       variant="h5"
       component="span"

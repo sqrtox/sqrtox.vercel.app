@@ -1,14 +1,18 @@
+import pkg from "@/../package.json" with { type: "json" };
+import { LogoPart } from "@/components/layout/logo-part";
+import ThemeSelect from "@/components/theme/theme-select";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
 import MuiLink from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
+import Tooltip from "@mui/material/Tooltip";
 import NextLink from "next/link";
+import type { ReactNode } from "react";
 
-import { LogoPart } from "@/components/layout/logo-part";
-import ThemeSelect from "@/components/theme/theme-select";
-
-export default function Header() {
+export default function Header(): ReactNode {
   return (
     <AppBar
       elevation={0}
@@ -36,7 +40,19 @@ export default function Header() {
                 <LogoPart accent>&nbsp;Blog</LogoPart>
               </Stack>
             </MuiLink>
-            <ThemeSelect />
+            <Stack direction="row" spacing={1}>
+              <ThemeSelect />
+              <Tooltip title="リポジトリへ">
+                <IconButton
+                  target="_blank"
+                  rel="noopener  noreferrer"
+                  LinkComponent="a"
+                  href={pkg.repository.url.replaceAll(/^git\+|\.git$/g, "")}
+                >
+                  <GitHubIcon />
+                </IconButton>
+              </Tooltip>
+            </Stack>
           </Stack>
         </Container>
       </Toolbar>
