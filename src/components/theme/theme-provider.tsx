@@ -17,7 +17,10 @@ export type ThemeProviderProps = {
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const theme = extendTheme({
-    typography: primaryFont.style,
+    typography: {
+      ...primaryFont.style,
+      fontSize: 16,
+    },
     colorSchemes: {
       light: {
         palette: {
