@@ -13,7 +13,7 @@ export type TableOfContentsProps = {
   headings: Heading[];
 };
 
-const TableOfContentsInner = styled("ul")(({ theme }) => ({
+const TableOfContentsInner = styled("li")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: 1,
@@ -64,9 +64,9 @@ export default function TableOfContents({ headings }: TableOfContentsProps) {
   }, []);
 
   return (
-    <Stack spacing={2}>
+    <Stack spacing={2} padding={2}>
       <Typography variant="h6" component="span">
-        もくじ
+        目次
       </Typography>
       <TableOfContentsInner>
         {headings.map((heading, index) => (

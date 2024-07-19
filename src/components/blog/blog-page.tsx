@@ -24,7 +24,7 @@ export type BlogPageProps = {
 };
 
 const BlogContentContainer = styled(Stack)(({ theme }) => ({
-  gap: "1rem",
+  gap: "3rem",
   flexDirection: "row",
   [theme.breakpoints.down("md")]: {
     flexDirection: "column-reverse",
