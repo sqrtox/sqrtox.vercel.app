@@ -15,8 +15,9 @@ export default function Header() {
       position="sticky"
       sx={{
         paddingY: 1,
-        backgroundColor: "transparent",
-        backdropFilter: "blur(10px)",
+        backgroundColor: "background.default",
+        background:
+          "linear-gradient(var(--mui-palette-background-default) 90%, color-mix(in srgb, var(--mui-palette-background-default), transparent 100%))",
       }}
     >
       <Toolbar disableGutters variant="dense">
