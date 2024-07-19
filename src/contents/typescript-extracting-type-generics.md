@@ -6,12 +6,12 @@ tagIds:
   - generics
   - static-typing
 publishedAt: 2022-05-27 17:21:38+09:00
-modifiedAt: 2022-05-27 19:43:04+09:00
+modifiedAt: 2024-07-19 19:15:00+09:00
 ---
 
 # はじめに
 
-`string[]`（`Array<string>`と同じ）から`string`を取り出したいことがあった。<br>
+`string[]{:ts}`（`Array<string>{:ts}`と同じ）から`string{:ts}`を取り出したいことがあった。<br>
 しかし、静的型付け言語をあまりやっていない私にはどうやって取り出せばいいのか全くわからなかった。<br>
 同じような人のために備忘録として残しておく。
 

@@ -1,29 +1,76 @@
-[data-rehype-pretty-code-figure] {
-  --background-color: #121212;
-  --border-color: rgba(255, 255, 255, 0.12);
-  --border-radius: 4px;
+:root {
+  --syntax-highlight-background-color: #191919;
+}
 
+code {
+  font-size: 16;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+pre, p {
   margin: 0;
-  overflow: hidden;
-  background-color: var(--background-color);
-  border: solid 1px var(--border-color);
-  border-radius: var(--border-radius);
+}
+
+// code block without syntax-highlighting
+pre > code:not([data-language]) {
+  overflow-y: auto;
+  white-space: nowrap;
+  padding: 1rem;
+  display: block;
+  background-color: var(--syntax-highlight-background-color);
+}
+
+// inline code without syntax-highlighting
+:not(pre) > code:not([data-language]) {
+  white-space: break-spaces;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  background-color: var(--mui-palette-background-paper);
+}
+
+// syntax-highlighting
+[data-rehype-pretty-code-figure] {
+  border-radius: 0.2rem;
+  background-color: var(--syntax-highlight-background-color);
+}
+
+// inline code with syntax-highlighting
+span[data-rehype-pretty-code-figure] {
+  white-space: break-spaces;
+  padding: 0 0.5rem;
+}
+
+// code block with syntax-highlighting
+figure[data-rehype-pretty-code-figure] {
+  margin: 0;
+  padding: 0.2rem 0;
 
   >pre {
-    overflow: auto;
+    overflow-y: auto;
+    padding: 1rem 0;
   }
 
-  [data-line] {
+  [data-line]{
     padding-left: 1rem;
-    border-left: solid 3px transparent;
+    border-left: solid 0.2rem transparent;
   }
 
   [data-highlighted-line] {
-    border-left: solid 3px orange;
-    background-color: #c9790027;
+    border-left: solid 0.2rem orange;
+    background-color: color-mix(in srgb, orange, transparent 90%);
   }
 
-  code[data-line-numbers] {
+  [data-rehype-pretty-code-title] {
+    color: #fff;
+    padding: 0.5rem 1rem;
+  }
+
+    code[data-line-numbers] {
     counter-reset: line;
 
     >[data-line]::before {
@@ -43,11 +90,5 @@
 
   code[data-line-numbers-max-digits="3"]>[data-line]::before {
     width: 3rem;
-  }
-
-  [data-rehype-pretty-code-title] {
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-bottom: solid 1px var(--border-color);
   }
 }

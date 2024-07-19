@@ -20,6 +20,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
 
   return (
     <Card
+      elevation={0}
       sx={{
         height: "100%",
         display: "flex",

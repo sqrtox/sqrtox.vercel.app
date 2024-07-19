@@ -3,6 +3,7 @@ title: 2年ぶりにブログを書き直した
 tagIds:
   - next-js
 publishedAt: 2024-03-05 18:04:00+09:00
+modifiedAt: 2024-07-19 18:51:00+09:00
 ---
 
 [前回の記事](/article/discord-spoiler)から1年、[前回のコミット](https://github.com/sqrtox/sqrtox.vercel.app/commit/c55f1ff240a9fa34cc8d47d58068212a115ea5f8)から2年たったが、今更Next.js + MUIのこのブログを1から書き直してみた。  
@@ -32,7 +33,7 @@ publishedAt: 2024-03-05 18:04:00+09:00
 
 ## シンタックスハイライト
 
-ブログ記事のシンタックスハイライトをprismからshikiに変更した。
+ブログ記事のシンタックスハイライトを`prism`から`"shiki"{:js}`に変更した。
 多機能でスタイルも当てやすく気に入っている。
 
 ```ts title="libs/math.js" {1,3-5} showLineNumbers

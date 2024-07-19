@@ -26,7 +26,7 @@ export type BlogPageProps = {
 const BlogContentContainer = styled(Stack)(({ theme }) => ({
   gap: "3rem",
   flexDirection: "row",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("lg")]: {
     flexDirection: "column-reverse",
   },
 }));
@@ -37,7 +37,7 @@ const BlogContent = styled(Box)({
     wordBreak: "keep-all",
   },
   "h1, h2, h3, h4, h5, h6": {
-    marginTop: "3rem",
+    marginTop: "2rem",
     "::before": {
       color: "var(--mui-palette-text-secondary)",
       marginRight: "0.25rem",

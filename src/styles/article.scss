@@ -22,6 +22,14 @@
     }
   }
 }
+.markdown-link {
+  color:var(--mui-palette-link);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 .icon-open-in-new {
   vertical-align: middle;

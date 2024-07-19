@@ -1,4 +1,7 @@
+import MarkdownLink from "@/components/blog/markdown-link";
+import rehypeSection from "@agentofuser/rehype-section";
 import { load } from "cheerio";
+import type { Root } from "hast";
 import {
   select as hastSelect,
   selectAll as hastSelectAll,
@@ -9,18 +12,14 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeBudoux from "rehype-budoux";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeReact from "rehype-react";
+import type { Options as RehypeReactOptions } from "rehype-react";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
-import { select as unistSelect } from "unist-util-select";
-
-import MarkdownLink from "@/components/blog/markdown-link";
-
-import type { Root } from "hast";
-import type { Options as RehypeReactOptions } from "rehype-react";
 import type { Plugin } from "unified";
+import { select as unistSelect } from "unist-util-select";
 
 export type Markdown = string;
 
@@ -40,6 +39,8 @@ export const rehypeFixFootnote: Plugin<[], Root> = () => (root) => {
     text.value = "脚注";
   }
 };
+
+console.log("T", rehypeSection);
 
 export const rehypeFootnoteTitle: Plugin<[], Root> = () => (root) => {
   for (const footnote of hastSelectAll("li:has([dataFootnoteBackref])", root)) {
@@ -67,6 +68,9 @@ export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
     .use(remarkRehype, {
       allowDangerousHtml: true,
     })
+    .use(
+      (rehypeSection as unknown as Record<"default", Plugin<[], Root>>).default,
+    )
     .use(rehypeFootnoteTitle)
     .use(rehypeFixFootnote)
     .use(rehypeSlug)

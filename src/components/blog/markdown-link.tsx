@@ -16,9 +16,6 @@ export default function MarkdownLink({
       className="markdown-link"
       target={externalLink ? "_blank" : undefined}
       rel={externalLink ? "noopener noreferrer" : undefined}
-      style={{
-        color: "var(--mui-palette-link)",
-      }}
     >
       {children}
       {externalLink && <span className="icon-open-in-new" />}
