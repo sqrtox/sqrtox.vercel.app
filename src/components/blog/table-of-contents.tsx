@@ -13,7 +13,7 @@ export type TableOfContentsProps = {
   headings: Heading[];
 };
 
-const TableOfContentsInner = styled("li")(({ theme }) => ({
+const TableOfContentsInner = styled("ul")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: 1,
