@@ -4,9 +4,9 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: "*"
+        userAgent: "*",
       },
     ],
-    sitemap: new URL("/sitemap.xml", process.env.NEXT_PUBLIC_BASE_URL).href
+    sitemap: new URL("/sitemap.xml", process.env.NEXT_PUBLIC_BASE_URL).href,
   };
 }

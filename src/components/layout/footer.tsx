@@ -15,10 +15,7 @@ export default function Footer() {
       spacing={1}
     >
       <Copyright />
-      <MuiLink
-        href="/article/acknowledgements"
-        component={NextLink}
-      >
+      <MuiLink href="/article/acknowledgements" component={NextLink}>
         謝辞
       </MuiLink>
     </Stack>

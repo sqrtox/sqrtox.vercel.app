@@ -4,12 +4,12 @@ import localFont from "next/font/local";
 import type { ReactNode } from "react";
 
 const nyashiFriends = localFont({
-  src: "../../fonts/nyashi_friends.woff2"
+  src: "../../fonts/nyashi_friends.woff2",
 });
 
 export type LogoPartProps = {
-  children: ReactNode,
-  accent?: boolean
+  children: ReactNode;
+  accent?: boolean;
 };
 
 export function LogoPart({ children, accent = false }: LogoPartProps) {

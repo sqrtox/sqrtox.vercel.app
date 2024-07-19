@@ -27,37 +27,33 @@ export default function ThemeSelect() {
     {
       id: "light",
       label: "ライト",
-      Icon: LightModeIcon
+      Icon: LightModeIcon,
     },
     {
       id: "dark",
       label: "ダーク",
-      Icon: DarkModeIcon
+      Icon: DarkModeIcon,
     },
     {
       id: "system",
       label: "システム",
-      Icon: MonitorIcon
-    }
+      Icon: MonitorIcon,
+    },
   ] as const;
-  const theme = themes.find(theme => theme.id === mode);
+  const theme = themes.find((theme) => theme.id === mode);
   const mounted = useMounted();
 
   if (!mounted || !theme) {
-    return (
-      <Skeleton
-        variant="circular"
-        width={40}
-        height={40}
-      />
-    );
+    return <Skeleton variant="circular" width={40} height={40} />;
   }
 
   const closePopper = () => {
     setAnchorElement(undefined);
   };
 
-  const togglePopper = (event: MouseEvent<HTMLButtonElement | HTMLDivElement>): void => {
+  const togglePopper = (
+    event: MouseEvent<HTMLButtonElement | HTMLDivElement>,
+  ): void => {
     if (open) {
       closePopper();
     } else {
@@ -67,10 +63,7 @@ export default function ThemeSelect() {
 
   return (
     <>
-      <IconButton
-        onClick={togglePopper}
-        aria-label="テーマ変更"
-      >
+      <IconButton onClick={togglePopper} aria-label="テーマ変更">
         {<theme.Icon color="primary" />}
       </IconButton>
       <Popper
@@ -89,11 +82,7 @@ export default function ThemeSelect() {
                 const selected = id === mode;
 
                 return (
-                  <MenuItem
-                    key={id}
-                    selected={selected}
-                    onClick={changeTheme}
-                  >
+                  <MenuItem key={id} selected={selected} onClick={changeTheme}>
                     <ListItemIcon>
                       <Icon color={selected ? "primary" : "action"} />
                     </ListItemIcon>

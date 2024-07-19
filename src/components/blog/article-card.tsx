@@ -12,7 +12,7 @@ import { summarize } from "@/utils/summarize";
 import type { Article } from "@/utils/blog";
 
 export type ArticleCardProps = {
-  article: Article
+  article: Article;
 };
 
 export default function ArticleCard({ article }: ArticleCardProps) {
@@ -23,7 +23,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       sx={{
         height: "100%",
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
       }}
       component="article"
     >
@@ -34,10 +34,10 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       >
         <CardContent>
           <BlogTime {...article} />
-          <Typography component="h1" variant="h6">{article.title}</Typography>
-          <Typography color="text.secondary">
-            {shortDescription}
+          <Typography component="h1" variant="h6">
+            {article.title}
           </Typography>
+          <Typography color="text.secondary">{shortDescription}</Typography>
         </CardContent>
       </CardActionArea>
       {article.tags && (
@@ -45,7 +45,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
           sx={{
             display: "flex",
             flexDirection: "row",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <TagChipList tags={article.tags} />

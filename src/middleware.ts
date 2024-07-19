@@ -9,8 +9,13 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const development = process.env.NODE_ENV === "development";
 
-export const middleware = async (request: NextRequest): Promise<NextResponse> => {
-  const assignHeaders = (targetHeaders: Headers, sourceHeaders: Headers): void => {
+export const middleware = async (
+  request: NextRequest,
+): Promise<NextResponse> => {
+  const assignHeaders = (
+    targetHeaders: Headers,
+    sourceHeaders: Headers,
+  ): void => {
     for (const [name, value] of sourceHeaders) {
       targetHeaders.set(name, value);
     }
@@ -24,7 +29,7 @@ export const middleware = async (request: NextRequest): Promise<NextResponse> =>
     "X-Frame-Options": "DENY",
     "X-Content-Type-Options": "nosniff",
     "Referrer-Policy": "no-referrer",
-    "Permissions-Policy": (
+    "Permissions-Policy":
       "accelerometer=(), " +
       "autoplay=(), " +
       "camera=(), " +
@@ -54,23 +59,22 @@ export const middleware = async (request: NextRequest): Promise<NextResponse> =>
       "idle-detection=(), " +
       "interest-cohort=(), " +
       "serial=(), " +
-      "trust-token-redemption=()"
-    )
+      "trust-token-redemption=()",
   });
 
   if (!development) {
     const nonce = generateNonce();
 
-    securityHeaders.set("Content-Security-Policy", builder({
-      directives: {
-        scriptSrc: [
-          "'self'",
-          `'nonce-${nonce}'`
-        ],
-        objectSrc: "'self'",
-        baseUri: "'self'"
-      }
-    }));
+    securityHeaders.set(
+      "Content-Security-Policy",
+      builder({
+        directives: {
+          scriptSrc: ["'self'", `'nonce-${nonce}'`],
+          objectSrc: "'self'",
+          baseUri: "'self'",
+        },
+      }),
+    );
   }
 
   const requestHeaders = new Headers(request.headers);
@@ -84,12 +88,12 @@ export const middleware = async (request: NextRequest): Promise<NextResponse> =>
   const redirects = [
     {
       from: ["articles", "blog", "posts", "post"],
-      to: "article"
+      to: "article",
     },
     {
       from: ["tags"],
-      to: "tag"
-    }
+      to: "tag",
+    },
   ];
 
   outer: for (const { from, to } of redirects) {
@@ -102,7 +106,7 @@ export const middleware = async (request: NextRequest): Promise<NextResponse> =>
 
       const url = new URL(request.nextUrl);
 
-      url.pathname = nextUrlPaths.map(p => p === path ? to : p).join("/");
+      url.pathname = nextUrlPaths.map((p) => (p === path ? to : p)).join("/");
 
       response = NextResponse.redirect(url, 301);
 
@@ -112,8 +116,8 @@ export const middleware = async (request: NextRequest): Promise<NextResponse> =>
 
   response ??= NextResponse.next({
     request: {
-      headers: requestHeaders
-    }
+      headers: requestHeaders,
+    },
   });
 
   assignHeaders(response.headers, securityHeaders);

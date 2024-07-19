@@ -12,22 +12,22 @@ const TimeContainer = styled("div")(({ theme }) => ({
   gap: "1rem",
   [theme.breakpoints.down("sm")]: {
     gap: 0,
-    flexDirection: "column"
-  }
+    flexDirection: "column",
+  },
 }));
 
 export type BlogTimeProps = {
-  label?: boolean,
-  publishedTimestamp: number,
-  modifiedTimestamp?: number,
-  timezone?: string
+  label?: boolean;
+  publishedTimestamp: number;
+  modifiedTimestamp?: number;
+  timezone?: string;
 };
 
 export default function BlogTime({
   label = false,
   publishedTimestamp,
   modifiedTimestamp,
-  timezone
+  timezone,
 }: BlogTimeProps) {
   return (
     <TimeContainer>

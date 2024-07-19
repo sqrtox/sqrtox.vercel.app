@@ -16,13 +16,10 @@ export default function Header() {
       sx={{
         paddingY: 1,
         backgroundColor: "transparent",
-        backdropFilter: "blur(10px)"
+        backdropFilter: "blur(10px)",
       }}
     >
-      <Toolbar
-        disableGutters
-        variant="dense"
-      >
+      <Toolbar disableGutters variant="dense">
         <Container>
           <Stack
             width="100%"
@@ -30,15 +27,8 @@ export default function Header() {
             alignItems="center"
             justifyContent="space-between"
           >
-            <MuiLink
-              component={NextLink}
-              href="/"
-              underline="none"
-            >
-              <Stack
-                component="span"
-                direction="row"
-              >
+            <MuiLink component={NextLink} href="/" underline="none">
+              <Stack component="span" direction="row">
                 <LogoPart>sqrtox</LogoPart>
                 <LogoPart accent>&apos;</LogoPart>
                 <LogoPart>s</LogoPart>

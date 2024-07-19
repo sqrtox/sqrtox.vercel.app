@@ -3,15 +3,20 @@ import { notFound } from "next/navigation";
 import BlogPage from "@/components/blog/blog-page";
 import { _cachedArticles, getArticle } from "@/utils/blog/article";
 import { getHeadings } from "@/utils/blog/html";
-import { existsSlug, getAllSlugs, type Slug } from "@/utils/blog/slug";
-import { generateDefaultMetadata, generateNotFoundMetadata } from "@/utils/metadata";
+import { type Slug, existsSlug, getAllSlugs } from "@/utils/blog/slug";
+import {
+  generateDefaultMetadata,
+  generateNotFoundMetadata,
+} from "@/utils/metadata";
 
 import type { Metadata } from "next";
 
 import "@/styles/syntax-highlighting.scss";
 import "@/styles/article.scss";
 
-export const generateMetadata = async ({ params: { slug } }: PageProps): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params: { slug },
+}: PageProps): Promise<Metadata> => {
   const exists = await existsSlug(slug);
 
   if (!exists) {
@@ -27,24 +32,24 @@ export const generateMetadata = async ({ params: { slug } }: PageProps): Promise
     openGraph: {
       ...defaultMetadata.openGraph,
       title,
-      description
-    }
+      description,
+    },
   };
 };
 
 export type PageParams = {
-  slug: Slug
+  slug: Slug;
 };
 
 export type PageProps = {
-  params: PageParams
+  params: PageParams;
 };
 
 export const generateStaticParams = async (): Promise<PageParams[]> => {
   const slugs = await getAllSlugs();
 
-  return slugs.map(slug => ({
-    slug
+  return slugs.map((slug) => ({
+    slug,
   }));
 };
 
@@ -64,10 +69,5 @@ export default async function Page({ params: { slug } }: PageProps) {
   const article = await getArticle(slug);
   const headings = getHeadings(article.html);
 
-  return (
-    <BlogPage
-      article={article}
-      headings={headings}
-    />
-  );
+  return <BlogPage article={article} headings={headings} />;
 }

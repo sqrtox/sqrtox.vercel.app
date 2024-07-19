@@ -9,12 +9,14 @@ import { ArticleVisibility } from "@/utils/blog/article";
 export default async function Page() {
   const articles = await getAllArticles();
   const recentlyArticles = articles
-    .filter(article => article.visibility === ArticleVisibility.Public)
+    .filter((article) => article.visibility === ArticleVisibility.Public)
     .toSorted((a, b) => b.publishedTimestamp - a.publishedTimestamp);
 
   return (
     <Stack spacing={2}>
-      <Typography component="h1" variant="h5">{siteShortDescription}</Typography>
+      <Typography component="h1" variant="h5">
+        {siteShortDescription}
+      </Typography>
       <Typography>{siteDescription}</Typography>
       <ArticleCardList articles={recentlyArticles} />
     </Stack>

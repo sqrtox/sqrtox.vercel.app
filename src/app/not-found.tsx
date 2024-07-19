@@ -2,8 +2,8 @@
 
 import MuiLink from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 import NextLink from "next/link";
 
 const Flow = styled(Stack)(({ theme }) => ({
@@ -11,33 +11,30 @@ const Flow = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "center",
   [theme.breakpoints.down("sm")]: {
-    flexDirection: "column"
-  }
+    flexDirection: "column",
+  },
 }));
 
 const MessageContainer = styled(Stack)(({ theme }) => ({
   gap: 1,
   alignItems: "flex-start",
   [theme.breakpoints.down("sm")]: {
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 }));
 
 export default function NotFound() {
   return (
-    <Stack
-      flex={1}
-      alignItems="center"
-      justifyContent="center"
-    >
+    <Stack flex={1} alignItems="center" justifyContent="center">
       <Flow>
-        <Typography component="h1" variant="h1">404</Typography>
+        <Typography component="h1" variant="h1">
+          404
+        </Typography>
         <MessageContainer>
-          <Typography component="span" fontSize="large">ページが見つかりませんでした</Typography>
-          <MuiLink
-            component={NextLink}
-            href="/"
-          >
+          <Typography component="span" fontSize="large">
+            ページが見つかりませんでした
+          </Typography>
+          <MuiLink component={NextLink} href="/">
             ホームに戻る
           </MuiLink>
         </MessageContainer>

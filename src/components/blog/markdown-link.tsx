@@ -2,8 +2,11 @@ import { isExternalLink } from "@/utils/link";
 
 import type { AnchorHTMLAttributes } from "react";
 
-
-export default function MarkdownLink({ href = "/", children, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+export default function MarkdownLink({
+  href = "/",
+  children,
+  ...props
+}: AnchorHTMLAttributes<HTMLAnchorElement>) {
   const externalLink = isExternalLink(href);
 
   return (
@@ -14,7 +17,7 @@ export default function MarkdownLink({ href = "/", children, ...props }: AnchorH
       target={externalLink ? "_blank" : undefined}
       rel={externalLink ? "noopener noreferrer" : undefined}
       style={{
-        color: "var(--mui-palette-primary-main)"
+        color: "var(--mui-palette-primary-main)",
       }}
     >
       {children}

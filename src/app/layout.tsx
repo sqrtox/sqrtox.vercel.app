@@ -1,8 +1,8 @@
 import "@/styles/global.scss";
 
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
@@ -13,20 +13,23 @@ import type { Viewport } from "next";
 import type { ReactNode } from "react";
 
 export const viewport: Viewport = {
-  themeColor: "#f381a7"
+  themeColor: "#f381a7",
 };
 
 export { generateDefaultMetadata as generateMetadata } from "@/utils/metadata";
 
 export type LayoutProps = {
-  children: ReactNode
+  children: ReactNode;
 };
 
 export default function Layout({ children }: LayoutProps) {
   return (
     <html lang="ja">
       <head>
-        <meta name="google-site-verification" content="E2oyyB5do9EZ1zMN60Y7PxkFLzNeOx8d7iad872R4W0" />
+        <meta
+          name="google-site-verification"
+          content="E2oyyB5do9EZ1zMN60Y7PxkFLzNeOx8d7iad872R4W0"
+        />
       </head>
       <body className={primaryFont.className}>
         <AppRouterCacheProvider>
@@ -38,7 +41,7 @@ export default function Layout({ children }: LayoutProps) {
                   paddingY: "1rem",
                   display: "flex",
                   flexDirection: "column",
-                  flex: 1
+                  flex: 1,
                 }}
               >
                 {children}

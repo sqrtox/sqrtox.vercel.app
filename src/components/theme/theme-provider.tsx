@@ -1,15 +1,18 @@
 "use client";
 
-import { orange, pink, grey } from "@mui/material/colors";
 import CssBaseline from "@mui/material/CssBaseline";
-import { experimental_extendTheme as extendTheme, Experimental_CssVarsProvider as CssVariablesProvider } from "@mui/material/styles";
+import { grey, orange, pink } from "@mui/material/colors";
+import {
+  Experimental_CssVarsProvider as CssVariablesProvider,
+  experimental_extendTheme as extendTheme,
+} from "@mui/material/styles";
 
 import { primaryFont } from "@/utils/font";
 
 import type { ReactNode } from "react";
 
 export type ThemeProviderProps = {
-  children: ReactNode
+  children: ReactNode;
 };
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
@@ -19,27 +22,27 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
       light: {
         palette: {
           primary: {
-            main: pink[300]
+            main: pink[300],
           },
           secondary: {
-            main: orange[800]
-          }
-        }
+            main: orange[800],
+          },
+        },
       },
       dark: {
         palette: {
           text: {
-            primary: grey[200]
+            primary: grey[200],
           },
           primary: {
-            main: pink[200]
+            main: pink[200],
           },
           secondary: {
-            main: orange[900]
-          }
-        }
-      }
-    }
+            main: orange[900],
+          },
+        },
+      },
+    },
   });
 
   return (

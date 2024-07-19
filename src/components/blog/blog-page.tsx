@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -18,59 +18,59 @@ import type { Article } from "@/utils/blog";
 import type { Heading } from "@/utils/blog/html";
 
 export type BlogPageProps = {
-  article: Article,
-  headings: Heading[]
+  article: Article;
+  headings: Heading[];
 };
 
 const BlogContentContainer = styled(Stack)(({ theme }) => ({
   gap: "1rem",
   flexDirection: "row",
   [theme.breakpoints.down("md")]: {
-    flexDirection: "column-reverse"
-  }
+    flexDirection: "column-reverse",
+  },
 }));
 
 const BlogContent = styled(Box)({
   flex: 1,
   ".budoux-breaked": {
-    wordBreak: "keep-all"
+    wordBreak: "keep-all",
   },
   "h1, h2, h3, h4, h5, h6": {
     marginTop: "3rem",
     "::before": {
       color: "var(--mui-palette-primary-main)",
-      marginRight: "0.25rem"
-    }
+      marginRight: "0.25rem",
+    },
   },
   "h1::before": {
-    content: "'^_^'"
+    content: "'^_^'",
   },
   "h2::before": {
-    content: "'#'"
+    content: "'#'",
   },
   "h3::before": {
-    content: "'##'"
+    content: "'##'",
   },
   "h4::before": {
-    content: "'###'"
+    content: "'###'",
   },
   "h5::before": {
-    content: "'####'"
+    content: "'####'",
   },
   "h6::before": {
-    content: "'#####'"
-  }
+    content: "'#####'",
+  },
 });
 
 const TableOfContentsContainer = styled(Paper)(({ theme }) => ({
   position: "sticky",
   top: "5rem",
   [theme.breakpoints.up("md")]: {
-    border: "none"
+    border: "none",
   },
   [theme.breakpoints.down("md")]: {
-    padding: "0.5rem"
-  }
+    padding: "0.5rem",
+  },
 }));
 
 export default function BlogPage({ article, headings }: BlogPageProps) {
@@ -93,7 +93,7 @@ export default function BlogPage({ article, headings }: BlogPageProps) {
 
     for (const element of document.querySelectorAll(".markdown-link")) {
       element.addEventListener("click", navigate, {
-        signal: controller.signal
+        signal: controller.signal,
       });
     }
 
@@ -104,7 +104,9 @@ export default function BlogPage({ article, headings }: BlogPageProps) {
 
   return (
     <Stack spacing={2}>
-      <Typography component="h1" variant="h5">{article.title}</Typography>
+      <Typography component="h1" variant="h5">
+        {article.title}
+      </Typography>
       <BlogTime
         label
         publishedTimestamp={article.publishedTimestamp}
@@ -115,8 +117,9 @@ export default function BlogPage({ article, headings }: BlogPageProps) {
       <BlogContentContainer>
         <BlogContent
           className="blog-content"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
           dangerouslySetInnerHTML={{
-            __html: article.html
+            __html: article.html,
           }}
         />
         {headings.length > 0 && (

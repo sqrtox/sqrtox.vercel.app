@@ -11,10 +11,10 @@ const config = {
     esmExternals: true,
     turbo: {
       resolveAlias: {
-        budoux: "budoux/dist/index"
-      }
-    }
-  }
+        budoux: "budoux/dist/index",
+      },
+    },
+  },
 };
 
 export default config;

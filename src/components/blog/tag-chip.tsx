@@ -6,7 +6,7 @@ import Link from "next/link";
 import type { Tag } from "@/utils/blog";
 
 export type TagChipProps = {
-  tag: Tag
+  tag: Tag;
 };
 
 export default function TagChip({ tag }: TagChipProps) {

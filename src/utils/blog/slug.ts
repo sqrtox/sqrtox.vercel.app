@@ -5,10 +5,8 @@ export type Slug = string;
 
 export const contentsDirectory = join(process.cwd(), "src/contents");
 
-export const slugToFilePath = (slug: Slug): string => join(
-  contentsDirectory,
-  `${slug}.md`
-);
+export const slugToFilePath = (slug: Slug): string =>
+  join(contentsDirectory, `${slug}.md`);
 
 export let _cachedSlugs: Slug[] | undefined;
 
@@ -18,7 +16,7 @@ export const getAllSlugs = async (): Promise<Slug[]> => {
   }
 
   const files = await readdir(contentsDirectory);
-  const slugs = files.map(file => parse(file).name);
+  const slugs = files.map((file) => parse(file).name);
 
   _cachedSlugs = slugs;
 

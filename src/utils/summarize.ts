@@ -1,33 +1,33 @@
 import { convert } from "html-to-text";
 
 export type SummarizeOptions = {
-  ellipsis?: string,
-  maxLength: number
+  ellipsis?: string;
+  maxLength: number;
 };
 
-export const summarize = (html: string, {
-  ellipsis = "…",
-  maxLength
-}: SummarizeOptions) => {
+export const summarize = (
+  html: string,
+  { ellipsis = "…", maxLength }: SummarizeOptions,
+) => {
   let text = convert(html, {
     selectors: [
       {
         selector: "a",
         options: {
-          ignoreHref: true
-        }
+          ignoreHref: true,
+        },
       },
       {
         selector: "img",
-        format: "skip"
-      }
-    ]
+        format: "skip",
+      },
+    ],
   });
 
   text = text.replaceAll(/\r?\n/g, "\n");
 
   const segmenter = new Intl.Segmenter(undefined, {
-    granularity: "sentence"
+    granularity: "sentence",
   });
 
   let result = "";
@@ -40,9 +40,7 @@ export const summarize = (html: string, {
     result += segment.trim().replace(/。$/, ".");
   }
 
-  result = result
-    .replaceAll("\n", " ")
-    .replaceAll(/\s\s+/g, " ");
+  result = result.replaceAll("\n", " ").replaceAll(/\s\s+/g, " ");
 
   if (result.length > maxLength) {
     result = `${result.slice(0, maxLength - ellipsis.length)}${ellipsis}`;
