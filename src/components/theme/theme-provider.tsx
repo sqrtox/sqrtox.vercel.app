@@ -52,6 +52,9 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
           secondary: {
             main: orange[800],
           },
+          background: {
+            paper: grey[50],
+          },
         },
       },
       dark: {
@@ -65,6 +68,10 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
           },
           secondary: {
             main: orange[900],
+          },
+          background: {
+            default: grey[900],
+            paper: grey[800],
           },
         },
       },
