@@ -40,8 +40,6 @@ export const rehypeFixFootnote: Plugin<[], Root> = () => (root) => {
   }
 };
 
-console.log("T", rehypeSection);
-
 export const rehypeFootnoteTitle: Plugin<[], Root> = () => (root) => {
   for (const footnote of hastSelectAll("li:has([dataFootnoteBackref])", root)) {
     const link = hastSelect("a", footnote);
