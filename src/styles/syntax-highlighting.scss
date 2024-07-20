@@ -37,6 +37,10 @@ pre > code:not([data-language]) {
 [data-rehype-pretty-code-figure] {
   border-radius: 0.2rem;
   background-color: var(--syntax-highlight-background-color);
+
+  [style*="color:#51597D"] {
+    color: #acacac !important;
+  }
 }
 
 // inline code with syntax-highlighting

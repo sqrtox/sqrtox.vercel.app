@@ -10,7 +10,7 @@ export type TagChipListProps = {
 
 export default function TagChipList({ tags }: TagChipListProps) {
   return (
-    <Stack flexWrap="wrap" direction="row" spacing={1}>
+    <Stack flexWrap="wrap" direction="row" spacing={1} lineHeight="2rem">
       {tags.map((tag) => (
         <TagChip key={tag.id} tag={tag} />
       ))}
