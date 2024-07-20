@@ -12,12 +12,19 @@ publishedAt: 2024-03-05 17:44:00+09:00
 
 ## フォント
 
-### Noto Sans Japanese
+### Zen Kaku Gothic New
 
 サイト全体の文章に使用しています。
 
 サイト：Google Fonts  
-URL：https://fonts.google.com/noto/specimen/Noto+Sans+JP
+URL：https://fonts.google.com/noto/specimen/Zen+Kaku+Gothic+New
+
+### 0xProto 
+
+コードブロックに使用しています。
+
+サイト：GitHub  
+URL：https://github.com/0xType/0xProto
 
 ### にゃしぃフレンズ
 
