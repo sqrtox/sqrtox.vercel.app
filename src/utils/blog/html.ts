@@ -86,6 +86,10 @@ export const markdownToHtml = async (markdown: Markdown): Promise<Html> => {
     .use(rehypePrettyCode, {
       keepBackground: false,
       theme: "tokyo-night",
+      defaultLang: {
+        inline: "plaintext",
+        block: "plaintext"
+      }
     })
     .use(rehypeReact, {
       Fragment,
