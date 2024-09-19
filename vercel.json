@@ -1,4 +1,5 @@
 {
+  "buildCommand": "bun run prod build",
   "git": {
     "deploymentEnabled": {
       "main": false

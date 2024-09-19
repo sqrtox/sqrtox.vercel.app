@@ -32,9 +32,6 @@ jobs:
       - name: install
         run: bun i --frozen-lockfile
 
-      - name: build
-        run: bun run prod build
-
       - name: Install Vercel CLI
         run: bun i -g vercel@latest
 

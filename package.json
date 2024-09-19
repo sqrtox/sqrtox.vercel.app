@@ -51,7 +51,10 @@
     "typescript": "^5.3.3"
   },
   "homepage": "https://github.com/sqrtox/sqrtox.vercel.app#readme",
-  "keywords": ["sqrtox", "blog"],
+  "keywords": [
+    "sqrtox",
+    "blog"
+  ],
   "license": "Apache-2.0",
   "name": "sqrtox.vercel.app",
   "private": true,
@@ -61,7 +64,7 @@
   },
   "scripts": {
     "analyze": "cross-env ANALYZE=1 bun run",
-    "build": "run-s build:*",
+    "build": "run-s \"build:*\"",
     "build:clean": "rimraf .next",
     "build:next": "next build",
     "dev": "cross-env NEXT_PUBLIC_BASE_URL=\"http://localhost:3000\" next dev --turbo",
@@ -71,9 +74,9 @@
     "start:build": "bun run build",
     "start:next": "next start"
   },
-  "type": "module",
-  "version": "0.0.0",
   "trustedDependencies": [
     "@biomejs/biome"
-  ]
+  ],
+  "type": "module",
+  "version": "0.0.0"
 }
