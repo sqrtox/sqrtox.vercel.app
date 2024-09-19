@@ -10,7 +10,7 @@ export default async function Page() {
   const articles = await getAllArticles();
   const recentlyArticles = articles
     .filter((article) => article.visibility === ArticleVisibility.Public)
-    .toSorted((a, b) => b.publishedTimestamp - a.publishedTimestamp);
+    .sort((a, b) => b.publishedTimestamp - a.publishedTimestamp);
 
   return (
     <Stack spacing={2}>
