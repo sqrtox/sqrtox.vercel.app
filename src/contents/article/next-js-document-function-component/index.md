@@ -3,7 +3,7 @@ title: Next.jsのカスタムDocumentは関数コンポーネントでも使え�
 tags: programming javascript next-js
 ---
 
-Next.jsではページの共通の文書を設定できる[_document](https://nextjs.org/docs/advanced-features/custom-document)というものがある。
+Next.js ではページの共通の文書を設定できる [_document](https://nextjs.org/docs/advanced-features/custom-document) というものがある。
 
 ```jsx
 class Document extends NextDocument {
@@ -21,7 +21,7 @@ class Document extends NextDocument {
 }
 ```
 
-ずっとNextDocumentを継承したクラスコンポーネントで書いていたが、関数コンポーネントでも書けるらしい。
+ずっと NextDocument を継承したクラスコンポーネントで書いていたが、関数コンポーネントでも書けるらしい。
 
 ```jsx
 const Document = () => (
@@ -35,7 +35,7 @@ const Document = () => (
 );
 ```
 
-_documentをいじっている際にふと思いついて調べて知った。
+_document をいじっている際にふと思いついて調べて知った。
 
 # 参考
 
