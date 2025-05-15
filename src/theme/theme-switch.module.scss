@@ -1,6 +1,6 @@
 .switch[class] {
-  width: 58;
-  height: 29;
+  width: 58px;
+  height: 29px;
   padding: 0;
 
   & :global(.MuiSwitch-switchBase) {
@@ -25,7 +25,7 @@
   }
 
   & :global(.MuiSwitch-track) {
-    border-radius: 12;
+    border-radius: 12px;
     background-color: var(--mui-palette-sky-default);
   }
 }
