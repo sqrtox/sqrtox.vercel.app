@@ -44,6 +44,8 @@
     "chokidar": "^4.0.3",
     "concurrently": "^9.1.2",
     "husky": "^9.1.7",
+    "npm-run-all2": "^8.0.1",
+    "serve": "^14.2.4",
     "simple-git": "^3.27.0",
     "textlint": "^14.6.0",
     "textlint-filter-rule-comments": "^1.2.2",
@@ -66,11 +68,14 @@
   },
   "scripts": {
     "article-history": "bun run scripts/article-history.ts",
-    "build": "next build",
+    "build": "run-s article-history build:next",
+    "build:next": "next build",
     "dev": "bun run article-history && conc \"npm:dev:*\"",
     "dev:article-history": "bun run scripts/article-history.ts --watch",
     "dev:next": "next dev --turbo",
-    "prepare": "husky"
+    "prepare": "husky",
+    "preview": "run-s build preview:serve",
+    "preview:serve": "serve out"
   },
   "trustedDependencies": ["@biomejs/biome", "@parcel/watcher", "sharp"],
   "type": "module",
