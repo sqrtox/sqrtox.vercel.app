@@ -1,0 +1,35 @@
+.switch[class] {
+  width: 58;
+  height: 29;
+  padding: 0;
+
+  & :global(.MuiSwitch-switchBase) {
+    padding: 0;
+    transform: translate(3px, 2px);
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:global(.Mui-checked) {
+      transform: translate(30px, 2px);
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      &+ :global(.MuiSwitch-track) {
+        background-color: var(--mui-palette-sky-default);
+      }
+    }
+  }
+
+  & :global(.MuiSwitch-track) {
+    border-radius: 12;
+    background-color: var(--mui-palette-sky-default);
+  }
+}
+
+.switchHidden {
+  visibility: hidden;
+}

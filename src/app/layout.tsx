@@ -1,55 +1,33 @@
-import "@/styles/global.scss";
+import type { PropsWithChildren } from "react";
+import styles from "#src/app/layout.module.scss";
+import CommonLayout from "#src/layouts/common/layout";
+import { primaryFont } from "#src/theme/fonts";
+import ThemeProvider from "#src/theme/provider";
 
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
-import Container from "@mui/material/Container";
-import Stack from "@mui/material/Stack";
+const dev = process.env.NODE_ENV === "development";
 
-import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
-import ThemeProvider from "@/components/theme/theme-provider";
-import { primaryFont } from "@/utils/font";
-
-import type { Viewport } from "next";
-import type { ReactNode } from "react";
-
-export const viewport: Viewport = {
-  themeColor: "#f381a7",
+export const metadata = {
+  metadataBase: new URL(dev ? "http://localhost:3000" : "https://sqrtox.com"),
+  title: {
+    template: "%s | sqrtox's Blog",
+    absolute: "sqrtox's Blog - 備忘録的な技術ブログ",
+  },
+  description: "主に技術についての備忘録的なブログです。",
+  openGraph: {
+    siteName: "sqrtox's Blog",
+  },
 };
 
-export { generateDefaultMetadata as generateMetadata } from "@/utils/metadata";
-
-export type LayoutProps = {
-  children: ReactNode;
-};
-
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: PropsWithChildren) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning className={styles.root}>
       <head>
-        <meta
-          name="google-site-verification"
-          content="E2oyyB5do9EZ1zMN60Y7PxkFLzNeOx8d7iad872R4W0"
-        />
+        <meta name="apple-mobile-web-app-title" content="sqrtox's Blog" />
       </head>
-      <body className={primaryFont.className}>
-        <AppRouterCacheProvider>
-          <ThemeProvider>
-            <Stack minHeight="100svh">
-              <Header />
-              <Container
-                sx={{
-                  paddingY: "1rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  flex: 1,
-                }}
-              >
-                {children}
-              </Container>
-              <Footer />
-            </Stack>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+      <body className={primaryFont.variable} suppressHydrationWarning>
+        <ThemeProvider>
+          <CommonLayout>{children}</CommonLayout>
+        </ThemeProvider>
       </body>
     </html>
   );

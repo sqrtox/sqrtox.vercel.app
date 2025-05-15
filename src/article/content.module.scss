@@ -1,0 +1,65 @@
+@use "./highlight.scss";
+
+@function step($level, $min, $max, $base) {
+  $exp: pow($base, $level - 1);
+
+  @return calc(#{$min} + #{$exp} * (#{$max} - #{$min}));
+}
+
+@function repeat($char, $n) {
+  $c: "";
+
+  @for $i from 1 through $n {
+    $c: $c + $char;
+  }
+
+  @return $c;
+}
+
+.content {
+  flex: 1;
+
+  @for $i from 1 through 6 {
+    h#{$i} {
+      $m: step($i, 2rem, 3rem, 0.5);
+      margin: 0;
+      margin-top: $m;
+      margin-bottom: calc($m * 0.8);
+      font-size: step($i, 1.2rem, 1.5rem, 0.4);
+      border-bottom: thin solid var(--mui-palette-divider);
+
+      &::before {
+        content: '#{repeat("#", $i)}';
+        margin-right: 0.3rem;
+        color: var(--mui-palette-text-secondary);
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  :global(.budouxParagraph) {
+    word-break: keep-all;
+  }
+
+  :global(.icon) {
+    vertical-align: middle;
+    display: inline-block;
+    background-color: currentColor;
+    mask-image: var(--iconSrc);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    width: 1em;
+    height: 1em;
+    margin: 0.1em;
+  }
+
+  a {
+    color: var(--mui-palette-primary-main);
+    text-decoration-color: rgba(var(--mui-palette-primary-mainChannel) / 0.4);
+
+    &:hover {
+      text-decoration-color: inherit;
+    }
+  }
+}
