@@ -32,7 +32,9 @@ export default function About() {
         <Grid size={{ xs: 12, md: 7 }}>
           <Card variant="outlined" className={styles.card}>
             <CardContent>
-              <Typography variant="h6">このサイトについて</Typography>
+              <Typography variant="h6" component="h2">
+                このサイトについて
+              </Typography>
               <Typography>
                 覚えた技術を書いたり書かなかったりするブログ
               </Typography>
@@ -49,6 +51,7 @@ export default function About() {
                 <Box>
                   <Box
                     component="img"
+                    alt="avatar"
                     src={avatar.src}
                     width={100}
                     height={100}
@@ -57,7 +60,9 @@ export default function About() {
                   />
                 </Box>
                 <Box>
-                  <Typography variant="h6">sqrtox</Typography>
+                  <Typography variant="h6" component="h2">
+                    sqrtox
+                  </Typography>
                   <Typography>趣味でコード書いてる人です</Typography>
                 </Box>
               </Stack>
@@ -67,7 +72,9 @@ export default function About() {
         <Grid size={{ xs: 12, md: 6 }}>
           <Card variant="outlined" className={styles.card}>
             <CardContent>
-              <Typography variant="h6">趣味</Typography>
+              <Typography variant="h6" component="h2">
+                趣味
+              </Typography>
               <Typography className={styles.wbrContainer}>
                 <Typography component="span" whiteSpace="nowrap">
                   👨‍💻コーディング、
@@ -95,7 +102,9 @@ export default function About() {
         <Grid size={{ xs: 12, md: 6 }}>
           <Card variant="outlined" className={styles.card}>
             <CardContent>
-              <Typography variant="h6">好きなフレームワーク</Typography>
+              <Typography variant="h6" component="h2">
+                好きなフレームワーク
+              </Typography>
               <Typography>
                 言語はJavaScript/TypeScript、Rustをよく使っています。フロントエンドのフレームワークはNext.js(React)が好きです
               </Typography>
@@ -105,7 +114,9 @@ export default function About() {
         <Grid size={{ xs: 12 }}>
           <Card variant="outlined" className={styles.card}>
             <CardContent>
-              <Typography variant="h6">SNS</Typography>
+              <Typography variant="h6" component="h2">
+                SNS
+              </Typography>
               <Box paddingLeft="2rem">
                 <List className={styles.list}>
                   <ListItem className={styles.listItem}>

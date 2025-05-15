@@ -16,6 +16,11 @@ export default function ThemeSwitch(): ReactNode {
 
   return (
     <Switch
+      slotProps={{
+        input: {
+          "aria-label": "change theme",
+        },
+      }}
       disabled={isNotInitialized}
       checked={isNotInitialized || colorScheme === "dark"}
       onChange={(_event, checked) => {
