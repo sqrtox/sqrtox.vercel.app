@@ -4,8 +4,6 @@ import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import styles from "#src/layouts/common/header.module.scss";
 import Logo from "#src/layouts/common/logo";
-import SearchDialogButton from "#src/search/seach-dialog-button";
-import SearchInput from "#src/search/search-input";
 import ThemeSwitch from "#src/theme/theme-switch";
 
 export default function Header() {
@@ -30,7 +28,6 @@ export default function Header() {
             <Logo />
           </Box>
           <Stack direction="row" spacing={2} alignItems="center">
-            <SearchDialogButton />
             <ThemeSwitch />
           </Stack>
         </Stack>

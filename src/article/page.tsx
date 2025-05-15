@@ -136,9 +136,6 @@ export default async function ArticlePage({ article }: ArticlePageProps) {
                     <Chip
                       key={tag.id}
                       label={tag.label}
-                      clickable
-                      component={NextLink}
-                      href={`/search?q=${encodeURIComponent(`#${tag.id}`)}`}
                       icon={<TagIcon fontSize="small" />}
                     />
                   ))}
