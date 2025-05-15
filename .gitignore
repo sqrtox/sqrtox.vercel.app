@@ -1,5 +1,15 @@
-/.history
-/.next
-/node_modules
+# Local History
+.history
 
-.vercel
+# Node.js
+node_modules
+
+# Turborepo
+.turbo
+
+# Next.js
+.next
+/out
+
+# Program Data
+.data
