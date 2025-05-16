@@ -49,6 +49,11 @@ export default function ArticleHistoryButton({
       variant="outlined"
       component={mounted ? "div" : "a"}
       href={mounted ? undefined : historyHref}
+      slotProps={{
+        heading: {
+          component: "h2",
+        },
+      }}
     >
       <AccordionSummary
         expandIcon={mounted ? <ExpandMoreIcon /> : <ChevronRightIcon />}
