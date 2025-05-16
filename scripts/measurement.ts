@@ -79,7 +79,7 @@ async function lighthouseMeasurement(): Promise<void> {
 
 async function writeReport(): Promise<void> {
   let template = await readFile(
-    join(rootDir, "scripts/measurement-report-template.html"),
+    join(import.meta.dirname, "measurement-report-template.html"),
     "utf-8",
   );
   const reportFile = join(measurementDir, "report.html");
