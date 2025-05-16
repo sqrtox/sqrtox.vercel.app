@@ -98,6 +98,10 @@
         color: var(--shiki-dark);
         background-color: transparent;
       }
+
+      [style*="--shiki-dark:#545454;"][class] {
+        color: var(--shiki-light)
+      }
     }
   }
 }
