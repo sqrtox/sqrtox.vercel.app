@@ -33,7 +33,7 @@ const rootDir = resolve(import.meta.dirname, RELATIVE_TO_ROOT_DIR);
 const log = (message: string): void => {
   // biome-ignore lint/suspicious/noConsole: <explanation>
   // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-  console.log(`${performance.now()}ms - ${message}`);
+  console.log(`${performance.now() / 1000}s - ${message}`);
 };
 const prepare = async <T extends string>(path: T): Promise<T> => {
   if (existsSync(path)) {
