@@ -14,12 +14,18 @@ export default function ArticleHistoryList({
   return (
     <>
       {history.length > 0 && (
-        <Stack alignItems="flex-start" spacing={0.5}>
+        <Stack alignItems="flex-start" spacing={1}>
           {history.map((log) => {
             const date = new Date(log.timestamp);
 
             return (
-              <Stack key={log.commit} direction="row" spacing={1}>
+              <Stack
+                key={log.commit}
+                direction="row"
+                rowGap={0.5}
+                columnGap={1}
+                flexWrap="wrap"
+              >
                 <MuiLink
                   rel="noreferrer noopener"
                   target="_blank"
