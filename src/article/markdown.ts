@@ -94,6 +94,13 @@ const rehypeFixFootnotes: Plugin =
       if (fn === undefined) continue;
 
       fnref.properties.title = fn;
+
+      // expect `children: [ { type: 'text', value: '1' } ],`
+      const first = fnref.children[0];
+
+      if (first?.type === "text") {
+        first.value = `[${first.value}]`;
+      }
     }
 
     return root;
