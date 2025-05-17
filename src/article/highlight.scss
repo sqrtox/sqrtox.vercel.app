@@ -99,7 +99,7 @@
         background-color: transparent;
       }
 
-      [style*="--shiki-dark:#545454;"][class] {
+      [style*="#545454;"][class] {
         color: var(--shiki-light)
       }
     }
