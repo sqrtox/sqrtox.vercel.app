@@ -8,7 +8,10 @@ import { ARTICLE_HISTORY_DIR, CONTENTS_DIR, ROOT_DIR } from "#src/dir";
 
 const buildHistory = async (file: string): Promise<void> => {
   const filePath = parse(file);
-  const historyId = relative(CONTENTS_DIR, filePath.dir).replaceAll("\\", "_");
+  const historyId = relative(CONTENTS_DIR, filePath.dir).replaceAll(
+    /[/\\]/g,
+    "_",
+  );
   const historyFile = join(ARTICLE_HISTORY_DIR, `${historyId}.json`);
 
   if (existsSync(historyFile)) {
