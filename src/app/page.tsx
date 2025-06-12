@@ -14,8 +14,6 @@ import Button from "@mui/material/Button";
 import MuiLink from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { format } from "date-fns";
-import { ja } from "date-fns/locale/ja";
 import NextLink from "next/link";
 import styles from "#src/app/page.module.scss";
 import type { ArticleMetadata } from "#src/article/article";
