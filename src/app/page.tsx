@@ -99,6 +99,36 @@ export default async function Page() {
         </Typography>
         <Box>
           <Timeline className={styles.timeline}>
+            {noTimestampArticles.length > 0 && (
+              <TimelineItem>
+                <TimelineSeparator>
+                  <TimelineDot />
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>
+                  <Stack alignItems="flex-start" spacing={2}>
+                    <Typography>公開年不明</Typography>
+                    <Stack
+                      alignItems="flex-start"
+                      spacing={1}
+                      paddingBottom={4}
+                    >
+                      {noTimestampArticles.map((article) => (
+                        <MuiLink
+                          key={article.slug}
+                          fontWeight="500"
+                          fontSize="large"
+                          component={NextLink}
+                          href={`/article/${encodeURIComponent(article.slug)}`}
+                        >
+                          {article.metadata.title}
+                        </MuiLink>
+                      ))}
+                    </Stack>
+                  </Stack>
+                </TimelineContent>
+              </TimelineItem>
+            )}
             {[...timestampedArticles].map(([year, articles]) => (
               <TimelineItem key={year}>
                 <TimelineSeparator>
@@ -147,36 +177,6 @@ export default async function Page() {
                 </TimelineContent>
               </TimelineItem>
             ))}
-            {noTimestampArticles.length > 0 && (
-              <TimelineItem>
-                <TimelineSeparator>
-                  <TimelineDot />
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent>
-                  <Stack alignItems="flex-start" spacing={2}>
-                    <Typography>公開年不明</Typography>
-                    <Stack
-                      alignItems="flex-start"
-                      spacing={1}
-                      paddingBottom={4}
-                    >
-                      {noTimestampArticles.map((article) => (
-                        <MuiLink
-                          key={article.slug}
-                          fontWeight="500"
-                          fontSize="large"
-                          component={NextLink}
-                          href={`/article/${encodeURIComponent(article.slug)}`}
-                        >
-                          {article.metadata.title}
-                        </MuiLink>
-                      ))}
-                    </Stack>
-                  </Stack>
-                </TimelineContent>
-              </TimelineItem>
-            )}
             <TimelineItem>
               <TimelineSeparator>
                 <TimelineDot />
