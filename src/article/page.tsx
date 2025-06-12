@@ -146,11 +146,13 @@ export default async function ArticlePage({ article }: ArticlePageProps) {
       </Stack>
       <Divider />
       <Content>{element}</Content>
-      <ArticleHistoryButton
-        slug={article.slug}
-        base={article.base}
-        history={history}
-      />
+      <Box marginTop={10}>
+        <ArticleHistoryButton
+          slug={article.slug}
+          base={article.base}
+          history={history}
+        />
+      </Box>
     </Stack>
   );
 }
