@@ -29,7 +29,7 @@ export default function ArticleHistoryList({
                 <MuiLink
                   rel="noreferrer noopener"
                   target="_blank"
-                  href={`https://github.com/sqrtox/sqrtox.vercel.app/commit/${log.commit}`}
+                  href={`https://github.com/sqrtox/sqrtox.vercel.app/commit/${log.commit}#diff-${log.filePathHash}`}
                 >
                   {log.commit.slice(0, 7)} - {log.message}
                 </MuiLink>

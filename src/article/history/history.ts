@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { $array, $number, $object, $string, type Infer } from "lizod";
@@ -36,6 +37,7 @@ export const ArticleLog = $object({
   commit: $string,
   timestamp: $number,
   message: $string,
+  filePathHash: $string,
 });
 export type ArticleLog = Infer<typeof ArticleLog>;
 
@@ -57,16 +59,20 @@ export const getLogs = async (
 
   for (const locate of ARTICLE_LOCATORS) {
     const loc = locate(slug, articleBase);
-
-    const result = await git.log({
-      file: loc,
-    });
+    const result = await git.log(["--follow", "--name-status", "--", loc]);
 
     for (const log of result.all) {
+      const path = log.diff?.files[0]?.file.replaceAll("\\", "/");
+
+      if (path === undefined) {
+        throw new TypeError(`Commit ${log.hash} file location unknown`);
+      }
+
       logs.set(log.hash, {
         message: log.message,
         commit: log.hash,
         timestamp: new Date(log.date).getTime(),
+        filePathHash: createHash("sha256").update(path, "utf8").digest("hex"),
       });
     }
   }
