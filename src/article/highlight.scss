@@ -99,7 +99,7 @@
         background-color: transparent;
       }
 
-      [style*="#545454;"][class] {
+      [style*="#545454;"]:not(#fakeId) {
         color: var(--shiki-light)
       }
     }
