@@ -1,3 +1,5 @@
+import { readFile, readdir } from "node:fs/promises";
+import { join } from "node:path";
 import { TZDate } from "@date-fns/tz";
 import ArrowRightAltRoundedIcon from "@mui/icons-material/ArrowRightAltRounded";
 import EmojiPeopleRoundedIcon from "@mui/icons-material/EmojiPeopleRounded";
@@ -18,8 +20,11 @@ import NextLink from "next/link";
 import styles from "#src/app/page.module.scss";
 import type { ArticleMetadata } from "#src/article/article";
 import { articleManager } from "#src/article/manager";
+import { compile } from "#src/article/markdown";
+import Notes from "#src/article/notes";
 import type { SafeSlug } from "#src/article/slug";
 import { formatDate } from "#src/date";
+import { CONTENTS_DIR } from "#src/dir";
 
 export const metadata = {
   openGraph: {
@@ -71,9 +76,19 @@ export default async function Page() {
   const noTimestampArticles = articles.filter(
     (article) => article.timestamp.createdAt === undefined,
   );
+  const notes = await Promise.all(
+    await readdir(join(CONTENTS_DIR, "notes")).then((files) =>
+      files.map(async (file) => ({
+        file,
+        result: await compile(
+          await readFile(join(CONTENTS_DIR, "notes", file), "utf8"),
+        ),
+      })),
+    ),
+  );
 
   return (
-    <Stack spacing={5} alignItems="flex-start">
+    <Stack spacing={5} alignItems="flex-start" width="100%">
       <Stack direction="row" alignItems="flex-end" spacing={1} flexWrap="wrap">
         <Typography component="h1" variant="h4" className={styles.title}>
           備忘録的な
@@ -84,15 +99,26 @@ export default async function Page() {
           技術を中心にいろいろかきます📝
         </Typography>
       </Stack>
-      <Button
-        startIcon={<EmojiPeopleRoundedIcon />}
-        endIcon={<ArrowRightAltRoundedIcon />}
-        variant="outlined"
-        href="/about"
-        LinkComponent={NextLink}
-      >
-        About me
-      </Button>
+      <Stack alignItems="flex-start" component="section" spacing={2}>
+        <Typography component="h2" variant="h6">
+          About me
+        </Typography>
+        <Button
+          startIcon={<EmojiPeopleRoundedIcon />}
+          endIcon={<ArrowRightAltRoundedIcon />}
+          variant="outlined"
+          href="/about"
+          LinkComponent={NextLink}
+        >
+          About me
+        </Button>
+      </Stack>
+      <Stack alignItems="flex-start" component="section" width="100%">
+        <Typography component="h2" variant="h6">
+          メモ
+        </Typography>
+        <Notes notes={notes} />
+      </Stack>
       <Stack alignItems="flex-start" component="section">
         <Typography component="h2" variant="h6">
           記事
