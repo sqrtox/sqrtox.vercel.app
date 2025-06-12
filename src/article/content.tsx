@@ -19,7 +19,7 @@ export default function Content({ children }: PropsWithChildren) {
     };
 
     for (const elem of document.querySelectorAll(
-      "a:not(:has(.externalLink))",
+      `${styles.content} a:not(:has(.externalLink))`,
     )) {
       elem.addEventListener("click", handleClick);
     }
