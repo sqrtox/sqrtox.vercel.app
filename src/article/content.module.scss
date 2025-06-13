@@ -39,6 +39,7 @@
 
   :global(.budouxParagraph) {
     word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 
   :global(.icon) {

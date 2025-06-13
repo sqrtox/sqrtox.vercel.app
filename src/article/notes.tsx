@@ -52,7 +52,6 @@ export default function Notes({ notes }: NotesProps) {
                 flex={1}
                 height="100%"
                 overflow="auto"
-                sx={{ overflowWrap: "anywhere" }}
               >
                 {note.result.element}
               </Box>
