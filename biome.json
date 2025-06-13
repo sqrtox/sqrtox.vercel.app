@@ -19,6 +19,9 @@
     "enabled": true,
     "rules": {
       "all": true,
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "off"
+      },
       "correctness": {
         "all": false,
         "recommended": true
