@@ -5,9 +5,11 @@ import { toString as hastToString } from "hast-util-to-string";
 import { toText } from "hast-util-to-text";
 import type { JSX } from "react";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeBudoux from "rehype-budoux";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeReact from "rehype-react";
+import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkGithubAlerts from "remark-github-alerts";
 import remarkParse from "remark-parse";
@@ -40,7 +42,7 @@ const rehypeExternalLink: Plugin = () => (node: Root) => {
       type: "element",
       tagName: "i",
       properties: {
-        className: ["icon"],
+        className: ["markdownIcon"],
         style: '--iconSrc: url("/icons/open-in-new.svg")',
       },
       children: [],
@@ -128,6 +130,35 @@ export const compile = async (markdown: string): Promise<CompileResult> => {
         theme: {
           dark: "material-theme-darker",
           light: "material-theme-lighter",
+        },
+      })
+      .use(rehypeSlug)
+      .use(rehypeAutolinkHeadings, {
+        // TODO: any
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        content: (element: any) => {
+          if (!element.tagName.startsWith("h")) {
+            return {
+              type: "text",
+              value: ":)",
+            };
+          }
+
+          const level = Number(element.tagName.slice(1));
+
+          return {
+            type: "element",
+            tagName: "span",
+            properties: {
+              className: ["headingLink"],
+            },
+            children: [
+              {
+                type: "text",
+                value: "#".repeat(level),
+              },
+            ],
+          };
         },
       })
       .use(rehypeExternalLink)

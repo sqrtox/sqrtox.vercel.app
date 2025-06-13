@@ -27,13 +27,20 @@
       margin-bottom: calc($m * 0.8);
       font-size: step($i, 1.2rem, 1.5rem, 0.4);
       border-bottom: thin solid var(--mui-palette-divider);
+    }
+  }
 
-      &::before {
-        content: '#{repeat("#", $i)}';
-        margin-right: 0.3rem;
-        color: var(--mui-palette-text-secondary);
-        font-size: 0.9em;
-      }
+  :global(a:has(> .headingLink)) {
+    color: var(--mui-palette-text-secondary);
+    text-decoration-color: rgba(var(--mui-palette-text-secondaryChannel) / 0.4);
+
+    &:hover {
+      text-decoration-color: var(--mui-palette-text-secondary);
+    }
+
+    :global(.headingLink) {
+      margin-right: 0.3rem;
+      font-size: 0.95em;
     }
   }
 
@@ -42,7 +49,7 @@
     overflow-wrap: anywhere;
   }
 
-  :global(.icon) {
+  :global(.markdownIcon) {
     vertical-align: middle;
     display: inline-block;
     background-color: currentColor;
