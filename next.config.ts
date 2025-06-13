@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const dev = process.env.NODE_ENV === "development";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: dev ? undefined : "export",
   turbopack: {
     resolveAlias: {
       budoux: "budoux/dist/index",
