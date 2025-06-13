@@ -6,10 +6,12 @@ import HistoryIcon from "@mui/icons-material/History";
 import PublishIcon from "@mui/icons-material/Publish";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import TagIcon from "@mui/icons-material/Tag";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import Box from "@mui/material/Box";
 import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
+import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 import type { Article } from "#src/article/article";
@@ -50,67 +52,41 @@ export default async function ArticlePage({ article }: ArticlePageProps) {
               spacing={1}
               flexWrap="wrap"
             >
-              {timestamp.createdAt === undefined && (
-                <Chip
-                  variant="outlined"
-                  icon={<PublishIcon />}
-                  label={
-                    <Typography
-                      display="flex"
-                      alignItems="center"
-                      gap={1}
-                      fontSize="small"
-                      color="textSecondary"
-                    >
-                      <span>作成日時: </span>
-                      <span>不明</span>
-                    </Typography>
-                  }
-                />
-              )}
               {timestamp.createdAt !== undefined && (
-                <Chip
-                  variant="outlined"
-                  icon={<PublishIcon />}
-                  label={
-                    <Typography
-                      display="flex"
-                      alignItems="center"
-                      gap={1}
-                      fontSize="small"
-                      color="textSecondary"
-                    >
-                      <span>作成日時: </span>
-                      <time
+                <Tooltip title="作成日時">
+                  <Chip
+                    variant="outlined"
+                    icon={<VisibilityIcon fontSize="small" />}
+                    label={
+                      <Typography
+                        component="time"
                         dateTime={new Date(timestamp.createdAt).toISOString()}
+                        fontSize="small"
+                        color="textSecondary"
                       >
                         {formatDate(timestamp.createdAt)}
-                      </time>
-                    </Typography>
-                  }
-                />
+                      </Typography>
+                    }
+                  />
+                </Tooltip>
               )}
               {timestamp.updatedAt !== undefined && (
-                <Chip
-                  variant="outlined"
-                  icon={<RefreshIcon />}
-                  label={
-                    <Typography
-                      display="flex"
-                      alignItems="center"
-                      gap={1}
-                      fontSize="small"
-                      color="textSecondary"
-                    >
-                      <span>最終更新: </span>
-                      <time
+                <Tooltip title="最終更新">
+                  <Chip
+                    variant="outlined"
+                    icon={<RefreshIcon fontSize="small" />}
+                    label={
+                      <Typography
+                        component="time"
                         dateTime={new Date(timestamp.updatedAt).toISOString()}
+                        fontSize="small"
+                        color="textSecondary"
                       >
                         {formatDate(timestamp.updatedAt)}
-                      </time>
-                    </Typography>
-                  }
-                />
+                      </Typography>
+                    }
+                  />
+                </Tooltip>
               )}
             </Stack>
             <Box>
