@@ -88,7 +88,7 @@ export default async function Page() {
   );
 
   return (
-    <Stack spacing={5} alignItems="flex-start" width="100%">
+    <Stack spacing={7} alignItems="flex-start" width="100%">
       <Stack direction="row" alignItems="flex-end" spacing={1} flexWrap="wrap">
         <Typography component="h1" variant="h4" className={styles.title}>
           備忘録的な
@@ -114,15 +114,19 @@ export default async function Page() {
         </Button>
       </Stack>
       <Stack alignItems="flex-start" component="section" width="100%">
-        <Typography component="h2" variant="h6">
-          メモ
-        </Typography>
+        <Badge badgeContent={notes.length} color="primary">
+          <Typography component="h2" variant="h6">
+            メモ
+          </Typography>
+        </Badge>
         <Notes notes={notes} />
       </Stack>
       <Stack alignItems="flex-start" component="section">
-        <Typography component="h2" variant="h6">
-          記事
-        </Typography>
+        <Badge badgeContent={articles.length} color="primary">
+          <Typography component="h2" variant="h6">
+            記事
+          </Typography>
+        </Badge>
         <Box>
           <Timeline className={styles.timeline}>
             {noTimestampArticles.length > 0 && (
