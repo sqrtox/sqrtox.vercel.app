@@ -52,9 +52,12 @@ export default function Notes({ notes }: NotesProps) {
                 flex={1}
                 height="100%"
                 overflow="auto"
-              >
-                {note.result.element}
-              </Box>
+                // TODO: explanation
+                // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+                dangerouslySetInnerHTML={{
+                  __html: note.result.html,
+                }}
+              />
               {notes.length >= 2 && (
                 <Stack
                   width="100%"

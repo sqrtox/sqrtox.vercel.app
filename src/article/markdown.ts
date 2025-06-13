@@ -3,20 +3,18 @@ import type { Element, Root } from "hast";
 import { select, selectAll } from "hast-util-select";
 import { toString as hastToString } from "hast-util-to-string";
 import { toText } from "hast-util-to-text";
-import type { JSX } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeBudoux from "rehype-budoux";
 import rehypePrettyCode from "rehype-pretty-code";
-import rehypeReact from "rehype-react";
 import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
 import remarkGfm from "remark-gfm";
 import remarkGithubAlerts from "remark-github-alerts";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { type Plugin, unified } from "unified";
 
-const rehypeExternalLink: Plugin = () => (node: Root) => {
+const rehypeExternalLink: Plugin = () => (node) => {
   const processAnchor = (node: Element) => {
     const props = node.properties;
     const href = props?.href;
@@ -64,52 +62,50 @@ const rehypeExternalLink: Plugin = () => (node: Root) => {
     return node;
   };
 
-  return process(node);
+  return process(node as Root);
 };
 
-const rehypeFixFootnotes: Plugin =
-  () =>
-  (root: Root): Root => {
-    const label = select("#footnote-label", root);
+const rehypeFixFootnotes: Plugin = () => (root) => {
+  const label = select("#footnote-label", root as Root);
 
-    if (label) {
-      label.tagName = "h1";
+  if (label) {
+    label.tagName = "h1";
+  }
+
+  const footnotes: Map<string, string> = new Map();
+
+  for (const fn of selectAll("li[id^=user-content-fn-]", root as Root)) {
+    const id = fn.properties.id;
+
+    if (typeof id !== "string") continue;
+
+    footnotes.set(id, toText(fn));
+  }
+
+  for (const fnref of selectAll("a[id^=user-content-fnref-]", root as Root)) {
+    const fnId = fnref.properties.href;
+
+    if (typeof fnId !== "string") continue;
+
+    const fn = footnotes.get(fnId.slice(1));
+
+    if (fn === undefined) continue;
+
+    fnref.properties.title = fn;
+
+    // expect `children: [ { type: 'text', value: '1' } ],`
+    const first = fnref.children[0];
+
+    if (first?.type === "text") {
+      first.value = `[${first.value}]`;
     }
+  }
 
-    const footnotes: Map<string, string> = new Map();
-
-    for (const fn of selectAll("li[id^=user-content-fn-]", root)) {
-      const id = fn.properties.id;
-
-      if (typeof id !== "string") continue;
-
-      footnotes.set(id, toText(fn));
-    }
-
-    for (const fnref of selectAll("a[id^=user-content-fnref-]", root)) {
-      const fnId = fnref.properties.href;
-
-      if (typeof fnId !== "string") continue;
-
-      const fn = footnotes.get(fnId.slice(1));
-
-      if (fn === undefined) continue;
-
-      fnref.properties.title = fn;
-
-      // expect `children: [ { type: 'text', value: '1' } ],`
-      const first = fnref.children[0];
-
-      if (first?.type === "text") {
-        first.value = `[${first.value}]`;
-      }
-    }
-
-    return root;
-  };
+  return root;
+};
 
 export interface CompileResult {
-  element: JSX.Element;
+  html: string;
   text: string;
 }
 
@@ -166,15 +162,10 @@ export const compile = async (markdown: string): Promise<CompileResult> => {
       .use(rehypeBudoux, {
         className: "budouxParagraph",
       });
-  const element = await flow()
-    .use(rehypeReact, {
-      Fragment,
-      jsx,
-      jsxs,
-    })
+  const html = await flow()
+    .use(rehypeStringify)
     .process(markdown)
-    // @ts-expect-error
-    .then((file) => file.result);
+    .then((file) => file.toString());
   const text = await flow()
     .use(rehypePlaintext)
     .process(markdown)
@@ -182,7 +173,7 @@ export const compile = async (markdown: string): Promise<CompileResult> => {
     .then((file) => file.value.replaceAll("\n", " "));
 
   return {
-    element,
+    html,
     text,
   };
 };

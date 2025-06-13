@@ -2,10 +2,14 @@
 
 import Box from "@mui/material/Box";
 import { useRouter } from "next/navigation";
-import { type PropsWithChildren, useEffect } from "react";
+import { useEffect } from "react";
 import styles from "#src/article/content.module.scss";
 
-export default function Content({ children }: PropsWithChildren) {
+export interface ContentProps {
+  html: string;
+}
+
+export default function Content({ html }: ContentProps) {
   const router = useRouter();
 
   useEffect(() => {
@@ -29,5 +33,12 @@ export default function Content({ children }: PropsWithChildren) {
     };
   });
 
-  return <Box className={styles.content}>{children}</Box>;
+  return (
+    <Box
+      className={styles.content}
+      // TODO: explanation
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
 }

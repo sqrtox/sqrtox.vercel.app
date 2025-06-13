@@ -23,7 +23,7 @@ export interface ArticlePageProps {
 
 export default async function ArticlePage({ article }: ArticlePageProps) {
   const metadata = await article.getMetadata();
-  const element = await article.element();
+  const html = await article.html();
   const history = await article.history();
   const timestamp = await article.timestamp();
 
@@ -124,7 +124,7 @@ export default async function ArticlePage({ article }: ArticlePageProps) {
         </Stack>
       </Stack>
       <Divider />
-      <Content>{element}</Content>
+      <Content html={html} />
       <Box marginTop={10}>
         <ArticleHistoryButton
           slug={article.slug}

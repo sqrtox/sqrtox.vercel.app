@@ -1,7 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import fm from "front-matter";
-import type { JSX } from "react";
 import tagLabels from "#src/article/tag.json";
 import { CONTENTS_DIR } from "#src/dir";
 import {
@@ -115,8 +114,8 @@ export class Article {
     return this.#compiled;
   }
 
-  async element(): Promise<JSX.Element> {
-    return (await this.#getCompiled()).element;
+  async html(): Promise<string> {
+    return (await this.#getCompiled()).html;
   }
 
   async text(): Promise<string> {
