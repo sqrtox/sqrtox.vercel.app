@@ -9,7 +9,7 @@ export const formatDate = (
   const timestamp = typeof date_ === "number" ? date_ : date_.getTime();
   const date = new TZDate(timestamp, "Asia/Tokyo");
 
-  return format(date, `yyyy年M月d日 HH時mm分${displaySec ? "ss秒" : ""}`, {
+  return format(date, `yyyy/M/d HH:mm${displaySec ? ":ss" : ""}`, {
     locale: ja,
   });
 };
