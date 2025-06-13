@@ -3,7 +3,6 @@ import "remark-github-alerts/styles/github-colors-dark-class.css";
 import "remark-github-alerts/styles/github-base.css";
 
 import HistoryIcon from "@mui/icons-material/History";
-import PublishIcon from "@mui/icons-material/Publish";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import TagIcon from "@mui/icons-material/Tag";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -13,7 +12,6 @@ import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
-import NextLink from "next/link";
 import type { Article } from "#src/article/article";
 import { formatDate } from "#src/date";
 import Content from "./content";
