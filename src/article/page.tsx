@@ -100,7 +100,12 @@ export default async function ArticlePage({ article }: ArticlePageProps) {
             </Box>
           </Stack>
           {metadata.tags.length > 0 && (
-            <Stack direction="row" alignItems="center" spacing={2}>
+            <Stack
+              direction="row"
+              alignItems="center"
+              spacing={2}
+              flexWrap="wrap"
+            >
               <Typography>タグ:</Typography>
               <Stack direction="row" flexWrap="wrap" spacing={1}>
                 {metadata.tags
