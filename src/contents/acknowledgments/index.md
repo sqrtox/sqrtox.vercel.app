@@ -1,6 +1,5 @@
 ---
 title: acknowledgments
-tags: system
 ---
 
 このサイトでは、以下のオープンソースソフトウェアおよびフォントを利用しています。  
